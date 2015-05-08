@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: XMPP Statistics
-Plugin URI: http://beherit.pl/wordpress/xmpp-statistics
+Plugin URI: http://beherit.pl/en/wordpress/plugins/xmpp-statistics
 Description: Display the statistics from ejabberd XMPP server.
 Version: 1.0
 Author: Krzysztof Grochocki
