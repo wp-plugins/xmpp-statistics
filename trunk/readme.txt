@@ -1,6 +1,6 @@
 === XMPP Statistics ===
 Contributors: Beherit
-Tags: xmpp jabber ejabberd statistics
+Tags: xmpp, jabber, ejabberd, statistics
 Donate link: http://beherit.pl/wsparcie
 Requires at least: 3.8
 Tested up to: 4.2.1
