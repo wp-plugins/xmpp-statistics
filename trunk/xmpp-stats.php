@@ -28,9 +28,6 @@ License: GPLv3
 	along with GNU Radio. If not, see <http://www.gnu.org/licenses/>.
 */
 
-//Define plugin basename
-define('PLUGIN_BASENAME', plugin_basename(__FILE__));
-
 //Define translations
 add_action('init', 'xmpp_stats_textdomain');
 function xmpp_stats_textdomain() {
@@ -46,16 +43,16 @@ function xmpp_stats_localization_filter($locale) {
 }
 
 //Include admin settings
-include dirname(__FILE__).'/xmpp-stats_admin.php';
+include_once dirname(__FILE__).'/xmpp-stats_admin.php';
 
 //Include cron
-include dirname(__FILE__).'/xmpp-stats_cron.php';
+include_once dirname(__FILE__).'/xmpp-stats_cron.php';
 
 //Include simple stats
-include dirname(__FILE__).'/xmpp-stats_simple.php';
+include_once dirname(__FILE__).'/xmpp-stats_simple.php';
 
 //Include graphs
-include dirname(__FILE__).'/xmpp-stats_graphs.php';
+include_once dirname(__FILE__).'/xmpp-stats_graphs.php';
 
 //Include functions
-include dirname(__FILE__).'/xmpp-stats_functions.php';
+include_once dirname(__FILE__).'/xmpp-stats_functions.php';
