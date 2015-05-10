@@ -43,16 +43,16 @@ function xmpp_stats_localization_filter($locale) {
 }
 
 //Include admin settings
-include_once dirname(__FILE__).'/xmpp-stats_admin.php';
+require_once dirname(__FILE__).'/xmpp-stats_admin.php';
 
 //Include cron
-include_once dirname(__FILE__).'/xmpp-stats_cron.php';
+require_once dirname(__FILE__).'/xmpp-stats_cron.php';
 
 //Include simple stats
-include_once dirname(__FILE__).'/xmpp-stats_simple.php';
+require_once dirname(__FILE__).'/xmpp-stats_simple.php';
 
 //Include graphs
-include_once dirname(__FILE__).'/xmpp-stats_graphs.php';
+require_once dirname(__FILE__).'/xmpp-stats_graphs.php';
 
 //Include functions
-include_once dirname(__FILE__).'/xmpp-stats_functions.php';
+require_once dirname(__FILE__).'/xmpp-stats_functions.php';
