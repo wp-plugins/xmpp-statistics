@@ -19,7 +19,7 @@
 */
 
 //Activation hook
-register_activation_hook(__FILE__, 'xmpp_stats_activated');
+register_activation_hook(dirname(__FILE__).'/xmpp-stats.php', 'xmpp_stats_activated');
 function xmpp_stats_activated() {
 	//Add statistics cron job
 	if(get_option('xmpp_stats_save_data')) wp_schedule_event(time(), 'xmpp_stats_schedule', 'xmpp_stats_cron_job');
@@ -39,7 +39,7 @@ function xmpp_stats_activated() {
 }
 
 //Deactivation hook
-register_deactivation_hook( __FILE__, 'xmpp_stats_deactivated' );
+register_deactivation_hook(dirname(__FILE__).'/xmpp-stats.php', 'xmpp_stats_deactivated' );
 function xmpp_stats_deactivated() {
 	//Remove statistics cron job
 	if(get_option('xmpp_stats_save_data')) wp_clear_scheduled_hook('xmpp_stats_cron_job');
