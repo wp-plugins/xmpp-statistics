@@ -28,6 +28,7 @@ function xmpp_stats_register_settings() {
 	register_setting('xmpp_stats_settings', 'xmpp_stats_auth');
 	register_setting('xmpp_stats_settings', 'xmpp_stats_login');
 	register_setting('xmpp_stats_settings', 'xmpp_stats_password');
+	register_setting('xmpp_stats_settings', 'xmpp_stats_set_last');
 	//Add row to plugin page
 	add_filter('plugin_row_meta', 'xmpp_stats_plugin_row_meta', 10, 2);
 }
@@ -139,32 +140,42 @@ function xmpp_stats_add_meta_boxes() {
 
 //Settings meta box
 function xmpp_stats_settings_meta_box() { ?>
+	</div>
 	<form id="xmpp-stats-form" method="post" action="options.php">
 		<?php settings_fields('xmpp_stats_settings'); ?>
 		<?php wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false); ?>
 		<?php wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false); ?>
-		<ul>
-			<li>
-				<label for="xmpp_stats_rest_url"><?php _e('REST API url', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" name="xmpp_stats_rest_url" id="xmpp_stats_rest_url" value="<?php echo get_option('xmpp_stats_rest_url') ?>" /></label>
-				</br><small><?php _e('Enter URL defined in module mod_rest in ejabberd settings.', 'xmpp_stats'); ?></small>
-			</li>
-			<li>
-				<label for="xmpp_stats_uptime_url"><?php _e('URL to system uptime data', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" name="xmpp_stats_uptime_url" id="xmpp_stats_uptime_url" value="<?php echo get_option('xmpp_stats_uptime_url') ?>" /></label>
-				</br><small><?php _e('Enter URL defined in module mod_http_fileserver in ejabberd settings which returns system boot time in UNIX TimeStamp.', 'xmpp_stats'); ?></small>
-				</br><small><?php _e('Example to get system boot time', 'xmpp_stats'); ?>: <i>cat /proc/stat | grep btime | awk '{ print $2 }' > /tmp/ejabberd/uptime.html</i></small>
-			</li>
-			<li>
-				<label for="xmpp_stats_save_data"><input type="checkbox" id="xmpp_stats_save_data" name="xmpp_stats_save_data" value="1" <?php echo checked(1, get_option('xmpp_stats_save_data'), false ); ?> /><?php _e('Save statistics', 'xmpp_stats'); ?></label>
-				</br><small><?php _e('Automatically retrieves server statistics every 5 minutes and stores them in a database.', 'xmpp_stats'); ?></small>
-			</li>
-			<li>
-				<label for="xmpp_stats_auth"><input type="checkbox" id="xmpp_stats_auth" name="xmpp_stats_auth" value="1" <?php echo checked(1, get_option('xmpp_stats_auth'), false ); ?> /><?php _e('Enable authorization', 'xmpp_stats'); ?></label>
-				</br><label for="xmpp_stats_login"><?php _e('Login', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" name="xmpp_stats_login" id="xmpp_stats_login" value="<?php echo get_option('xmpp_stats_login') ?>" /></label>
-				</br><label for="xmpp_stats_password"><?php _e('Password', 'xmpp_stats'); ?>:&nbsp;<input type="password" size="40" name="xmpp_stats_password" id="xmpp_stats_password" value="<?php echo get_option('xmpp_stats_password') ?>" /></label>
-			</li>
-		</ul>
-		<input type="submit" name="submit" id="submit" class="button-primary" value="<?php _e('Save settings', 'xmpp_stats'); ?>" />
+		<div class="inside" style="margin-top:-18px;">		
+			<ul>
+				<li>
+					<label for="xmpp_stats_rest_url"><?php _e('REST API url', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" style="max-width:100%;" name="xmpp_stats_rest_url" id="xmpp_stats_rest_url" value="<?php echo get_option('xmpp_stats_rest_url') ?>" /></label>
+					</br><small><?php _e('Enter URL defined in module mod_rest in ejabberd settings.', 'xmpp_stats'); ?></small>
+				</li>
+				<li>
+					<label for="xmpp_stats_uptime_url"><?php _e('URL to system uptime data', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" style="max-width:100%;" name="xmpp_stats_uptime_url" id="xmpp_stats_uptime_url" value="<?php echo get_option('xmpp_stats_uptime_url') ?>" /></label>
+					</br><small><?php _e('Enter URL defined in module mod_http_fileserver in ejabberd settings which returns system boot time in UNIX TimeStamp.', 'xmpp_stats'); ?></small>
+					</br><small><?php _e('Example to get system boot time', 'xmpp_stats'); ?>: <i>cat /proc/stat | grep btime | awk '{ print $2 }' > /tmp/ejabberd/uptime.html</i></small>
+				</li>
+				<li>
+					<label for="xmpp_stats_save_data"><input type="checkbox" id="xmpp_stats_save_data" name="xmpp_stats_save_data" value="1" <?php echo checked(1, get_option('xmpp_stats_save_data'), false ); ?> /><?php _e('Save statistics', 'xmpp_stats'); ?></label>
+					</br><small><?php _e('Automatically retrieves server statistics every 5 minutes and stores them in a database.', 'xmpp_stats'); ?></small>
+				</li>
+				<li>
+					<label for="xmpp_stats_auth"><input type="checkbox" id="xmpp_stats_auth" name="xmpp_stats_auth" value="1" <?php echo checked(1, get_option('xmpp_stats_auth'), false ); ?> /><?php _e('Enable authorization', 'xmpp_stats'); ?></label>
+					</br><label for="xmpp_stats_login"><?php _e('Login', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" name="xmpp_stats_login" id="xmpp_stats_login" value="<?php echo get_option('xmpp_stats_login') ?>" /></label>
+					</br><label for="xmpp_stats_password"><?php _e('Password', 'xmpp_stats'); ?>:&nbsp;<input type="password" size="40" name="xmpp_stats_password" id="xmpp_stats_password" value="<?php echo get_option('xmpp_stats_password') ?>" /></label>
+					</br><label for="xmpp_stats_set_last"><input type="checkbox" id="xmpp_stats_set_last" name="xmpp_stats_set_last" value="1" <?php echo checked(1, get_option('xmpp_stats_set_last'), false ); ?> /><?php _e('Set last activity information', 'xmpp_stats'); ?></label>
+				</li>
+			</ul>		
+		</div>
+		<div id="major-publishing-actions">
+			<div id="publishing-action">
+				<input type="submit" name="submit" id="submit" class="button-primary" value="<?php _e('Save settings', 'xmpp_stats'); ?>" />
+			</div>
+			<div class="clear"></div>
+		</div>
 	</form>
+	<div>
 <?php }
 
 function xmpp_stats_simple_shortcodes_meta_box() { ?>
