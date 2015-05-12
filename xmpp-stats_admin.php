@@ -1,25 +1,24 @@
 <?php
 /*
 	Copyright (C) 2015 Krzysztof Grochocki
-	
+
 	This file is part of XMPP Statistics.
-	
+
 	XMPP Statistics is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation; either version 3, or
 	(at your option) any later version.
-	
+
 	XMPP Statistics is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with GNU Radio. If not, see <http://www.gnu.org/licenses/>.
 */
 
 //Admin init
-add_action('admin_init', 'xmpp_stats_register_settings');
 function xmpp_stats_register_settings() {
 	//Register settings
 	register_setting('xmpp_stats_settings', 'xmpp_stats_rest_url');
@@ -32,6 +31,7 @@ function xmpp_stats_register_settings() {
 	//Add row to plugin page
 	add_filter('plugin_row_meta', 'xmpp_stats_plugin_row_meta', 10, 2);
 }
+add_action('admin_init', 'xmpp_stats_register_settings');
 
 //Settings row on plugin page
 function xmpp_stats_plugin_row_meta($plugin_meta, $plugin_file) {
@@ -41,7 +41,6 @@ function xmpp_stats_plugin_row_meta($plugin_meta, $plugin_file) {
 }
 
 //Create options menu
-add_action('admin_menu', 'xmpp_stats_add_admin_menu');
 function xmpp_stats_add_admin_menu() {
 	//Global variable
 	global $xmpp_stats_options_page_hook;
@@ -56,6 +55,7 @@ function xmpp_stats_add_admin_menu() {
 	//Add options page hook
 	add_action('load-'.$xmpp_stats_options_page_hook, 'xmpp_stats_options_hook');
 }
+add_action('admin_menu', 'xmpp_stats_add_admin_menu');
 
 //Add the needed JavaScript
 function xmpp_stats_options_enqueue_scripts($hook_suffix) {
@@ -105,7 +105,6 @@ function xmpp_stats_options_hook() {
 }
 
 //Add metaboxes
-add_action('add_meta_boxes', 'xmpp_stats_add_meta_boxes');
 function xmpp_stats_add_meta_boxes() {
 	//Get global variable
 	global $xmpp_stats_options_page_hook;
@@ -137,6 +136,7 @@ function xmpp_stats_add_meta_boxes() {
 		'default'
 	);
 }
+add_action('add_meta_boxes', 'xmpp_stats_add_meta_boxes');
 
 //Settings meta box
 function xmpp_stats_settings_meta_box() { ?>
@@ -145,7 +145,7 @@ function xmpp_stats_settings_meta_box() { ?>
 		<?php settings_fields('xmpp_stats_settings'); ?>
 		<?php wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false); ?>
 		<?php wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false); ?>
-		<div class="inside" style="margin-top:-18px;">		
+		<div class="inside" style="margin-top:-18px;">
 			<ul>
 				<li>
 					<label for="xmpp_stats_rest_url"><?php _e('REST API url', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" style="max-width:100%;" name="xmpp_stats_rest_url" id="xmpp_stats_rest_url" value="<?php echo get_option('xmpp_stats_rest_url') ?>" /></label>
@@ -166,7 +166,7 @@ function xmpp_stats_settings_meta_box() { ?>
 					</br><label for="xmpp_stats_password"><?php _e('Password', 'xmpp_stats'); ?>:&nbsp;<input type="password" size="40" name="xmpp_stats_password" id="xmpp_stats_password" value="<?php echo get_option('xmpp_stats_password') ?>" /></label>
 					</br><label for="xmpp_stats_set_last"><input type="checkbox" id="xmpp_stats_set_last" name="xmpp_stats_set_last" value="1" <?php echo checked(1, get_option('xmpp_stats_set_last'), false ); ?> /><?php _e('Set last activity information', 'xmpp_stats'); ?></label>
 				</li>
-			</ul>		
+			</ul>
 		</div>
 		<div id="major-publishing-actions">
 			<div id="publishing-action">
