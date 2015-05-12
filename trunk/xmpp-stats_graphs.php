@@ -1,34 +1,22 @@
 <?php
 /*
 	Copyright (C) 2015 Krzysztof Grochocki
-	
+
 	This file is part of XMPP Statistics.
-	
+
 	XMPP Statistics is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation; either version 3, or
 	(at your option) any later version.
-	
+
 	XMPP Statistics is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with GNU Radio. If not, see <http://www.gnu.org/licenses/>.
 */
-
-//Add shortcodes
-add_shortcode('xmpp_onlineusers_day_graph', 'shortcode_xmpp_onlineusers_day_graph');
-add_shortcode('xmpp_onlineusers_week_graph', 'shortcode_xmpp_onlineusers_week_graph');
-add_shortcode('xmpp_registeredusers_day_graph', 'shortcode_xmpp_registeredusers_day_graph');
-add_shortcode('xmpp_registeredusers_week_graph', 'shortcode_xmpp_registeredusers_week_graph');
-add_shortcode('xmpp_s2s_day_graph', 'shortcode_xmpp_s2s_day_graph');
-add_shortcode('xmpp_s2s_week_graph', 'shortcode_xmpp_s2s_week_graph');
-add_shortcode('xmpp_uptime_day_graph', 'shortcode_xmpp_uptime_day_graph');
-add_shortcode('xmpp_uptime_week_graph', 'shortcode_xmpp_uptime_week_graph');
-add_shortcode('system_uptime_day_graph', 'shortcode_system_uptime_day_graph');
-add_shortcode('system_uptime_week_graph', 'shortcode_system_uptime_week_graph');
 
 //Show online users day graph
 function shortcode_xmpp_onlineusers_day_graph() {
@@ -38,7 +26,6 @@ function shortcode_xmpp_onlineusers_day_graph() {
 	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
 	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
 	//Add jQuery script
-	add_action('wp_footer', 'shortcode_xmpp_onlineusers_day_graph_jquery');
 	function shortcode_xmpp_onlineusers_day_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -124,6 +111,7 @@ function shortcode_xmpp_onlineusers_day_graph() {
 		});
 		</script> <?php
 	}
+	add_action('wp_footer', 'shortcode_xmpp_onlineusers_day_graph_jquery');
 	return '<div class="graph-container"><h3>'.__('Logged in users - by day', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_day_graph" class="graph-placeholder"></div></div>';
 }
 
@@ -135,7 +123,6 @@ function shortcode_xmpp_onlineusers_week_graph() {
 	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
 	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
 	//Add jQuery script
-	add_action('wp_footer', 'shortcode_xmpp_onlineusers_week_graph_jquery');
 	function shortcode_xmpp_onlineusers_week_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -221,6 +208,7 @@ function shortcode_xmpp_onlineusers_week_graph() {
 		});
 		</script> <?php
 	}
+	add_action('wp_footer', 'shortcode_xmpp_onlineusers_week_graph_jquery');
 	return '<div class="graph-container"><h3>'.__('Logged in users - by week', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_week_graph" class="graph-placeholder"></div></div>';
 }
 
@@ -232,7 +220,6 @@ function shortcode_xmpp_registeredusers_day_graph() {
 	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
 	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
 	//Add jQuery script
-	add_action('wp_footer', 'shortcode_xmpp_registeredusers_day_graph_jquery');
 	function shortcode_xmpp_registeredusers_day_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -318,6 +305,7 @@ function shortcode_xmpp_registeredusers_day_graph() {
 		});
 		</script> <?php
 	}
+	add_action('wp_footer', 'shortcode_xmpp_registeredusers_day_graph_jquery');
 	return '<div class="graph-container"><h3>'.__('Registered users - by day', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_day_graph" class="graph-placeholder"></div></div>';
 }
 
@@ -329,7 +317,6 @@ function shortcode_xmpp_registeredusers_week_graph() {
 	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
 	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
 	//Add jQuery script
-	add_action('wp_footer', 'shortcode_xmpp_registeredusers_week_graph_jquery');
 	function shortcode_xmpp_registeredusers_week_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -415,6 +402,7 @@ function shortcode_xmpp_registeredusers_week_graph() {
 		});
 		</script> <?php
 	}
+	add_action('wp_footer', 'shortcode_xmpp_registeredusers_week_graph_jquery');
 	return '<div class="graph-container"><h3>'.__('Registered users - by week', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_week_graph" class="graph-placeholder"></div></div>';
 }
 
@@ -426,7 +414,6 @@ function shortcode_xmpp_s2s_day_graph() {
 	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
 	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
 	//Add jQuery script
-	add_action('wp_footer', 'shortcode_xmpp_s2s_day_graph_jquery');
 	function shortcode_xmpp_s2s_day_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -553,6 +540,7 @@ function shortcode_xmpp_s2s_day_graph() {
 		});
 		</script> <?php
 	}
+	add_action('wp_footer', 'shortcode_xmpp_s2s_day_graph_jquery');
 	return '<div class="graph-container"><h3>'.__('S2S connections - by day', 'xmpp_stats').'</h3><div id="xmpp_s2s_day_graph" class="graph-placeholder"></div><div id="xmpp_s2s_day_graph_choices" class="graph-choices"></div></div>';
 }
 
@@ -564,7 +552,6 @@ function shortcode_xmpp_s2s_week_graph() {
 	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
 	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
 	//Add jQuery script
-	add_action('wp_footer', 'shortcode_xmpp_s2s_week_graph_jquery');
 	function shortcode_xmpp_s2s_week_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -691,6 +678,7 @@ function shortcode_xmpp_s2s_week_graph() {
 		});
 		</script> <?php
 	}
+	add_action('wp_footer', 'shortcode_xmpp_s2s_week_graph_jquery');
 	return '<div class="graph-container"><h3>'.__('S2S connections - by week', 'xmpp_stats').'</h3><div id="xmpp_s2s_week_graph" class="graph-placeholder"></div><div id="xmpp_s2s_week_graph_choices" class="graph-choices"></div></div>';
 }
 
@@ -702,7 +690,6 @@ function shortcode_xmpp_uptime_day_graph() {
 	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
 	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
 	//Add jQuery script
-	add_action('wp_footer', 'shortcode_xmpp_uptime_day_graph_jquery');
 	function shortcode_xmpp_uptime_day_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -759,6 +746,7 @@ function shortcode_xmpp_uptime_day_graph() {
 		});
 		</script> <?php
 	}
+	add_action('wp_footer', 'shortcode_xmpp_uptime_day_graph_jquery');
 	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by day', 'xmpp_stats').'</h3><div id="xmpp_uptime_day_graph" class="graph-placeholder"></div></div>';
 }
 
@@ -770,7 +758,6 @@ function shortcode_xmpp_uptime_week_graph() {
 	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
 	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
 	//Add jQuery script
-	add_action('wp_footer', 'shortcode_xmpp_uptime_week_graph_jquery');
 	function shortcode_xmpp_uptime_week_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -827,6 +814,7 @@ function shortcode_xmpp_uptime_week_graph() {
 		});
 		</script> <?php
 	}
+	add_action('wp_footer', 'shortcode_xmpp_uptime_week_graph_jquery');
 	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by week', 'xmpp_stats').'</h3><div id="xmpp_uptime_week_graph" class="graph-placeholder"></div></div>';
 }
 
@@ -838,7 +826,6 @@ function shortcode_system_uptime_day_graph() {
 	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
 	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
 	//Add jQuery script
-	add_action('wp_footer', 'shortcode_system_uptime_day_graph_jquery');
 	function shortcode_system_uptime_day_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -895,6 +882,7 @@ function shortcode_system_uptime_day_graph() {
 		});
 		</script> <?php
 	}
+	add_action('wp_footer', 'shortcode_system_uptime_day_graph_jquery');
 	return '<div class="graph-container"><h3>'.__('System uptime - by day', 'xmpp_stats').'</h3><div id="system_uptime_day_graph" class="graph-placeholder"></div></div>';
 }
 
@@ -906,7 +894,6 @@ function shortcode_system_uptime_week_graph() {
 	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
 	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
 	//Add jQuery script
-	add_action('wp_footer', 'shortcode_system_uptime_week_graph_jquery');
 	function shortcode_system_uptime_week_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -963,5 +950,18 @@ function shortcode_system_uptime_week_graph() {
 		});
 		</script> <?php
 	}
+	add_action('wp_footer', 'shortcode_system_uptime_week_graph_jquery');
 	return '<div class="graph-container"><h3>'.__('System uptime - by week', 'xmpp_stats').'</h3><div id="system_uptime_week_graph" class="graph-placeholder"></div></div>';
 }
+
+//Add shortcodes
+add_shortcode('xmpp_onlineusers_day_graph', 'shortcode_xmpp_onlineusers_day_graph');
+add_shortcode('xmpp_onlineusers_week_graph', 'shortcode_xmpp_onlineusers_week_graph');
+add_shortcode('xmpp_registeredusers_day_graph', 'shortcode_xmpp_registeredusers_day_graph');
+add_shortcode('xmpp_registeredusers_week_graph', 'shortcode_xmpp_registeredusers_week_graph');
+add_shortcode('xmpp_s2s_day_graph', 'shortcode_xmpp_s2s_day_graph');
+add_shortcode('xmpp_s2s_week_graph', 'shortcode_xmpp_s2s_week_graph');
+add_shortcode('xmpp_uptime_day_graph', 'shortcode_xmpp_uptime_day_graph');
+add_shortcode('xmpp_uptime_week_graph', 'shortcode_xmpp_uptime_week_graph');
+add_shortcode('system_uptime_day_graph', 'shortcode_system_uptime_day_graph');
+add_shortcode('system_uptime_week_graph', 'shortcode_system_uptime_week_graph');
