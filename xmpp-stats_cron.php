@@ -1,25 +1,24 @@
 <?php
 /*
 	Copyright (C) 2015 Krzysztof Grochocki
-	
+
 	This file is part of XMPP Statistics.
-	
+
 	XMPP Statistics is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation; either version 3, or
 	(at your option) any later version.
-	
+
 	XMPP Statistics is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with GNU Radio. If not, see <http://www.gnu.org/licenses/>.
 */
 
 //Activation hook
-register_activation_hook(dirname(__FILE__).'/xmpp-stats.php', 'xmpp_stats_activated');
 function xmpp_stats_activated() {
 	//Add statistics cron job
 	if(get_option('xmpp_stats_save_data')) wp_schedule_event(time(), 'xmpp_stats_schedule', 'xmpp_stats_cron_job');
@@ -37,16 +36,16 @@ function xmpp_stats_activated() {
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 	dbDelta($sql);
 }
+register_activation_hook(dirname(__FILE__).'/xmpp-stats.php', 'xmpp_stats_activated');
 
 //Deactivation hook
-register_deactivation_hook(dirname(__FILE__).'/xmpp-stats.php', 'xmpp_stats_deactivated' );
 function xmpp_stats_deactivated() {
 	//Remove statistics cron job
 	if(get_option('xmpp_stats_save_data')) wp_clear_scheduled_hook('xmpp_stats_cron_job');
 }
+register_deactivation_hook(dirname(__FILE__).'/xmpp-stats.php', 'xmpp_stats_deactivated' );
 
 //Add cron schedule
-add_filter('cron_schedules', 'xmpp_stats_schedule');
 function xmpp_stats_schedule($schedules) {
 	$schedules['xmpp_stats_schedule'] = array(
 		'interval' => 300,
@@ -54,9 +53,9 @@ function xmpp_stats_schedule($schedules) {
 	);
 	return $schedules;
 }
+add_filter('cron_schedules', 'xmpp_stats_schedule');
 
 //Add statistics cron job action
-add_action('xmpp_stats_cron_job', 'xmpp_stats_cron_job');
 function xmpp_stats_cron_job() {
 	//Get current time in UTC
 	$now = current_time('mysql', 1);
@@ -121,3 +120,4 @@ function xmpp_stats_cron_job() {
 		)
 	);
 }
+add_action('xmpp_stats_cron_job', 'xmpp_stats_cron_job');
