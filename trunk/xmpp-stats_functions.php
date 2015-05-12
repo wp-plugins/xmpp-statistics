@@ -31,8 +31,8 @@ function xmpp_stats_get_xmpp_data($data) {
 	//POST data
 	$args = array(
 		'body' => $data,
-		'timeout' => '5',
-		'redirection' => '0',
+		'timeout' => 5,
+		'redirection' => 0,
 		'sslverify' => false
 	);
 	//Get data
@@ -48,8 +48,8 @@ function xmpp_stats_get_xmpp_data($data) {
 			//POST data
 			$args = array(
 				'body' => $auth_data.'set_last '.$login.' '.$now.' "Set by XMPP Statistics"',
-				'timeout' => '5',
-				'redirection' => '0',
+				'timeout' => 5,
+				'redirection' => 0,
 				'sslverify' => false
 			);
 			//Send command
@@ -66,8 +66,8 @@ function xmpp_stats_get_xmpp_data($data) {
 function xmpp_stats_get_system_data() {
 	//POST data
 	$args = array(
-		'timeout' => '5',
-		'redirection' => '0',
+		'timeout' => 5,
+		'redirection' => 0,
 		'sslverify' => false
 	);
 	//Get data
