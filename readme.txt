@@ -4,7 +4,7 @@ Tags: xmpp, jabber, ejabberd, statistics
 Donate link: http://beherit.pl/en/donations
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.0.2
+Stable tag: 1.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,12 @@ No questions yet.
 2. Statistics in the graphs form.
 
 == Changelog ==
+= 1.1 (2015-05-13) =
+* Option to set last activity information on account used for authorization.
+* Add Font Awesome.
+* Visual changes on the options page.
+* Other minor changes and bugfix.
+
 = 1.0.2 (2015-05-10) =
 * Fix plugin activation/deactivation hook.
 * Fix including the files.
@@ -37,9 +43,11 @@ No questions yet.
 * First public version.
 
 == Upgrade Notice ==
-= 1.0 (2015-05-10) =
-* Fix plugin activation/deactivation hook.
-* Fix including the files.
+= 1.1 (2015-05-13) =
+* Option to set last activity information on account used for authorization.
+* Add Font Awesome.
+* Visual changes on the options page.
+* Other minor changes and bugfix.
 
 == Other Notes ==
-This plugin is using [Flot](https://github.com/flot/flot) (Javascript plotting library for jQuery) and [HINT.css](https://github.com/chinchang/hint.css).
+This plugin is using [Flot](https://github.com/flot/flot) (Javascript plotting library for jQuery), [HINT.css](https://github.com/chinchang/hint.css) and [Font Awesome](https://fortawesome.github.io/Font-Awesome/).
