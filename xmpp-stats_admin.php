@@ -157,6 +157,9 @@ function xmpp_stats_settings_meta_box() { ?>
 		<div class="inside" style="margin-top:-18px;">
 			<ul>
 				<li>
+					<strong><?php _e('Basic options', 'xmpp_stats'); ?></strong>
+				</li>
+				<li>
 					<label for="xmpp_stats_rest_url"><?php _e('REST API url', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" style="max-width:100%;" name="xmpp_stats_rest_url" id="xmpp_stats_rest_url" value="<?php echo get_option('xmpp_stats_rest_url') ?>" /></label>
 					</br><small><?php _e('Enter URL defined in module mod_rest in ejabberd settings.', 'xmpp_stats'); ?></small>
 				</li>
@@ -169,11 +172,20 @@ function xmpp_stats_settings_meta_box() { ?>
 					<label for="xmpp_stats_save_data"><input type="checkbox" id="xmpp_stats_save_data" name="xmpp_stats_save_data" value="1" <?php echo checked(1, get_option('xmpp_stats_save_data'), false ); ?> /><?php _e('Save statistics', 'xmpp_stats'); ?></label>
 					</br><small><?php _e('Automatically retrieves server statistics every 5 minutes and stores them in a database.', 'xmpp_stats'); ?></small>
 				</li>
+			</ul>
+			<ul>
+				<li>
+					<strong><?php _e('Authorization', 'xmpp_stats'); ?></strong>
+				</li>
 				<li>
 					<label for="xmpp_stats_auth"><input type="checkbox" id="xmpp_stats_auth" name="xmpp_stats_auth" value="1" <?php echo checked(1, get_option('xmpp_stats_auth'), false ); ?> /><?php _e('Enable authorization', 'xmpp_stats'); ?></label>
-					</br><label for="xmpp_stats_login"><?php _e('Login', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" name="xmpp_stats_login" id="xmpp_stats_login" value="<?php echo get_option('xmpp_stats_login') ?>" /></label>
+				</li>
+				<li>
+					<label for="xmpp_stats_login"><?php _e('Login', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" name="xmpp_stats_login" id="xmpp_stats_login" value="<?php echo get_option('xmpp_stats_login') ?>" /></label>
 					</br><label for="xmpp_stats_password"><?php _e('Password', 'xmpp_stats'); ?>:&nbsp;<input type="password" size="40" name="xmpp_stats_password" id="xmpp_stats_password" value="<?php echo get_option('xmpp_stats_password') ?>" /></label>
-					</br><label for="xmpp_stats_set_last"><input type="checkbox" id="xmpp_stats_set_last" name="xmpp_stats_set_last" value="1" <?php echo checked(1, get_option('xmpp_stats_set_last'), false ); ?> /><?php _e('Set last activity information', 'xmpp_stats'); ?></label>
+				</li>
+				<li>				
+					<label for="xmpp_stats_set_last"><input type="checkbox" id="xmpp_stats_set_last" name="xmpp_stats_set_last" value="1" <?php echo checked(1, get_option('xmpp_stats_set_last'), false ); ?> /><?php _e('Set last activity information', 'xmpp_stats'); ?></label>
 				</li>
 			</ul>
 		</div>
