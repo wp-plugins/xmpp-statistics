@@ -22,7 +22,7 @@
 function shortcode_xmpp_onlineusers($attr) {
 	//Add styles
 	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
-	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'/css/font-awesome.min.css', false, '4.3.0', 'all');
+	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_xmpp_onlineusers_jquery() { ?>
 		<script type="text/javascript" >
@@ -59,7 +59,7 @@ add_action('wp_ajax_get_xmpp_onlineusers', 'shortcode_xmpp_onlineusers_ajax');
 function shortcode_xmpp_registeredusers($attr) {
 	//Add styles
 	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
-	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'/css/font-awesome.min.css', false, '4.3.0', 'all');
+	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_xmpp_registeredusers_jquery() { ?>
 		<script type="text/javascript" >
@@ -96,7 +96,7 @@ add_action('wp_ajax_get_xmpp_registeredusers', 'shortcode_xmpp_registeredusers_a
 function shortcode_xmpp_s2s_out($attr) {
 	//Add styles
 	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
-	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'/css/font-awesome.min.css', false, '4.3.0', 'all');
+	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_xmpp_s2s_out_jquery() { ?>
 		<script type="text/javascript" >
@@ -133,7 +133,7 @@ add_action('wp_ajax_get_xmpp_s2s_out', 'shortcode_xmpp_s2s_out_ajax');
 function shortcode_xmpp_s2s_in($attr) {
 	//Add styles
 	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
-	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'/css/font-awesome.min.css', false, '4.3.0', 'all');
+	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_xmpp_s2s_in_jquery() { ?>
 		<script type="text/javascript" >
@@ -170,7 +170,7 @@ add_action('wp_ajax_get_xmpp_s2s_in', 'shortcode_xmpp_s2s_in_ajax');
 function shortcode_xmpp_uptime($attr) {
 	//Add styles
 	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
-	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'/css/font-awesome.min.css', false, '4.3.0', 'all');
+	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_xmpp_uptime_jquery() { ?>
 		<script type="text/javascript" >
@@ -212,7 +212,7 @@ add_action('wp_ajax_get_xmpp_uptime', 'shortcode_xmpp_uptime_ajax');
 function shortcode_system_uptime($attr) {
 	//Add styles
 	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
-	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'/css/font-awesome.min.css', false, '4.3.0', 'all');
+	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_system_uptime_jquery() { ?>
 		<script type="text/javascript" >
