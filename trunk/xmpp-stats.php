@@ -29,30 +29,30 @@ License: GPLv3
 */
 
 //Define translations
-add_action('init', 'xmpp_stats_textdomain');
 function xmpp_stats_textdomain() {
 	load_plugin_textdomain('xmpp_stats', false, dirname(plugin_basename(__FILE__)).'/languages');
 }
+add_action('init', 'xmpp_stats_textdomain');
 
 //Localization filter (Ajax bugfix)
-add_filter('locale', 'xmpp_stats_localization_filter', 99);
 function xmpp_stats_localization_filter($locale) {
 	if(!empty($_GET['lang']))
 		return $_GET['lang'];
 	return $locale;
 }
+add_filter('locale', 'xmpp_stats_localization_filter', 99);
 
 //Include admin settings
-require_once dirname(__FILE__).'/xmpp-stats_admin.php';
-
-//Include cron
-require_once dirname(__FILE__).'/xmpp-stats_cron.php';
-
-//Include simple stats
-require_once dirname(__FILE__).'/xmpp-stats_simple.php';
-
-//Include graphs
-require_once dirname(__FILE__).'/xmpp-stats_graphs.php';
+include_once dirname(__FILE__).'/xmpp-stats_admin.php';
 
 //Include functions
-require_once dirname(__FILE__).'/xmpp-stats_functions.php';
+include_once dirname(__FILE__).'/xmpp-stats_functions.php';
+
+//Include cron
+include_once dirname(__FILE__).'/xmpp-stats_cron.php';
+
+//Include simple stats
+include_once dirname(__FILE__).'/xmpp-stats_simple.php';
+
+//Include graphs
+include_once dirname(__FILE__).'/xmpp-stats_graphs.php';
