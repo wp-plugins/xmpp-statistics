@@ -117,6 +117,15 @@ function xmpp_stats_add_meta_boxes() {
 		'normal',
 		'default'
 	);
+	//Add donate meta box
+	add_meta_box(
+		'xmpp_stats_donate_meta_box',
+		__('Donations', 'xmpp_stats'),
+		'xmpp_stats_donate_meta_box',
+		$xmpp_stats_options_page_hook,
+		'side',
+		'default'
+	);
 	//Add simple shortcodes meta box
 	add_meta_box(
 		'xmpp_stats_simple_shortcodes_meta_box',
@@ -178,6 +187,17 @@ function xmpp_stats_settings_meta_box() { ?>
 	<div>
 <?php }
 
+//Donate meta box
+function xmpp_stats_donate_meta_box() { ?>
+	<p><?php _e('If you like this plugin, please send a donation to support its development and maintenance', 'xmpp_stats'); ?></p>
+	<form style="width: 178px; height: 52px; margin: 0 auto;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="M4Q38WVSSCHZC">
+		<input type="image" src="<?php echo plugin_dir_url(__FILE__); ?>img/paypal.png" border="0" name="submit" alt="PayPal">
+	</form>
+<?php }
+
+//Simple shortcodes meta box
 function xmpp_stats_simple_shortcodes_meta_box() { ?>
 	<ul>
 		<li><b>[xmpp_onlineusers]</b></br><?php _e('Online users count', 'xmpp_stats'); ?></br><small><?php _e('Command', 'xmpp_stats'); ?>:&nbsp;ejabberdctl stats onlineusers</small></li>
@@ -189,6 +209,7 @@ function xmpp_stats_simple_shortcodes_meta_box() { ?>
 	</ul>
 <?php }
 
+//Graphs shortcodes meta box
 function xmpp_stats_graphs_shortcodes_meta_box() { ?>
 	<ul>
 		<li><b>[xmpp_onlineusers_day_graph]</b></br><?php _e('Logged in users - by day', 'xmpp_stats'); ?></li>
