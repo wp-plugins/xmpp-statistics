@@ -53,7 +53,7 @@ function shortcode_xmpp_onlineusers_day_graph() {
 				} ?>
 			}];
 			//Graph options
-			var plot = $.plot('#xmpp_onlineusers_day_graph', data, {
+			var options = {
 				xaxis: {
 					mode: 'time',
 					timezone: 'browser',
@@ -79,8 +79,10 @@ function shortcode_xmpp_onlineusers_day_graph() {
 				legend: {
 					show: false
 				}
-			});
-			//Tooltip
+			};
+			//Draw graph
+			$.plot('#xmpp_onlineusers_day_graph', data, options);
+			//Show tooltip
 			function showTooltip(x, y, contents) {
 				$('<div id="flot-tooltip">' + contents + '</div>').css({
 					top: y - 16,
@@ -107,6 +109,10 @@ function shortcode_xmpp_onlineusers_day_graph() {
 					$('#flot-tooltip').remove();
 					previousPoint = null;
 				}
+			});
+			//Redraw graph
+			$(window).on("resize", function( event ) {
+				$.plot('#xmpp_onlineusers_day_graph', data, options);
 			});
 		});
 		</script> <?php
@@ -150,7 +156,7 @@ function shortcode_xmpp_onlineusers_week_graph() {
 				} ?>
 			}];
 			//Graph options
-			var plot = $.plot('#xmpp_onlineusers_week_graph', data, {
+			var options = {
 				xaxis: {
 					mode: 'time',
 					timezone: 'browser',
@@ -176,8 +182,10 @@ function shortcode_xmpp_onlineusers_week_graph() {
 				legend: {
 					show: false
 				}
-			});
-			//Tooltip
+			};
+			//Draw graph
+			$.plot('#xmpp_onlineusers_week_graph', data, options);
+			//Show tooltip
 			function showTooltip(x, y, contents) {
 				$('<div id="flot-tooltip">' + contents + '</div>').css({
 					top: y - 16,
@@ -204,6 +212,10 @@ function shortcode_xmpp_onlineusers_week_graph() {
 					$('#flot-tooltip').remove();
 					previousPoint = null;
 				}
+			});
+			//Redraw graph
+			$(window).on("resize", function( event ) {
+				$.plot('#xmpp_onlineusers_week_graph', data, options);
 			});
 		});
 		</script> <?php
@@ -247,7 +259,7 @@ function shortcode_xmpp_registeredusers_day_graph() {
 				} ?>
 			}];
 			//Graph options
-			var plot = $.plot('#xmpp_registeredusers_day_graph', data, {
+			var options = {
 				xaxis: {
 					mode: 'time',
 					timezone: 'browser',
@@ -273,8 +285,10 @@ function shortcode_xmpp_registeredusers_day_graph() {
 				legend: {
 					show: false
 				}
-			});
-			//Tooltip
+			};
+			//Draw graph
+			$.plot('#xmpp_registeredusers_day_graph', data, options);
+			//Show tooltip
 			function showTooltip(x, y, contents) {
 				$('<div id="flot-tooltip">' + contents + '</div>').css({
 					top: y - 16,
@@ -301,6 +315,10 @@ function shortcode_xmpp_registeredusers_day_graph() {
 					$('#flot-tooltip').remove();
 					previousPoint = null;
 				}
+			});
+			//Redraw graph
+			$(window).on("resize", function( event ) {
+				$.plot('#xmpp_registeredusers_day_graph', data, options);
 			});
 		});
 		</script> <?php
@@ -344,7 +362,7 @@ function shortcode_xmpp_registeredusers_week_graph() {
 				} ?>
 			}];
 			//Graph options
-			var plot = $.plot('#xmpp_registeredusers_week_graph', data, {
+			var options = {
 				xaxis: {
 					mode: 'time',
 					timezone: 'browser',
@@ -370,8 +388,10 @@ function shortcode_xmpp_registeredusers_week_graph() {
 				legend: {
 					show: false
 				}
-			});
-			//Tooltip
+			};
+			//Draw graph
+			$.plot('#xmpp_registeredusers_week_graph', data, options);
+			//Show tooltip
 			function showTooltip(x, y, contents) {
 				$('<div id="flot-tooltip">' + contents + '</div>').css({
 					top: y - 16,
@@ -398,6 +418,10 @@ function shortcode_xmpp_registeredusers_week_graph() {
 					$('#flot-tooltip').remove();
 					previousPoint = null;
 				}
+			});
+			//Redraw graph
+			$(window).on("resize", function( event ) {
+				$.plot('#xmpp_registeredusers_week_graph', data, options);
 			});
 		});
 		</script> <?php
@@ -459,6 +483,34 @@ function shortcode_xmpp_s2s_day_graph() {
 						} ?>
 					}
 			};
+			//Graph options
+			var options = {
+				xaxis: {
+					mode: 'time',
+					timezone: 'browser',
+					tickSize: [4, 'hour'],
+					timeformat: '%a</br>%H:%S',
+					dayNames: ['<?php _e('sun', 'xmpp_stats'); ?>', '<?php _e('mon', 'xmpp_stats'); ?>', '<?php _e('tue', 'xmpp_stats'); ?>', '<?php _e('wed', 'xmpp_stats'); ?>', '<?php _e('thu', 'xmpp_stats'); ?>', '<?php _e('fri', 'xmpp_stats'); ?>', '<?php _e('sat', 'xmpp_stats'); ?>']
+				},
+				yaxis: {
+					tickDecimals: 0
+				},
+				series: {
+					lines: {
+						lineWidth: 1
+					},
+					shadowSize: 0
+				},
+				grid: {
+					clickable: true,
+					hoverable: true,
+					color: '#EEE',
+					borderWidth: 1
+				},
+				legend: {
+					show: false
+				}
+			};
 			//Insert checkboxes
 			var choiceContainer = $('#xmpp_s2s_day_graph_choices');
 			$.each(datasets, function(key, val) {
@@ -477,39 +529,13 @@ function shortcode_xmpp_s2s_day_graph() {
 						data.push(datasets[key]);
 					}
 				});
-				//Graph options
+				//Draw graph
 				if(data.length > 0) {
-					$.plot('#xmpp_s2s_day_graph', data, {
-						xaxis: {
-							mode: 'time',
-							timezone: 'browser',
-							tickSize: [4, 'hour'],
-							timeformat: '%a</br>%H:%S',
-							dayNames: ['<?php _e('sun', 'xmpp_stats'); ?>', '<?php _e('mon', 'xmpp_stats'); ?>', '<?php _e('tue', 'xmpp_stats'); ?>', '<?php _e('wed', 'xmpp_stats'); ?>', '<?php _e('thu', 'xmpp_stats'); ?>', '<?php _e('fri', 'xmpp_stats'); ?>', '<?php _e('sat', 'xmpp_stats'); ?>']
-						},
-						yaxis: {
-							tickDecimals: 0
-						},
-						series: {
-							lines: {
-								lineWidth: 1
-							},
-							shadowSize: 0
-						},
-						grid: {
-							clickable: true,
-							hoverable: true,
-							color: '#EEE',
-							borderWidth: 1
-						},
-						legend: {
-							show: false
-						}
-					});
+					$.plot('#xmpp_s2s_day_graph', data, options);
 				}
 			}
 			plotAccordingToChoices();
-			//Tooltip
+			//Show tooltip
 			function showTooltip(x, y, contents) {
 				$('<div id="flot-tooltip">' + contents + '</div>').css({
 					top: y - 16,
@@ -536,6 +562,10 @@ function shortcode_xmpp_s2s_day_graph() {
 					$('#flot-tooltip').remove();
 					previousPoint = null;
 				}
+			});
+			//Redraw graph
+			$(window).on("resize", function( event ) {
+				plotAccordingToChoices();
 			});
 		});
 		</script> <?php
@@ -597,6 +627,34 @@ function shortcode_xmpp_s2s_week_graph() {
 						} ?>
 					}
 			};
+			//Graph options
+			var options = {
+				xaxis: {
+					mode: 'time',
+					timezone: 'browser',
+					tickSize: [1, 'day'],
+					timeformat: '%a</br>%e.%m',
+					dayNames: ['<?php _e('sun', 'xmpp_stats'); ?>', '<?php _e('mon', 'xmpp_stats'); ?>', '<?php _e('tue', 'xmpp_stats'); ?>', '<?php _e('wed', 'xmpp_stats'); ?>', '<?php _e('thu', 'xmpp_stats'); ?>', '<?php _e('fri', 'xmpp_stats'); ?>', '<?php _e('sat', 'xmpp_stats'); ?>']
+				},
+				yaxis: {
+					tickDecimals: 0
+				},
+				series: {
+					lines: {
+						lineWidth: 1
+					},
+					shadowSize: 0
+				},
+				grid: {
+					clickable: true,
+					hoverable: true,
+					color: '#EEE',
+					borderWidth: 1
+				},
+				legend: {
+					show: false
+				}
+			};
 			//Insert checkboxes
 			var choiceContainer = $('#xmpp_s2s_week_graph_choices');
 			$.each(datasets, function(key, val) {
@@ -615,39 +673,13 @@ function shortcode_xmpp_s2s_week_graph() {
 						data.push(datasets[key]);
 					}
 				});
-				//Graph options
+				//Draw graph
 				if(data.length > 0) {
-					$.plot('#xmpp_s2s_week_graph', data, {
-						xaxis: {
-							mode: 'time',
-							timezone: 'browser',
-							tickSize: [1, 'day'],
-							timeformat: '%a</br>%e.%m',
-							dayNames: ['<?php _e('sun', 'xmpp_stats'); ?>', '<?php _e('mon', 'xmpp_stats'); ?>', '<?php _e('tue', 'xmpp_stats'); ?>', '<?php _e('wed', 'xmpp_stats'); ?>', '<?php _e('thu', 'xmpp_stats'); ?>', '<?php _e('fri', 'xmpp_stats'); ?>', '<?php _e('sat', 'xmpp_stats'); ?>']
-						},
-						yaxis: {
-							tickDecimals: 0
-						},
-						series: {
-							lines: {
-								lineWidth: 1
-							},
-							shadowSize: 0
-						},
-						grid: {
-							clickable: true,
-							hoverable: true,
-							color: '#EEE',
-							borderWidth: 1
-						},
-						legend: {
-							show: false
-						}
-					});
+					$.plot('#xmpp_s2s_week_graph', data, options);
 				}
 			}
 			plotAccordingToChoices();
-			//Tooltip
+			//Show tooltip
 			function showTooltip(x, y, contents) {
 				$('<div id="flot-tooltip">' + contents + '</div>').css({
 					top: y - 16,
@@ -674,6 +706,10 @@ function shortcode_xmpp_s2s_week_graph() {
 					$('#flot-tooltip').remove();
 					previousPoint = null;
 				}
+			});
+			//Redraw graph
+			$(window).on("resize", function( event ) {
+				plotAccordingToChoices();
 			});
 		});
 		</script> <?php
@@ -717,7 +753,7 @@ function shortcode_xmpp_uptime_day_graph() {
 				} ?>
 			}];
 			//Graph options
-			var plot = $.plot('#xmpp_uptime_day_graph', data, {
+			var options = {
 				xaxis: {
 					mode: 'time',
 					timezone: 'browser',
@@ -742,6 +778,12 @@ function shortcode_xmpp_uptime_day_graph() {
 				legend: {
 					show: false
 				}
+			};
+			//Draw graph
+			$.plot('#xmpp_uptime_day_graph', data, options);
+			//Redraw graph
+			$(window).on("resize", function( event ) {
+				$.plot('#xmpp_uptime_day_graph', data, options);
 			});
 		});
 		</script> <?php
@@ -785,7 +827,7 @@ function shortcode_xmpp_uptime_week_graph() {
 				} ?>
 			}];
 			//Graph options
-			var plot = $.plot('#xmpp_uptime_week_graph', data, {
+			var options = {
 				xaxis: {
 					mode: 'time',
 					timezone: 'browser',
@@ -810,6 +852,12 @@ function shortcode_xmpp_uptime_week_graph() {
 				legend: {
 					show: false
 				}
+			};
+			//Draw graph
+			$.plot('#xmpp_uptime_week_graph', data, options);
+			//Redraw graph
+			$(window).on("resize", function( event ) {
+				$.plot('#xmpp_uptime_week_graph', data, options);
 			});
 		});
 		</script> <?php
@@ -853,7 +901,7 @@ function shortcode_system_uptime_day_graph() {
 				} ?>
 			}];
 			//Graph options
-			var plot = $.plot('#system_uptime_day_graph', data, {
+			var options = {
 				xaxis: {
 					mode: 'time',
 					timezone: 'browser',
@@ -878,6 +926,12 @@ function shortcode_system_uptime_day_graph() {
 				legend: {
 					show: false
 				}
+			};
+			//Draw graph
+			$.plot('#system_uptime_day_graph', data, options);
+			//Redraw graph
+			$(window).on("resize", function( event ) {
+				$.plot('#system_uptime_day_graph', data, options);
 			});
 		});
 		</script> <?php
@@ -921,7 +975,7 @@ function shortcode_system_uptime_week_graph() {
 				} ?>
 			}];
 			//Graph options
-			var plot = $.plot('#system_uptime_week_graph', data, {
+			var options = {
 				xaxis: {
 					mode: 'time',
 					timezone: 'browser',
@@ -946,6 +1000,12 @@ function shortcode_system_uptime_week_graph() {
 				legend: {
 					show: false
 				}
+			};
+			//Draw graph
+			$.plot('#system_uptime_week_graph', data, options);
+			//Redraw graph
+			$(window).on("resize", function( event ) {
+				$.plot('#system_uptime_week_graph', data, options);
 			});
 		});
 		</script> <?php
