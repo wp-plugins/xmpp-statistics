@@ -4,7 +4,7 @@ Tags: xmpp, jabber, ejabberd, statistics
 Donate link: http://beherit.pl/en/donations
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,10 @@ No questions yet.
 2. Statistics in the graphs form.
 
 == Changelog ==
+= 1.1.3 (2015-05-21) =
+* Redraw graphs on browser window resize.
+* Improve CSS for RWD support.
+
 = 1.1.2 (2015-05-13) =
 * Added donations box.
 * Minor visual changes on the options page.
@@ -48,10 +52,9 @@ No questions yet.
 * First public version.
 
 == Upgrade Notice ==
-= 1.1.2 (2015-05-13) =
-* Added donations box.
-* Minor visual changes on the options page.
-* Small bugfix.
+= 1.1.3 (2015-05-21) =
+* Redraw graphs on browser window resize.
+* Improve CSS for RWD support.
 
 == Other Notes ==
 This plugin is using [Flot](https://github.com/flot/flot) (Javascript plotting library for jQuery), [HINT.css](https://github.com/chinchang/hint.css) and [Font Awesome](https://fortawesome.github.io/Font-Awesome/).
