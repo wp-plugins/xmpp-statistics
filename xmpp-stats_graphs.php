@@ -31,7 +31,7 @@ function shortcode_xmpp_onlineusers_day_graph() {
 		jQuery(document).ready(function($) {
 			//Graph data
 			var data = [{
-				color: '#71C73E',
+				color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
 				label: '<?php _e('Logged in users', 'xmpp_stats'); ?>',
 				<?php //Datebase data
 				global $wpdb;
@@ -73,7 +73,7 @@ function shortcode_xmpp_onlineusers_day_graph() {
 				grid: {
 					clickable: true,
 					hoverable: true,
-					color: '#EEE',
+					color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
 					borderWidth: 1
 				},
 				legend: {
@@ -134,7 +134,7 @@ function shortcode_xmpp_onlineusers_week_graph() {
 		jQuery(document).ready(function($) {
 			//Graph data
 			var data = [{
-				color: '#71C73E',
+				color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
 				label: '<?php _e('Logged in users', 'xmpp_stats'); ?>',
 				<?php //Datebase data
 				global $wpdb;
@@ -176,7 +176,7 @@ function shortcode_xmpp_onlineusers_week_graph() {
 				grid: {
 					clickable: true,
 					hoverable: true,
-					color: '#EEE',
+					color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
 					borderWidth: 1
 				},
 				legend: {
@@ -237,7 +237,7 @@ function shortcode_xmpp_registeredusers_day_graph() {
 		jQuery(document).ready(function($) {
 			//Graph data
 			var data = [{
-				color: '#71C73E',
+				color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
 				label: '<?php _e('Registered users', 'xmpp_stats'); ?>',
 				<?php //Datebase data
 				global $wpdb;
@@ -279,7 +279,7 @@ function shortcode_xmpp_registeredusers_day_graph() {
 				grid: {
 					clickable: true,
 					hoverable: true,
-					color: '#EEE',
+					color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
 					borderWidth: 1
 				},
 				legend: {
@@ -340,7 +340,7 @@ function shortcode_xmpp_registeredusers_week_graph() {
 		jQuery(document).ready(function($) {
 			//Graph data
 			var data = [{
-				color: '#71C73E',
+				color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
 				label: '<?php _e('Registered users', 'xmpp_stats'); ?>',
 				<?php //Datebase data
 				global $wpdb;
@@ -382,7 +382,7 @@ function shortcode_xmpp_registeredusers_week_graph() {
 				grid: {
 					clickable: true,
 					hoverable: true,
-					color: '#EEE',
+					color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
 					borderWidth: 1
 				},
 				legend: {
@@ -444,7 +444,7 @@ function shortcode_xmpp_s2s_day_graph() {
 			//Graph data
 			var datasets = {
 					'outgoing': {
-						color: '#71C73E',
+						color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
 						label: '<?php _e('Outgoing connections', 'xmpp_stats'); ?>',
 						caption: '<?php _e('outgoing connections', 'xmpp_stats'); ?>',
 						<?php //Datebase data
@@ -467,7 +467,7 @@ function shortcode_xmpp_s2s_day_graph() {
 						} ?>
 					},
 					'incoming': {
-						color: '#0066B3',
+						color: '<?php echo get_option('xmpp_stats_graph_line_color2'); ?>',
 						label: '<?php _e('Incoming connections', 'xmpp_stats'); ?>',
 						caption: '<?php _e('incoming connections', 'xmpp_stats'); ?>',
 						<?php //Get data from the last 24 hours
@@ -504,7 +504,7 @@ function shortcode_xmpp_s2s_day_graph() {
 				grid: {
 					clickable: true,
 					hoverable: true,
-					color: '#EEE',
+					color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
 					borderWidth: 1
 				},
 				legend: {
@@ -588,7 +588,7 @@ function shortcode_xmpp_s2s_week_graph() {
 			//Graph data
 			var datasets = {
 					'outgoing': {
-						color: '#71C73E',
+						color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
 						label: '<?php _e('Outgoing connections', 'xmpp_stats'); ?>',
 						caption: '<?php _e('outgoing connections', 'xmpp_stats'); ?>',
 						<?php //Datebase data
@@ -648,7 +648,7 @@ function shortcode_xmpp_s2s_week_graph() {
 				grid: {
 					clickable: true,
 					hoverable: true,
-					color: '#EEE',
+					color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
 					borderWidth: 1
 				},
 				legend: {
@@ -731,7 +731,7 @@ function shortcode_xmpp_uptime_day_graph() {
 		jQuery(document).ready(function($) {
 			//Graph data
 			var data = [{
-				color: '#71C73E',
+				color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
 				label: '<?php _e('Uptime', 'xmpp_stats'); ?>',
 				<?php //Datebase data
 				global $wpdb;
@@ -772,7 +772,7 @@ function shortcode_xmpp_uptime_day_graph() {
 					shadowSize: 0
 				},
 				grid: {
-					color: '#EEE',
+					color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
 					borderWidth: 1
 				},
 				legend: {
@@ -805,7 +805,7 @@ function shortcode_xmpp_uptime_week_graph() {
 		jQuery(document).ready(function($) {
 			//Graph data
 			var data = [{
-				color: '#71C73E',
+				color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
 				label: '<?php _e('Uptime', 'xmpp_stats'); ?>',
 				<?php //Datebase data
 				global $wpdb;
@@ -846,7 +846,7 @@ function shortcode_xmpp_uptime_week_graph() {
 					shadowSize: 0
 				},
 				grid: {
-					color: '#EEE',
+					color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
 					borderWidth: 1
 				},
 				legend: {
@@ -879,7 +879,7 @@ function shortcode_system_uptime_day_graph() {
 		jQuery(document).ready(function($) {
 			//Graph data
 			var data = [{
-				color: '#71C73E',
+				color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
 				label: '<?php _e('Uptime', 'xmpp_stats'); ?>',
 				<?php //Datebase data
 				global $wpdb;
@@ -920,7 +920,7 @@ function shortcode_system_uptime_day_graph() {
 					shadowSize: 0
 				},
 				grid: {
-					color: '#EEE',
+					color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
 					borderWidth: 1
 				},
 				legend: {
@@ -953,7 +953,7 @@ function shortcode_system_uptime_week_graph() {
 		jQuery(document).ready(function($) {
 			//Graph data
 			var data = [{
-				color: '#71C73E',
+				color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
 				label: '<?php _e('Uptime', 'xmpp_stats'); ?>',
 				<?php //Datebase data
 				global $wpdb;
@@ -994,7 +994,7 @@ function shortcode_system_uptime_week_graph() {
 					shadowSize: 0
 				},
 				grid: {
-					color: '#EEE',
+					color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
 					borderWidth: 1
 				},
 				legend: {

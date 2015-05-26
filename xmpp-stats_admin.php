@@ -28,6 +28,13 @@ function xmpp_stats_register_settings() {
 	register_setting('xmpp_stats_settings', 'xmpp_stats_login');
 	register_setting('xmpp_stats_settings', 'xmpp_stats_password');
 	register_setting('xmpp_stats_settings', 'xmpp_stats_set_last');
+	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_line_color');	
+	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_line_color2');	
+	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_grid_color');	
+	//Set default values
+	if(!get_option('xmpp_stats_graph_line_color')) update_option('xmpp_stats_graph_line_color', '#71c73e');
+	if(!get_option('xmpp_stats_graph_line_color2')) update_option('xmpp_stats_graph_line_color2', '#0066b3');
+	if(!get_option('xmpp_stats_graph_grid_color')) update_option('xmpp_stats_graph_grid_color', '#eeeeee');
 	//Add row to plugin page
 	add_filter('plugin_row_meta', 'xmpp_stats_plugin_row_meta', 10, 2);
 }
@@ -46,7 +53,7 @@ function xmpp_stats_add_admin_menu() {
 	global $xmpp_stats_options_page_hook;
 	//Add options page
 	$xmpp_stats_options_page_hook = add_options_page(__('XMPP Statistics', 'xmpp_stats'), __('XMPP Statistics', 'xmpp_stats'), 'manage_options', 'xmpp-stats-options', 'xmpp_stats_options');
-	//Add the needed JavaScript
+	//Add the needed CSS & JavaScript
 	add_action('admin_enqueue_scripts', 'xmpp_stats_options_enqueue_scripts');
 	//Add the needed jQuery script
 	add_action('admin_footer-'.$xmpp_stats_options_page_hook, 'xmpp_stats_options_scripts' );
@@ -57,12 +64,15 @@ function xmpp_stats_add_admin_menu() {
 }
 add_action('admin_menu', 'xmpp_stats_add_admin_menu');
 
-//Add the needed JavaScript
+//Add the needed CSS & JavaScript
 function xmpp_stats_options_enqueue_scripts($hook_suffix) {
 	//Get global variable
 	global $xmpp_stats_options_page_hook;
 	if($hook_suffix == $xmpp_stats_options_page_hook) {
 		wp_enqueue_script('postbox');
+		wp_enqueue_style('wp-color-picker');
+		wp_enqueue_script('wp-color-picker');
+		wp_enqueue_script('custom-script-handle', plugin_dir_url(__FILE__).'js/jquery.color-picker.js', array('wp-color-picker'), false, true);
 	}
 }
 
@@ -184,8 +194,31 @@ function xmpp_stats_settings_meta_box() { ?>
 					<label for="xmpp_stats_login"><?php _e('Login', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" name="xmpp_stats_login" id="xmpp_stats_login" value="<?php echo get_option('xmpp_stats_login') ?>" /></label>
 					</br><label for="xmpp_stats_password"><?php _e('Password', 'xmpp_stats'); ?>:&nbsp;<input type="password" size="40" name="xmpp_stats_password" id="xmpp_stats_password" value="<?php echo get_option('xmpp_stats_password') ?>" /></label>
 				</li>
-				<li>				
+				<li>
 					<label for="xmpp_stats_set_last"><input type="checkbox" id="xmpp_stats_set_last" name="xmpp_stats_set_last" value="1" <?php echo checked(1, get_option('xmpp_stats_set_last'), false ); ?> /><?php _e('Set last activity information', 'xmpp_stats'); ?></label>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<strong><?php _e('Graphs style', 'xmpp_stats'); ?></strong>
+				</li>
+				<li>
+					<label for="xmpp_stats_graph_line_color">
+						<div style="display:inline; vertical-align:50%;"><?php _e('Line color', 'xmpp_stats'); ?>:&nbsp</div>
+						<input type="text" name="xmpp_stats_graph_line_color" id="xmpp_stats_graph_line_color" value="<?php echo get_option('xmpp_stats_graph_line_color'); ?>" class="color-picker" data-default-color="#71c73e" />
+					</label>
+				</li>
+				<li>
+					<label for="xmpp_stats_graph_line_color2">
+						<div style="display:inline; vertical-align:50%;"><?php _e('Line color', 'xmpp_stats'); ?> #2:&nbsp</div>
+						<input type="text" name="xmpp_stats_graph_line_color2" id="xmpp_stats_graph_line_color2" value="<?php echo get_option('xmpp_stats_graph_line_color2'); ?>" class="color-picker" data-default-color="#0066b3" />
+					</label>
+				</li>
+				<li>
+					<label for="xmpp_stats_graph_grid_color">
+						<div style="display:inline; vertical-align:50%;"><?php _e('Grid color', 'xmpp_stats'); ?>:&nbsp</div>
+						<input type="text" name="xmpp_stats_graph_grid_color" id="xmpp_stats_graph_grid_color" value="<?php echo get_option('xmpp_stats_graph_grid_color'); ?>" class="color-picker" data-default-color="#eeeeee" />
+					</label>
 				</li>
 			</ul>
 		</div>
