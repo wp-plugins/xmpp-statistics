@@ -3,7 +3,7 @@
 Plugin Name: XMPP Statistics
 Plugin URI: http://beherit.pl/en/wordpress/plugins/xmpp-statistics
 Description: Display the statistics from ejabberd XMPP server.
-Version: 1.1.3
+Version: 1.2
 Author: Krzysztof Grochocki
 Author URI: http://beherit.pl/
 License: GPLv3
@@ -29,7 +29,7 @@ License: GPLv3
 */
 
 //Define plugin version variable
-define('XMPP_STATS_VERSION', '1.1.3');
+define('XMPP_STATS_VERSION', '1.2');
 
 //Define translations
 function xmpp_stats_textdomain() {
