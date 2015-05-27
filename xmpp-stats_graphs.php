@@ -18,19 +18,19 @@
 	along with GNU Radio. If not, see <http://www.gnu.org/licenses/>.
 */
 
-//Enqueue style
-function xmpp_stats_enqueue_style() {
+//Enqueue graphs style
+function xmpp_stats_enqueue_graphs_style() {
 	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
 }
-add_action('wp_enqueue_scripts', 'xmpp_stats_enqueue_style');
+add_action('wp_enqueue_scripts', 'xmpp_stats_enqueue_graphs_style');
 
 //Show online users day graph
 function shortcode_xmpp_onlineusers_day_graph() {
 	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
-	//Add jQuery script
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue jQuery script
 	function shortcode_xmpp_onlineusers_day_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -129,10 +129,10 @@ function shortcode_xmpp_onlineusers_day_graph() {
 //Show online users week graph
 function shortcode_xmpp_onlineusers_week_graph() {
 	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
-	//Add jQuery script
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue jQuery script
 	function shortcode_xmpp_onlineusers_week_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -231,10 +231,10 @@ function shortcode_xmpp_onlineusers_week_graph() {
 //Show registered users day graph
 function shortcode_xmpp_registeredusers_day_graph() {
 	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
-	//Add jQuery script
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue jQuery script
 	function shortcode_xmpp_registeredusers_day_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -333,10 +333,10 @@ function shortcode_xmpp_registeredusers_day_graph() {
 //Show registered users week graph
 function shortcode_xmpp_registeredusers_week_graph() {
 	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
-	//Add jQuery script
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue jQuery script
 	function shortcode_xmpp_registeredusers_week_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -435,10 +435,10 @@ function shortcode_xmpp_registeredusers_week_graph() {
 //Show S2S connections day graph
 function shortcode_xmpp_s2s_day_graph() {
 	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
-	//Add jQuery script
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue jQuery script
 	function shortcode_xmpp_s2s_day_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -578,10 +578,10 @@ function shortcode_xmpp_s2s_day_graph() {
 //Show S2S connections week graph
 function shortcode_xmpp_s2s_week_graph() {
 	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
-	//Add jQuery script
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue jQuery script
 	function shortcode_xmpp_s2s_week_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -721,10 +721,10 @@ function shortcode_xmpp_s2s_week_graph() {
 //Show XMPP server uptime day graph
 function shortcode_xmpp_uptime_day_graph() {
 	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
-	//Add jQuery script
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue jQuery script
 	function shortcode_xmpp_uptime_day_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -794,10 +794,10 @@ function shortcode_xmpp_uptime_day_graph() {
 //Show XMPP server uptime week graph
 function shortcode_xmpp_uptime_week_graph() {
 	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
-	//Add jQuery script
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue jQuery script
 	function shortcode_xmpp_uptime_week_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -867,10 +867,10 @@ function shortcode_xmpp_uptime_week_graph() {
 //Show system uptime day graph
 function shortcode_system_uptime_day_graph() {
 	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
-	//Add jQuery script
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue jQuery script
 	function shortcode_system_uptime_day_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {
@@ -940,10 +940,10 @@ function shortcode_system_uptime_day_graph() {
 //Show system uptime week graph
 function shortcode_system_uptime_week_graph() {
 	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
-	//Add jQuery script
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue jQuery script
 	function shortcode_system_uptime_week_graph_jquery() { ?>
 		<script type="text/javascript" >
 		jQuery(document).ready(function($) {

@@ -28,6 +28,9 @@ License: GPLv3
 	along with GNU Radio. If not, see <http://www.gnu.org/licenses/>.
 */
 
+//Define plugin version variable
+define('XMPP_STATS_VERSION', '1.1.3');
+
 //Define translations
 function xmpp_stats_textdomain() {
 	load_plugin_textdomain('xmpp_stats', false, dirname(plugin_basename(__FILE__)).'/languages');
