@@ -18,13 +18,18 @@
 	along with GNU Radio. If not, see <http://www.gnu.org/licenses/>.
 */
 
+//Enqueue style
+function xmpp_stats_enqueue_style() {
+	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+}
+add_action('wp_enqueue_scripts', 'xmpp_stats_enqueue_style');
+
 //Show online users day graph
 function shortcode_xmpp_onlineusers_day_graph() {
-	//Add styles & sripts
-	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', array(), filemtime(plugin_dir_path(__FILE__).'css/flot.css'), false);
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue sripts
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
 	//Add jQuery script
 	function shortcode_xmpp_onlineusers_day_graph_jquery() { ?>
 		<script type="text/javascript" >
@@ -118,16 +123,15 @@ function shortcode_xmpp_onlineusers_day_graph() {
 		</script> <?php
 	}
 	add_action('wp_footer', 'shortcode_xmpp_onlineusers_day_graph_jquery');
-	return '<div class="graph-container"><h3>'.__('Logged in users - by day', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_day_graph" class="graph-placeholder"></div></div>';
+	return '<div class="graph-container"><h3>'.__('Logged in users - by day', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 
 //Show online users week graph
 function shortcode_xmpp_onlineusers_week_graph() {
-	//Add styles & sripts
-	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', array(), '1.0', false);
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue sripts
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
 	//Add jQuery script
 	function shortcode_xmpp_onlineusers_week_graph_jquery() { ?>
 		<script type="text/javascript" >
@@ -221,16 +225,15 @@ function shortcode_xmpp_onlineusers_week_graph() {
 		</script> <?php
 	}
 	add_action('wp_footer', 'shortcode_xmpp_onlineusers_week_graph_jquery');
-	return '<div class="graph-container"><h3>'.__('Logged in users - by week', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_week_graph" class="graph-placeholder"></div></div>';
+	return '<div class="graph-container"><h3>'.__('Logged in users - by week', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 
 //Show registered users day graph
 function shortcode_xmpp_registeredusers_day_graph() {
-	//Add styles & sripts
-	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', array(), '1.0', false);
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue sripts
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
 	//Add jQuery script
 	function shortcode_xmpp_registeredusers_day_graph_jquery() { ?>
 		<script type="text/javascript" >
@@ -324,16 +327,15 @@ function shortcode_xmpp_registeredusers_day_graph() {
 		</script> <?php
 	}
 	add_action('wp_footer', 'shortcode_xmpp_registeredusers_day_graph_jquery');
-	return '<div class="graph-container"><h3>'.__('Registered users - by day', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_day_graph" class="graph-placeholder"></div></div>';
+	return '<div class="graph-container"><h3>'.__('Registered users - by day', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 
 //Show registered users week graph
 function shortcode_xmpp_registeredusers_week_graph() {
-	//Add styles & sripts
-	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', array(), '1.0', false);
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue sripts
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
 	//Add jQuery script
 	function shortcode_xmpp_registeredusers_week_graph_jquery() { ?>
 		<script type="text/javascript" >
@@ -427,16 +429,15 @@ function shortcode_xmpp_registeredusers_week_graph() {
 		</script> <?php
 	}
 	add_action('wp_footer', 'shortcode_xmpp_registeredusers_week_graph_jquery');
-	return '<div class="graph-container"><h3>'.__('Registered users - by week', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_week_graph" class="graph-placeholder"></div></div>';
+	return '<div class="graph-container"><h3>'.__('Registered users - by week', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 
 //Show S2S connections day graph
 function shortcode_xmpp_s2s_day_graph() {
-	//Add styles & sripts
-	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', array(), '1.0', false);
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue sripts
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
 	//Add jQuery script
 	function shortcode_xmpp_s2s_day_graph_jquery() { ?>
 		<script type="text/javascript" >
@@ -571,16 +572,15 @@ function shortcode_xmpp_s2s_day_graph() {
 		</script> <?php
 	}
 	add_action('wp_footer', 'shortcode_xmpp_s2s_day_graph_jquery');
-	return '<div class="graph-container"><h3>'.__('S2S connections - by day', 'xmpp_stats').'</h3><div id="xmpp_s2s_day_graph" class="graph-placeholder"></div><div id="xmpp_s2s_day_graph_choices" class="graph-choices"></div></div>';
+	return '<div class="graph-container"><h3>'.__('S2S connections - by day', 'xmpp_stats').'</h3><div id="xmpp_s2s_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div><div id="xmpp_s2s_day_graph_choices" class="graph-choices"></div></div>';
 }
 
 //Show S2S connections week graph
 function shortcode_xmpp_s2s_week_graph() {
-	//Add styles & sripts
-	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', array(), '1.0', false);
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue sripts
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
 	//Add jQuery script
 	function shortcode_xmpp_s2s_week_graph_jquery() { ?>
 		<script type="text/javascript" >
@@ -715,16 +715,15 @@ function shortcode_xmpp_s2s_week_graph() {
 		</script> <?php
 	}
 	add_action('wp_footer', 'shortcode_xmpp_s2s_week_graph_jquery');
-	return '<div class="graph-container"><h3>'.__('S2S connections - by week', 'xmpp_stats').'</h3><div id="xmpp_s2s_week_graph" class="graph-placeholder"></div><div id="xmpp_s2s_week_graph_choices" class="graph-choices"></div></div>';
+	return '<div class="graph-container"><h3>'.__('S2S connections - by week', 'xmpp_stats').'</h3><div id="xmpp_s2s_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div><div id="xmpp_s2s_week_graph_choices" class="graph-choices"></div></div>';
 }
 
 //Show XMPP server uptime day graph
 function shortcode_xmpp_uptime_day_graph() {
-	//Add styles & sripts
-	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', array(), filemtime(plugin_dir_path(__FILE__).'css/flot.css'), false);
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue sripts
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
 	//Add jQuery script
 	function shortcode_xmpp_uptime_day_graph_jquery() { ?>
 		<script type="text/javascript" >
@@ -789,16 +788,15 @@ function shortcode_xmpp_uptime_day_graph() {
 		</script> <?php
 	}
 	add_action('wp_footer', 'shortcode_xmpp_uptime_day_graph_jquery');
-	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by day', 'xmpp_stats').'</h3><div id="xmpp_uptime_day_graph" class="graph-placeholder"></div></div>';
+	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by day', 'xmpp_stats').'</h3><div id="xmpp_uptime_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 
 //Show XMPP server uptime week graph
 function shortcode_xmpp_uptime_week_graph() {
-	//Add styles & sripts
-	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', array(), '1.0', false);
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue sripts
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
 	//Add jQuery script
 	function shortcode_xmpp_uptime_week_graph_jquery() { ?>
 		<script type="text/javascript" >
@@ -863,16 +861,15 @@ function shortcode_xmpp_uptime_week_graph() {
 		</script> <?php
 	}
 	add_action('wp_footer', 'shortcode_xmpp_uptime_week_graph_jquery');
-	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by week', 'xmpp_stats').'</h3><div id="xmpp_uptime_week_graph" class="graph-placeholder"></div></div>';
+	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by week', 'xmpp_stats').'</h3><div id="xmpp_uptime_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 
 //Show system uptime day graph
 function shortcode_system_uptime_day_graph() {
-	//Add styles & sripts
-	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', array(), filemtime(plugin_dir_path(__FILE__).'css/flot.css'), false);
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue sripts
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
 	//Add jQuery script
 	function shortcode_system_uptime_day_graph_jquery() { ?>
 		<script type="text/javascript" >
@@ -937,16 +934,15 @@ function shortcode_system_uptime_day_graph() {
 		</script> <?php
 	}
 	add_action('wp_footer', 'shortcode_system_uptime_day_graph_jquery');
-	return '<div class="graph-container"><h3>'.__('System uptime - by day', 'xmpp_stats').'</h3><div id="system_uptime_day_graph" class="graph-placeholder"></div></div>';
+	return '<div class="graph-container"><h3>'.__('System uptime - by day', 'xmpp_stats').'</h3><div id="system_uptime_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 
 //Show system uptime week graph
 function shortcode_system_uptime_week_graph() {
-	//Add styles & sripts
-	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', array(), '1.0', false);
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
+	//Enqueue sripts
+	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', false, '0.8.3', true);
+	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', false, '2.0', true);
+	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', false, '0.8.3', true);
 	//Add jQuery script
 	function shortcode_system_uptime_week_graph_jquery() { ?>
 		<script type="text/javascript" >
@@ -1011,7 +1007,7 @@ function shortcode_system_uptime_week_graph() {
 		</script> <?php
 	}
 	add_action('wp_footer', 'shortcode_system_uptime_week_graph_jquery');
-	return '<div class="graph-container"><h3>'.__('System uptime - by week', 'xmpp_stats').'</h3><div id="system_uptime_week_graph" class="graph-placeholder"></div></div>';
+	return '<div class="graph-container"><h3>'.__('System uptime - by week', 'xmpp_stats').'</h3><div id="system_uptime_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 
 //Add shortcodes

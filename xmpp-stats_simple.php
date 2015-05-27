@@ -21,7 +21,7 @@
 //Get online users count
 function shortcode_xmpp_onlineusers($attr) {
 	//Add styles
-	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
+	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', false, '1.3.3', 'all');
 	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_xmpp_onlineusers_jquery() { ?>
@@ -50,7 +50,7 @@ function shortcode_xmpp_onlineusers($attr) {
 //Add ajax function
 function shortcode_xmpp_onlineusers_ajax() {
 	echo xmpp_stats_get_xmpp_data('stats onlineusers');
-	die();
+	exit;
 }
 add_action('wp_ajax_nopriv_get_xmpp_onlineusers', 'shortcode_xmpp_onlineusers_ajax');
 add_action('wp_ajax_get_xmpp_onlineusers', 'shortcode_xmpp_onlineusers_ajax');
@@ -58,7 +58,7 @@ add_action('wp_ajax_get_xmpp_onlineusers', 'shortcode_xmpp_onlineusers_ajax');
 //Get registered users count
 function shortcode_xmpp_registeredusers($attr) {
 	//Add styles
-	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
+	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', false, '1.3.3', 'all');
 	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_xmpp_registeredusers_jquery() { ?>
@@ -87,7 +87,7 @@ function shortcode_xmpp_registeredusers($attr) {
 //Add ajax function
 function shortcode_xmpp_registeredusers_ajax() {
 	echo xmpp_stats_get_xmpp_data('stats registeredusers');
-	die();
+	exit;
 }
 add_action('wp_ajax_nopriv_get_xmpp_registeredusers', 'shortcode_xmpp_registeredusers_ajax');
 add_action('wp_ajax_get_xmpp_registeredusers', 'shortcode_xmpp_registeredusers_ajax');
@@ -95,7 +95,7 @@ add_action('wp_ajax_get_xmpp_registeredusers', 'shortcode_xmpp_registeredusers_a
 //Get outgoing s2s connections count
 function shortcode_xmpp_s2s_out($attr) {
 	//Add styles
-	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
+	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', false, '1.3.3', 'all');
 	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_xmpp_s2s_out_jquery() { ?>
@@ -124,7 +124,7 @@ function shortcode_xmpp_s2s_out($attr) {
 //Add ajax function
 function shortcode_xmpp_s2s_out_ajax() {
 	echo xmpp_stats_get_xmpp_data('getstatsdx s2sconnections');
-	die();
+	exit;
 }
 add_action('wp_ajax_nopriv_get_xmpp_s2s_out', 'shortcode_xmpp_s2s_out_ajax');
 add_action('wp_ajax_get_xmpp_s2s_out', 'shortcode_xmpp_s2s_out_ajax');
@@ -132,7 +132,7 @@ add_action('wp_ajax_get_xmpp_s2s_out', 'shortcode_xmpp_s2s_out_ajax');
 //Get incoming s2s connections count
 function shortcode_xmpp_s2s_in($attr) {
 	//Add styles
-	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
+	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', false, '1.3.3', 'all');
 	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_xmpp_s2s_in_jquery() { ?>
@@ -161,7 +161,7 @@ function shortcode_xmpp_s2s_in($attr) {
 //Add ajax function
 function shortcode_xmpp_s2s_in_ajax() {
 	echo xmpp_stats_get_xmpp_data('getstatsdx s2sservers');
-	die();
+	exit;
 }
 add_action('wp_ajax_nopriv_get_xmpp_s2s_in', 'shortcode_xmpp_s2s_in_ajax');
 add_action('wp_ajax_get_xmpp_s2s_in', 'shortcode_xmpp_s2s_in_ajax');
@@ -169,7 +169,7 @@ add_action('wp_ajax_get_xmpp_s2s_in', 'shortcode_xmpp_s2s_in_ajax');
 //Get XMPP uptime
 function shortcode_xmpp_uptime($attr) {
 	//Add styles
-	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
+	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', false, '1.3.3', 'all');
 	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_xmpp_uptime_jquery() { ?>
@@ -203,7 +203,7 @@ function shortcode_xmpp_uptime_ajax() {
 		$last_restart = __('Last restart', 'xmpp_stats').' '.xmpp_stats_timestamp_to_date(current_time('timestamp')-$seconds);
 		echo '<span class="href hint--left hint--success" data-hint="'.$last_restart.'">'.xmpp_stats_seconds_to_datestamp($seconds).'</span>';
 	}
-	die();
+	exit;
 }
 add_action('wp_ajax_nopriv_get_xmpp_uptime', 'shortcode_xmpp_uptime_ajax');
 add_action('wp_ajax_get_xmpp_uptime', 'shortcode_xmpp_uptime_ajax');
@@ -211,7 +211,7 @@ add_action('wp_ajax_get_xmpp_uptime', 'shortcode_xmpp_uptime_ajax');
 //Get system uptime
 function shortcode_system_uptime($attr) {
 	//Add styles
-	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', false);
+	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', false, '1.3.3', 'all');
 	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', false, '4.3.0', 'all');
 	//Add jQuery script
 	function shortcode_system_uptime_jquery() { ?>
@@ -245,7 +245,7 @@ function shortcode_system_uptime_ajax() {
 		$last_restart = __('Last restart', 'xmpp_stats').' '.xmpp_stats_timestamp_to_date($timestamp+(wp_timezone_override_offset()*3600));
 		echo '<span class="href hint--left hint--success" data-hint="'.$last_restart.'">'.xmpp_stats_seconds_to_datestamp(current_time('timestamp')-$timestamp-(wp_timezone_override_offset()*3600)).'</span>';
 	}
-	die();
+	exit;
 }
 add_action('wp_ajax_nopriv_get_system_uptime', 'shortcode_system_uptime_ajax');
 add_action('wp_ajax_get_system_uptime', 'shortcode_system_uptime_ajax');

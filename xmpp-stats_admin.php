@@ -28,13 +28,17 @@ function xmpp_stats_register_settings() {
 	register_setting('xmpp_stats_settings', 'xmpp_stats_login');
 	register_setting('xmpp_stats_settings', 'xmpp_stats_password');
 	register_setting('xmpp_stats_settings', 'xmpp_stats_set_last');
-	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_line_color');	
-	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_line_color2');	
-	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_grid_color');	
+	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_line_color');
+	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_line_color2');
+	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_grid_color');
+	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_width');
+	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_height');;
 	//Set default values
 	if(!get_option('xmpp_stats_graph_line_color')) update_option('xmpp_stats_graph_line_color', '#71c73e');
 	if(!get_option('xmpp_stats_graph_line_color2')) update_option('xmpp_stats_graph_line_color2', '#0066b3');
 	if(!get_option('xmpp_stats_graph_grid_color')) update_option('xmpp_stats_graph_grid_color', '#eeeeee');
+	if(!get_option('xmpp_stats_graph_width')) update_option('xmpp_stats_graph_width', 437);
+	if(!get_option('xmpp_stats_graph_height')) update_option('xmpp_stats_graph_height', 220);
 	//Add row to plugin page
 	add_filter('plugin_row_meta', 'xmpp_stats_plugin_row_meta', 10, 2);
 }
@@ -201,6 +205,12 @@ function xmpp_stats_settings_meta_box() { ?>
 			<ul>
 				<li>
 					<strong><?php _e('Graphs style', 'xmpp_stats'); ?></strong>
+				</li>
+				<li>
+					<label for="xmpp_stats_graph_width"><?php _e('Width', 'xmpp_stats'); ?>:&nbsp;<input type="number" size="4" name="xmpp_stats_graph_width" id="xmpp_stats_graph_width" value="<?php echo get_option('xmpp_stats_graph_width') ?>" />&nbsp;px</label>
+				</li>
+				<li>
+					<label for="xmpp_stats_graph_height"><?php _e('Height', 'xmpp_stats'); ?>:&nbsp;<input type="number" size="4" name="xmpp_stats_graph_height" id="xmpp_stats_graph_height" value="<?php echo get_option('xmpp_stats_graph_height') ?>" />&nbsp;px</label>
 				</li>
 				<li>
 					<label for="xmpp_stats_graph_line_color">
