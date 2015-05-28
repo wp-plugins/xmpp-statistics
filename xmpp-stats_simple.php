@@ -30,7 +30,7 @@ function shortcode_xmpp_onlineusers($attr) {
 	//Enqueue jQuery script
 	wp_enqueue_script('xmpp-onlineusers', admin_url('admin-ajax.php?action=xmpp_onlineusers&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
-	return '<div id="xmpp_onlineusers"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin"></i></div>';
+	return '<div id="xmpp_onlineusers"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_onlineusers_jquery() {
@@ -64,7 +64,7 @@ function shortcode_xmpp_registeredusers($attr) {
 	//Enqueue jQuery script
 	wp_enqueue_script('xmpp-registeredusers', admin_url('admin-ajax.php?action=xmpp_registeredusers&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
-	return '<div id="xmpp_registeredusers"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin"></i></div>';
+	return '<div id="xmpp_registeredusers"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_registeredusers_jquery() {
@@ -98,7 +98,7 @@ function shortcode_xmpp_s2s_out($attr) {
 	//Enqueue jQuery script
 	wp_enqueue_script('xmpp-s2s_out', admin_url('admin-ajax.php?action=xmpp_s2s_out&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
-	return '<div id="xmpp_s2s_out"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin"></i></div>';
+	return '<div id="xmpp_s2s_out"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_s2s_out_jquery() {
@@ -132,7 +132,7 @@ function shortcode_xmpp_s2s_in($attr) {
 	//Enqueue jQuery script
 	wp_enqueue_script('xmpp-s2s_in', admin_url('admin-ajax.php?action=xmpp_s2s_in&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
-	return '<div id="xmpp_s2s_in"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin"></i></div>';
+	return '<div id="xmpp_s2s_in"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_s2s_in_jquery() {
@@ -166,7 +166,7 @@ function shortcode_xmpp_uptime($attr) {
 	//Enqueue jQuery script
 	wp_enqueue_script('xmpp-uptime', admin_url('admin-ajax.php?action=xmpp_uptime&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
-	return '<div id="xmpp_uptime"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin"></i></div>';
+	return '<div id="xmpp_uptime"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_uptime_jquery() {
@@ -205,7 +205,7 @@ function shortcode_system_uptime($attr) {
 	//Enqueue jQuery script
 	wp_enqueue_script('system-uptime', admin_url('admin-ajax.php?action=system_uptime&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
-	return '<div id="system_uptime"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-spin"></i></div>';
+	return '<div id="system_uptime"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_system_uptime_jquery() {
