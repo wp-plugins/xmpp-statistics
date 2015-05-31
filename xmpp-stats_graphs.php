@@ -19,18 +19,85 @@
 */
 
 //Enqueue graphs style
-function xmpp_stats_enqueue_graphs_style() {
-	wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+function xmpp_stats_enqueue_graphs_scripts() {
+	global $post;
+	
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_onlineusers_day_graph')) {
+		wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+		wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array('jquery'), '0.8.3', true);
+		wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array('flot'), '2.0', true);
+		wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array('flot'), '0.8.3', true);
+		wp_enqueue_script('xmpp-onlineusers-day-graph', admin_url('admin-ajax.php?action=xmpp_onlineusers_day_graph&lang='.get_locale()), array('jquery'), XMPP_STATS_VERSION, true);
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_onlineusers_week_graph')) {
+		wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+		wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array('jquery'), '0.8.3', true);
+		wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array('flot'), '2.0', true);
+		wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array('flot'), '0.8.3', true);
+		wp_enqueue_script('xmpp-onlineusers-week-graph', admin_url('admin-ajax.php?action=xmpp_onlineusers_week_graph&lang='.get_locale()), array('jquery'), XMPP_STATS_VERSION, true);
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_registeredusers_day_graph')) {
+		wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+		wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array('jquery'), '0.8.3', true);
+		wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array('flot'), '2.0', true);
+		wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array('flot'), '0.8.3', true);
+		wp_enqueue_script('xmpp-registeredusers-day-graph', admin_url('admin-ajax.php?action=xmpp_registeredusers_day_graph&lang='.get_locale()), array('jquery'), XMPP_STATS_VERSION, true);
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_registeredusers_week_graph')) {
+		wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+		wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array('jquery'), '0.8.3', true);
+		wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array('flot'), '2.0', true);
+		wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array('flot'), '0.8.3', true);
+		wp_enqueue_script('xmpp-registeredusers-week-graph', admin_url('admin-ajax.php?action=xmpp_registeredusers_week_graph&lang='.get_locale()), array('jquery'), XMPP_STATS_VERSION, true);
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_s2s_day_graph')) {
+		wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+		wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array('jquery'), '0.8.3', true);
+		wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array('flot'), '2.0', true);
+		wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array('flot'), '0.8.3', true);
+		wp_enqueue_script('xmpp-s2s-day-graph', admin_url('admin-ajax.php?action=xmpp_s2s_day_graph&lang='.get_locale()), array('jquery'), XMPP_STATS_VERSION, true);
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_s2s_week_graph')) {
+		wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+		wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array('jquery'), '0.8.3', true);
+		wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array('flot'), '2.0', true);
+		wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array('flot'), '0.8.3', true);
+		wp_enqueue_script('xmpp-s2s-week-graph', admin_url('admin-ajax.php?action=xmpp_s2s_week_graph&lang='.get_locale()), array('jquery'), XMPP_STATS_VERSION, true);
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_uptime_day_graph')) {
+		wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+		wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array('jquery'), '0.8.3', true);
+		wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array('flot'), '2.0', true);
+		wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array('flot'), '0.8.3', true);
+		wp_enqueue_script('xmpp-uptime-day-graph', admin_url('admin-ajax.php?action=xmpp_uptime_day_graph&lang='.get_locale()), array('jquery'), XMPP_STATS_VERSION, true);
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_uptime_week_graph')) {
+		wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+		wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array('jquery'), '0.8.3', true);
+		wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array('flot'), '2.0', true);
+		wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array('flot'), '0.8.3', true);
+		wp_enqueue_script('xmpp-uptime-week-graph', admin_url('admin-ajax.php?action=xmpp_uptime_week_graph&lang='.get_locale()), array('jquery'), XMPP_STATS_VERSION, true);
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'system_uptime_day_graph')) {
+		wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+		wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array('jquery'), '0.8.3', true);
+		wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array('flot'), '2.0', true);
+		wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array('flot'), '0.8.3', true);
+		wp_enqueue_script('system-uptime-day-graph', admin_url('admin-ajax.php?action=system_uptime_day_graph&lang='.get_locale()), array('jquery'), XMPP_STATS_VERSION, true);
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'system_uptime_week_graph')) {
+		wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
+		wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array('jquery'), '0.8.3', true);
+		wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array('flot'), '2.0', true);
+		wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array('flot'), '0.8.3', true);
+		wp_enqueue_script('system-uptime-week-graph', admin_url('admin-ajax.php?action=system_uptime_week_graph&lang='.get_locale()), array('jquery'), XMPP_STATS_VERSION, true);
+	}
 }
-add_action('wp_enqueue_scripts', 'xmpp_stats_enqueue_graphs_style');
+add_action('wp_enqueue_scripts', 'xmpp_stats_enqueue_graphs_scripts');
 
 //Show online users day graph
 function shortcode_xmpp_onlineusers_day_graph() {
-	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('xmpp-onlineusers-day-graph', admin_url('admin-ajax.php?action=xmpp_onlineusers_day_graph&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
+	//Return loading information	
 	return '<div class="graph-container"><h3>'.__('Logged in users - by day', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
@@ -130,11 +197,7 @@ add_action('wp_ajax_xmpp_onlineusers_day_graph', 'shortcode_xmpp_onlineusers_day
 
 //Show online users week graph
 function shortcode_xmpp_onlineusers_week_graph() {
-	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('xmpp-onlineusers-week-graph', admin_url('admin-ajax.php?action=xmpp_onlineusers_week_graph&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
+	//Return loading information	
 	return '<div class="graph-container"><h3>'.__('Logged in users - by week', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
@@ -234,11 +297,7 @@ add_action('wp_ajax_xmpp_onlineusers_week_graph', 'shortcode_xmpp_onlineusers_we
 
 //Show registered users day graph
 function shortcode_xmpp_registeredusers_day_graph() {
-	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('xmpp-registeredusers-day-graph', admin_url('admin-ajax.php?action=xmpp_registeredusers_day_graph&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
+	//Return loading information
 	return '<div class="graph-container"><h3>'.__('Registered users - by day', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
@@ -338,11 +397,7 @@ add_action('wp_ajax_xmpp_registeredusers_day_graph', 'shortcode_xmpp_registeredu
 
 //Show registered users week graph
 function shortcode_xmpp_registeredusers_week_graph() {
-	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('xmpp-registeredusers-week-graph', admin_url('admin-ajax.php?action=xmpp_registeredusers_week_graph&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
+	//Return loading information
 	return '<div class="graph-container"><h3>'.__('Registered users - by week', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
@@ -442,11 +497,7 @@ add_action('wp_ajax_xmpp_registeredusers_week_graph', 'shortcode_xmpp_registered
 
 //Show S2S connections day graph
 function shortcode_xmpp_s2s_day_graph() {
-	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('xmpp-s2s-day-graph', admin_url('admin-ajax.php?action=xmpp_s2s_day_graph&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
+	//Return loading information
 	return '<div class="graph-container"><h3>'.__('S2S connections - by day', 'xmpp_stats').'</h3><div id="xmpp_s2s_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div><div id="xmpp_s2s_day_graph_choices" class="graph-choices"></div></div>';
 }
 //Enqueue jQuery script via ajax
@@ -587,11 +638,7 @@ add_action('wp_ajax_xmpp_s2s_day_graph', 'shortcode_xmpp_s2s_day_graph_jquery');
 
 //Show S2S connections week graph
 function shortcode_xmpp_s2s_week_graph() {
-	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('xmpp-s2s-week-graph', admin_url('admin-ajax.php?action=xmpp_s2s_week_graph&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
+	//Return loading information
 	return '<div class="graph-container"><h3>'.__('S2S connections - by week', 'xmpp_stats').'</h3><div id="xmpp_s2s_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div><div id="xmpp_s2s_week_graph_choices" class="graph-choices"></div></div>';
 }
 //Enqueue jQuery script via ajax
@@ -732,11 +779,7 @@ add_action('wp_ajax_xmpp_s2s_week_graph', 'shortcode_xmpp_s2s_week_graph_jquery'
 
 //Show XMPP server uptime day graph
 function shortcode_xmpp_uptime_day_graph() {
-	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('xmpp-uptime-day-graph', admin_url('admin-ajax.php?action=xmpp_uptime_day_graph&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
+	//Return loading information
 	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by day', 'xmpp_stats').'</h3><div id="xmpp_uptime_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
@@ -807,11 +850,7 @@ add_action('wp_ajax_xmpp_uptime_day_graph', 'shortcode_xmpp_uptime_day_graph_jqu
 
 //Show XMPP server uptime week graph
 function shortcode_xmpp_uptime_week_graph() {
-	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('xmpp-uptime-week-graph', admin_url('admin-ajax.php?action=xmpp_uptime_week_graph&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
+	//Return loading information
 	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by week', 'xmpp_stats').'</h3><div id="xmpp_uptime_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
@@ -882,11 +921,7 @@ add_action('wp_ajax_xmpp_uptime_week_graph', 'shortcode_xmpp_uptime_week_graph_j
 
 //Show system uptime day graph
 function shortcode_system_uptime_day_graph() {
-	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('system-uptime-day-graph', admin_url('admin-ajax.php?action=system_uptime_day_graph&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
+	//Return loading information
 	return '<div class="graph-container"><h3>'.__('System uptime - by day', 'xmpp_stats').'</h3><div id="system_uptime_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
@@ -957,11 +992,7 @@ add_action('wp_ajax_system_uptime_day_graph', 'shortcode_system_uptime_day_graph
 
 //Show system uptime week graph
 function shortcode_system_uptime_week_graph() {
-	//Enqueue sripts
-	wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('flot-axislabels', plugin_dir_url(__FILE__).'js/jquery.flot.axislabels.js', array(), '2.0', true);
-	wp_enqueue_script('flot-time', plugin_dir_url(__FILE__).'js/jquery.flot.time.min.js', array(), '0.8.3', true);
-	wp_enqueue_script('system-uptime-week-graph', admin_url('admin-ajax.php?action=system_uptime_week_graph&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
+	//Return loading information
 	return '<div class="graph-container"><h3>'.__('System uptime - by week', 'xmpp_stats').'</h3><div id="system_uptime_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax

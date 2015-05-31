@@ -19,38 +19,65 @@
 */
 
 //Enqueue shortcodes styles
-function xmpp_stats_enqueue_shortcodes_styles() {
-	wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', 'all');
-	wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+function xmpp_stats_enqueue_shortcodes_scripts() {
+	global $post;
+
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_onlineusers')) {
+		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_script('xmpp-onlineusers', plugin_dir_url(__FILE__).'js/jquery.xmpp-onlineusers.js', array('jquery'), XMPP_STATS_VERSION, true);
+		wp_localize_script('xmpp-onlineusers', 'xmpp_onlineusers', array(
+			'url' => admin_url('admin-ajax.php?action=get_xmpp_onlineusers&lang='.get_locale())
+		));
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_registeredusers')) {
+		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_script('xmpp-registeredusers', plugin_dir_url(__FILE__).'js/jquery.xmpp-registeredusers.js', array('jquery'), XMPP_STATS_VERSION, true);
+		wp_localize_script('xmpp-registeredusers', 'xmpp_registeredusers', array(
+			'url' => admin_url('admin-ajax.php?action=get_xmpp_registeredusers&lang='.get_locale())
+		));
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_s2s_out')) {
+		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_script('xmpp-s2s-out', plugin_dir_url(__FILE__).'js/jquery.xmpp-s2s-out.js', array('jquery'), XMPP_STATS_VERSION, true);
+		wp_localize_script('xmpp-s2s-out', 'xmpp_s2s_out', array(
+			'url' => admin_url('admin-ajax.php?action=get_xmpp_s2s_out&lang='.get_locale())
+		));
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_s2s_in')) {
+		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_script('xmpp-s2s-in', plugin_dir_url(__FILE__).'js/jquery.xmpp-s2s-in.js', array('jquery'), XMPP_STATS_VERSION, true);
+		wp_localize_script('xmpp-s2s-in', 'xmpp_s2s_in', array(
+			'url' => admin_url('admin-ajax.php?action=get_xmpp_s2s_in&lang='.get_locale())
+		));
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_uptime')) {
+		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_script('xmpp-uptime', plugin_dir_url(__FILE__).'js/jquery.xmpp-uptime.js', array('jquery'), XMPP_STATS_VERSION, true);
+		wp_localize_script('xmpp-uptime', 'xmpp_uptime', array(
+			'url' => admin_url('admin-ajax.php?action=get_xmpp_uptime&lang='.get_locale())
+		));
+	}
+	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'system_uptime')) {
+		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.3', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_script('system-uptime', plugin_dir_url(__FILE__).'js/jquery.system-uptime.js', array('jquery'), XMPP_STATS_VERSION, true);
+		wp_localize_script('system-uptime', 'system_uptime', array(
+			'url' => admin_url('admin-ajax.php?action=get_system_uptime&lang='.get_locale())
+		));
+	}
 }
-add_action('wp_enqueue_scripts', 'xmpp_stats_enqueue_shortcodes_styles');
+add_action('wp_enqueue_scripts', 'xmpp_stats_enqueue_shortcodes_scripts');
 
 //Get online users count
 function shortcode_xmpp_onlineusers($attr) {
-	//Enqueue jQuery script
-	wp_enqueue_script('xmpp-onlineusers', admin_url('admin-ajax.php?action=xmpp_onlineusers&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
 	return '<div id="xmpp_onlineusers"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
-//Enqueue jQuery script via ajax
-function shortcode_xmpp_onlineusers_jquery() {
-	header("content-type: text/javascript; charset=UTF-8"); ?>
-	jQuery(document).ready(function($) {
-		function ajax_get_xmpp_onlineusers()
-		{
-			$.post('<?php echo admin_url('admin-ajax.php?action=get_xmpp_onlineusers&lang='.get_locale()); ?>', function(response) {
-				$('#xmpp_onlineusers').html(response);
-			});
-		}
-		ajax_get_xmpp_onlineusers();
-		setInterval(function() {
-			ajax_get_xmpp_onlineusers();
-		}, 60000);
-	}); <?
-	exit;
-}
-add_action('wp_ajax_nopriv_xmpp_onlineusers', 'shortcode_xmpp_onlineusers_jquery');
-add_action('wp_ajax_xmpp_onlineusers', 'shortcode_xmpp_onlineusers_jquery');
 //Enqueue ajax function
 function shortcode_xmpp_onlineusers_ajax() {
 	echo xmpp_stats_get_xmpp_data('stats onlineusers');
@@ -61,30 +88,9 @@ add_action('wp_ajax_get_xmpp_onlineusers', 'shortcode_xmpp_onlineusers_ajax');
 
 //Get registered users count
 function shortcode_xmpp_registeredusers($attr) {
-	//Enqueue jQuery script
-	wp_enqueue_script('xmpp-registeredusers', admin_url('admin-ajax.php?action=xmpp_registeredusers&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
 	return '<div id="xmpp_registeredusers"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
-//Enqueue jQuery script via ajax
-function shortcode_xmpp_registeredusers_jquery() {
-	header("content-type: text/javascript; charset=UTF-8"); ?>
-	jQuery(document).ready(function($) {
-		function ajax_get_xmpp_registeredusers()
-		{
-			$.post('<?php echo admin_url('admin-ajax.php?action=get_xmpp_registeredusers&lang='.get_locale()); ?>', function(response) {
-				$('#xmpp_registeredusers').html(response);
-			});
-		}
-		ajax_get_xmpp_registeredusers();
-		setInterval(function() {
-			ajax_get_xmpp_registeredusers();
-		}, 60000);
-	}); <?
-	exit;
-}
-add_action('wp_ajax_nopriv_xmpp_registeredusers', 'shortcode_xmpp_registeredusers_jquery');
-add_action('wp_ajax_xmpp_registeredusers', 'shortcode_xmpp_registeredusers_jquery');
 //Enqueue ajax function
 function shortcode_xmpp_registeredusers_ajax() {
 	echo xmpp_stats_get_xmpp_data('stats registeredusers');
@@ -95,30 +101,9 @@ add_action('wp_ajax_get_xmpp_registeredusers', 'shortcode_xmpp_registeredusers_a
 
 //Get outgoing s2s connections count
 function shortcode_xmpp_s2s_out($attr) {
-	//Enqueue jQuery script
-	wp_enqueue_script('xmpp-s2s_out', admin_url('admin-ajax.php?action=xmpp_s2s_out&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
 	return '<div id="xmpp_s2s_out"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
-//Enqueue jQuery script via ajax
-function shortcode_xmpp_s2s_out_jquery() {
-	header("content-type: text/javascript; charset=UTF-8"); ?>
-	jQuery(document).ready(function($) {
-		function ajax_get_xmpp_s2s_out()
-		{
-			$.post('<?php echo admin_url('admin-ajax.php?action=get_xmpp_s2s_out&lang='.get_locale()); ?>', function(response) {
-				$('#xmpp_s2s_out').html(response);
-			});
-		}
-		ajax_get_xmpp_s2s_out();
-		setInterval(function() {
-			ajax_get_xmpp_s2s_out();
-		}, 60000);
-	}); <?
-	exit;
-}
-add_action('wp_ajax_nopriv_xmpp_s2s_out', 'shortcode_xmpp_s2s_out_jquery');
-add_action('wp_ajax_xmpp_s2s_out', 'shortcode_xmpp_s2s_out_jquery');
 //Enqueue ajax function
 function shortcode_xmpp_s2s_out_ajax() {
 	echo xmpp_stats_get_xmpp_data('getstatsdx s2sconnections');
@@ -129,30 +114,9 @@ add_action('wp_ajax_get_xmpp_s2s_out', 'shortcode_xmpp_s2s_out_ajax');
 
 //Get incoming s2s connections count
 function shortcode_xmpp_s2s_in($attr) {
-	//Enqueue jQuery script
-	wp_enqueue_script('xmpp-s2s_in', admin_url('admin-ajax.php?action=xmpp_s2s_in&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
 	return '<div id="xmpp_s2s_in"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
-//Enqueue jQuery script via ajax
-function shortcode_xmpp_s2s_in_jquery() {
-	header("content-type: text/javascript; charset=UTF-8"); ?>
-	jQuery(document).ready(function($) {
-		function ajax_get_xmpp_s2s_in()
-		{
-			$.post('<?php echo admin_url('admin-ajax.php?action=get_xmpp_s2s_in&lang='.get_locale()); ?>', function(response) {
-				$('#xmpp_s2s_in').html(response);
-			});
-		}
-		ajax_get_xmpp_s2s_in();
-		setInterval(function() {
-			ajax_get_xmpp_s2s_in();
-		}, 60000);
-	}); <?
-	exit;
-}
-add_action('wp_ajax_nopriv_xmpp_s2s_in', 'shortcode_xmpp_s2s_in_jquery');
-add_action('wp_ajax_xmpp_s2s_in', 'shortcode_xmpp_s2s_in_jquery');
 //Enqueue ajax function
 function shortcode_xmpp_s2s_in_ajax() {
 	echo xmpp_stats_get_xmpp_data('getstatsdx s2sservers');
@@ -163,30 +127,9 @@ add_action('wp_ajax_get_xmpp_s2s_in', 'shortcode_xmpp_s2s_in_ajax');
 
 //Get XMPP uptime
 function shortcode_xmpp_uptime($attr) {
-	//Enqueue jQuery script
-	wp_enqueue_script('xmpp-uptime', admin_url('admin-ajax.php?action=xmpp_uptime&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
 	return '<div id="xmpp_uptime"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
-//Enqueue jQuery script via ajax
-function shortcode_xmpp_uptime_jquery() {
-	header("content-type: text/javascript; charset=UTF-8"); ?>
-	jQuery(document).ready(function($) {
-		function ajax_get_xmpp_uptime()
-		{
-			$.post('<?php echo admin_url('admin-ajax.php?action=get_xmpp_uptime&lang='.get_locale()); ?>', function(response) {
-				$('#xmpp_uptime').html(response);
-			});
-		}
-		ajax_get_xmpp_uptime();
-		setInterval(function() {
-			ajax_get_xmpp_uptime();
-		}, 60000);
-	}); <?
-	exit;
-}
-add_action('wp_ajax_nopriv_xmpp_uptime', 'shortcode_xmpp_uptime_jquery');
-add_action('wp_ajax_xmpp_uptime', 'shortcode_xmpp_uptime_jquery');
 //Enqueue ajax function
 function shortcode_xmpp_uptime_ajax() {
 	$seconds = xmpp_stats_get_xmpp_data('stats uptimeseconds');
@@ -202,30 +145,9 @@ add_action('wp_ajax_get_xmpp_uptime', 'shortcode_xmpp_uptime_ajax');
 
 //Get system uptime
 function shortcode_system_uptime($attr) {
-	//Enqueue jQuery script
-	wp_enqueue_script('system-uptime', admin_url('admin-ajax.php?action=system_uptime&lang='.get_locale()), array(), XMPP_STATS_VERSION, true);
 	//Return loading information
 	return '<div id="system_uptime"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse"></i></div>';
 }
-//Enqueue jQuery script via ajax
-function shortcode_system_uptime_jquery() {
-	header("content-type: text/javascript; charset=UTF-8"); ?>
-	jQuery(document).ready(function($) {
-		function ajax_get_system_uptime()
-		{
-			$.post('<?php echo admin_url('admin-ajax.php?action=get_system_uptime&lang='.get_locale()); ?>', function(response) {
-				$('#system_uptime').html(response);
-			});
-		}
-		ajax_get_system_uptime();
-		setInterval(function() {
-			ajax_get_system_uptime();
-		}, 60000);
-	}); <?
-	exit;
-}
-add_action('wp_ajax_nopriv_system_uptime', 'shortcode_system_uptime_jquery');
-add_action('wp_ajax_system_uptime', 'shortcode_system_uptime_jquery');
 //Enqueue ajax function
 function shortcode_system_uptime_ajax() {
 	$timestamp = xmpp_stats_get_system_data();

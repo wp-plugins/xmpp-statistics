@@ -18,9 +18,13 @@
 */
 
 jQuery(document).ready(function($) {
-	var PickerOptions = {
-		hide: true,
-		palettes: false
-	};
-	jQuery('.color-picker').wpColorPicker(PickerOptions);
+	function get_xmpp_registeredusers() {
+		$.post(xmpp_registeredusers.url, function(response) {
+			$('#xmpp_registeredusers').html(response);
+		});
+	}
+	get_xmpp_registeredusers();
+	setInterval(function() {
+		get_xmpp_registeredusers();
+	}, 60000);
 });

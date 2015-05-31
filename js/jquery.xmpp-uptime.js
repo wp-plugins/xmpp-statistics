@@ -18,9 +18,13 @@
 */
 
 jQuery(document).ready(function($) {
-	var PickerOptions = {
-		hide: true,
-		palettes: false
-	};
-	jQuery('.color-picker').wpColorPicker(PickerOptions);
+	function get_xmpp_uptime() {
+		$.post(xmpp_uptime.url, function(response) {
+			$('#xmpp_uptime').html(response);
+		});
+	}
+	get_xmpp_uptime();
+	setInterval(function() {
+		get_xmpp_uptime();
+	}, 60000);
 });
