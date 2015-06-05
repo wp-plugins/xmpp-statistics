@@ -61,8 +61,6 @@ function xmpp_stats_add_admin_menu() {
 	add_action('admin_enqueue_scripts', 'xmpp_stats_options_enqueue_scripts');
 	//Add the needed jQuery script
 	add_action('admin_footer-'.$xmpp_stats_options_page_hook, 'xmpp_stats_options_scripts' );
-	//Set number of available columns
-	add_filter('screen_layout_columns', 'xmpp_stats_options_layout_column', 10, 2);
 	//Add options page hook
 	add_action('load-'.$xmpp_stats_options_page_hook, 'xmpp_stats_options_hook');
 }
@@ -95,16 +93,6 @@ function xmpp_stats_options_scripts() {
 		//]]>
 	</script>
 <?php }
-
-//Number of columns available in options page
-function xmpp_stats_options_layout_column($columns, $screen) {
-	//Get global variable
-	global $xmpp_stats_options_page_hook;
-	if($screen == $xmpp_stats_options_page_hook) {
-		$columns[$xmpp_stats_options_page_hook] = 2;
-	}
-	return $columns;
-}
 
 //Options page hook
 function xmpp_stats_options_hook() {
@@ -165,9 +153,8 @@ add_action('add_meta_boxes', 'xmpp_stats_add_meta_boxes');
 function xmpp_stats_settings_meta_box() { ?>
 	</div>
 	<form id="xmpp-stats-form" method="post" action="options.php">
-		<?php settings_fields('xmpp_stats_settings'); ?>
-		<?php wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false); ?>
-		<?php wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false); ?>
+		<?php settings_fields('xmpp_stats_settings');
+		wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false); ?>
 		<div class="inside" style="margin-top:-18px;">
 			<ul>
 				<li>
