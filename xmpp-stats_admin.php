@@ -128,6 +128,15 @@ function xmpp_stats_add_meta_boxes() {
 		'side',
 		'default'
 	);
+	//Add usage meta box
+	add_meta_box(
+		'xmpp_stats_usage_meta_box',
+		__('Usage information', 'xmpp_stats'),
+		'xmpp_stats_usage_meta_box',
+		$xmpp_stats_options_page_hook,
+		'side',
+		'default'
+	);
 	//Add simple shortcodes meta box
 	add_meta_box(
 		'xmpp_stats_simple_shortcodes_meta_box',
@@ -237,6 +246,22 @@ function xmpp_stats_donate_meta_box() { ?>
 		<input type="hidden" name="hosted_button_id" value="M4Q38WVSSCHZC">
 		<input type="image" src="<?php echo plugin_dir_url(__FILE__); ?>img/paypal.png" border="0" name="submit" alt="PayPal">
 	</form>
+<?php }
+
+//Usage meta box
+function xmpp_stats_usage_meta_box() { ?>
+	<p><?php _e('First, make sure that module mod_rest in ejabberd is properly configured. Example configuration:', 'xmpp_stats'); ?></p>
+	<pre>
+  mod_rest:
+    allowed_ips:
+      - "::FFFF:<?php echo $_SERVER['SERVER_ADDR']; ?>"
+    access_commands:
+      bot:
+        - getstatsdx
+        - stats
+    allowed_destinations: []
+    allowed_stanza_types: []</pre>
+	<p><?php _e('Second, configure REST API url and optional authorization data. At last, place shortcodes on page.', 'xmpp_stats'); ?></p>
 <?php }
 
 //Simple shortcodes meta box
