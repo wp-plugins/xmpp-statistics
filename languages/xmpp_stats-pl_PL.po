@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: XMPP Statistics\n"
-"POT-Creation-Date: 2015-05-31 19:45+0100\n"
-"PO-Revision-Date: 2015-05-31 19:45+0100\n"
+"POT-Creation-Date: 2015-06-11 08:19+0100\n"
+"PO-Revision-Date: 2015-06-11 08:29+0100\n"
 "Last-Translator: Krzysztof Grochocki <kontakt@beherit.pl>\n"
 "Language-Team: Krzysztof Grochocki <kontakt@beherit.pl>\n"
 "Language: pl_PL\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../xmpp-stats_admin.php:50 ../xmpp-stats_admin.php:128
+#: ../xmpp-stats_admin.php:50 ../xmpp-stats_admin.php:116
 msgid "Settings"
 msgstr "Ustawienia"
 
@@ -25,36 +25,40 @@ msgstr "Ustawienia"
 msgid "XMPP Statistics"
 msgstr "Statystyki XMPP"
 
-#: ../xmpp-stats_admin.php:137
+#: ../xmpp-stats_admin.php:125
 msgid "Donations"
 msgstr "Wsparcie"
 
-#: ../xmpp-stats_admin.php:146
+#: ../xmpp-stats_admin.php:134
+msgid "Usage information"
+msgstr "Informacje o użytkowaniu"
+
+#: ../xmpp-stats_admin.php:143
 msgid "Simple shortcodes"
 msgstr "Proste skróty"
 
-#: ../xmpp-stats_admin.php:155
+#: ../xmpp-stats_admin.php:152
 msgid "Shortcodes for graphs"
 msgstr "Skróty dla wykresów"
 
-#: ../xmpp-stats_admin.php:174
+#: ../xmpp-stats_admin.php:170
 msgid "Basic options"
 msgstr "Podstawowe opcje"
 
-#: ../xmpp-stats_admin.php:177
+#: ../xmpp-stats_admin.php:173
 msgid "REST API url"
 msgstr "Adres REST API"
 
-#: ../xmpp-stats_admin.php:178
+#: ../xmpp-stats_admin.php:174
 msgid "Enter URL defined in module mod_rest in ejabberd settings."
 msgstr ""
 "Wpisz adres URL zdefiniowany w module mod_rest w ustawieniach ejabberd."
 
-#: ../xmpp-stats_admin.php:181
+#: ../xmpp-stats_admin.php:177
 msgid "URL to system uptime data"
 msgstr "Adres URL do danych czasu działania systemu"
 
-#: ../xmpp-stats_admin.php:182
+#: ../xmpp-stats_admin.php:178
 msgid ""
 "Enter URL defined in module mod_http_fileserver in ejabberd settings which "
 "returns system boot time in UNIX TimeStamp."
@@ -62,15 +66,15 @@ msgstr ""
 "Wpisz adres URL zdefiniowany w module mod_http_fileserver w ustawieniach "
 "ejabberd, który zwraca czas uruchomienia systemu w UNIX TimeStamp."
 
-#: ../xmpp-stats_admin.php:183
+#: ../xmpp-stats_admin.php:179
 msgid "Example to get system boot time"
 msgstr "Przykład, jak uzyskać czas uruchomienia systemu"
 
-#: ../xmpp-stats_admin.php:186
+#: ../xmpp-stats_admin.php:182
 msgid "Save statistics"
 msgstr "Zapisuj statystyki"
 
-#: ../xmpp-stats_admin.php:187
+#: ../xmpp-stats_admin.php:183
 msgid ""
 "Automatically retrieves server statistics every 5 minutes and stores them in "
 "a database."
@@ -78,51 +82,51 @@ msgstr ""
 "Automatycznie pobiera statystyki serwera co 5 minut i zapisuje je w bazie "
 "danych."
 
-#: ../xmpp-stats_admin.php:192
+#: ../xmpp-stats_admin.php:188
 msgid "Authorization"
 msgstr "Autoryzacja"
 
-#: ../xmpp-stats_admin.php:195
+#: ../xmpp-stats_admin.php:191
 msgid "Enable authorization"
 msgstr "Włącz autoryzację"
 
-#: ../xmpp-stats_admin.php:198
+#: ../xmpp-stats_admin.php:194
 msgid "Login"
 msgstr "Login"
 
-#: ../xmpp-stats_admin.php:199
+#: ../xmpp-stats_admin.php:195
 msgid "Password"
 msgstr "Hasło"
 
-#: ../xmpp-stats_admin.php:202
+#: ../xmpp-stats_admin.php:198
 msgid "Set last activity information"
 msgstr "Ustaw informację o ostatniej aktywności"
 
-#: ../xmpp-stats_admin.php:207
+#: ../xmpp-stats_admin.php:203
 msgid "Graphs style"
 msgstr "Styl wykresów"
 
-#: ../xmpp-stats_admin.php:210
+#: ../xmpp-stats_admin.php:206
 msgid "Width"
 msgstr "Szerokość"
 
-#: ../xmpp-stats_admin.php:213
+#: ../xmpp-stats_admin.php:209
 msgid "Height"
 msgstr "Wysokość"
 
-#: ../xmpp-stats_admin.php:217 ../xmpp-stats_admin.php:223
+#: ../xmpp-stats_admin.php:213 ../xmpp-stats_admin.php:219
 msgid "Line color"
 msgstr "Kolor linii"
 
-#: ../xmpp-stats_admin.php:229
+#: ../xmpp-stats_admin.php:225
 msgid "Grid color"
 msgstr "Kolor siatki"
 
-#: ../xmpp-stats_admin.php:237
+#: ../xmpp-stats_admin.php:233
 msgid "Save settings"
 msgstr "Zapisz zmiany"
 
-#: ../xmpp-stats_admin.php:247
+#: ../xmpp-stats_admin.php:243
 msgid ""
 "If you like this plugin, please send a donation to support its development "
 "and maintenance"
@@ -130,77 +134,93 @@ msgstr ""
 "Jeśli podoba Ci się ta wtyczka, proszę prześlij darowiznę na wsparcie jej "
 "rozwoju i utrzymanie"
 
-#: ../xmpp-stats_admin.php:258
+#: ../xmpp-stats_admin.php:253
+msgid ""
+"First, make sure that module mod_rest in ejabberd is properly configured. "
+"Example configuration:"
+msgstr ""
+"Po pierwsze, upewnij się, że moduł mod_rest w ejabberd jest poprawnie "
+"skonfigurowany. Przykładowa konfiguracja:"
+
+#: ../xmpp-stats_admin.php:264
+msgid ""
+"Second, configure REST API url and optional authorization data. At last, "
+"place shortcodes on page."
+msgstr ""
+"Po drugie, skonfiguruj adres REST API i opcjonalne dane autoryzacji. W "
+"końcu, umieść skróty na stronie."
+
+#: ../xmpp-stats_admin.php:270
 msgid "Online users count"
 msgstr "Liczba zalogowanych użytkowników"
 
-#: ../xmpp-stats_admin.php:258 ../xmpp-stats_admin.php:259
-#: ../xmpp-stats_admin.php:260 ../xmpp-stats_admin.php:261
-#: ../xmpp-stats_admin.php:262
+#: ../xmpp-stats_admin.php:270 ../xmpp-stats_admin.php:271
+#: ../xmpp-stats_admin.php:272 ../xmpp-stats_admin.php:273
+#: ../xmpp-stats_admin.php:274
 msgid "Command"
 msgstr "Komenda"
 
-#: ../xmpp-stats_admin.php:259
+#: ../xmpp-stats_admin.php:271
 msgid "Registered users count"
 msgstr "Liczba zarejestrowanych użytkowników"
 
-#: ../xmpp-stats_admin.php:260
+#: ../xmpp-stats_admin.php:272
 msgid "Outgoing s2s connections count"
 msgstr "Liczba wychodzących połączeń s2s"
 
-#: ../xmpp-stats_admin.php:261
+#: ../xmpp-stats_admin.php:273
 msgid "Incomming s2s connections count"
 msgstr "Liczba przychodzących połączeń s2s"
 
-#: ../xmpp-stats_admin.php:262
+#: ../xmpp-stats_admin.php:274
 msgid "XMPP server uptime"
 msgstr "Czas działania serwera XMPP"
 
-#: ../xmpp-stats_admin.php:263
+#: ../xmpp-stats_admin.php:275
 msgid "System uptime"
 msgstr "Czas działania systemu"
 
-#: ../xmpp-stats_admin.php:270 ../xmpp-stats_graphs.php:101
+#: ../xmpp-stats_admin.php:282 ../xmpp-stats_graphs.php:101
 msgid "Logged in users - by day"
 msgstr "Zalogowani użytkownicy - przez dzień"
 
-#: ../xmpp-stats_admin.php:271 ../xmpp-stats_graphs.php:201
+#: ../xmpp-stats_admin.php:283 ../xmpp-stats_graphs.php:201
 msgid "Logged in users - by week"
 msgstr "Zalogowani użytkownicy - przez tydzień"
 
-#: ../xmpp-stats_admin.php:272 ../xmpp-stats_graphs.php:301
+#: ../xmpp-stats_admin.php:284 ../xmpp-stats_graphs.php:301
 msgid "Registered users - by day"
 msgstr "Zarejestrowani użytkownicy - przez dzień"
 
-#: ../xmpp-stats_admin.php:273 ../xmpp-stats_graphs.php:401
+#: ../xmpp-stats_admin.php:285 ../xmpp-stats_graphs.php:401
 msgid "Registered users - by week"
 msgstr "Zarejestrowani użytkownicy - przez tydzień"
 
-#: ../xmpp-stats_admin.php:274 ../xmpp-stats_graphs.php:501
+#: ../xmpp-stats_admin.php:286 ../xmpp-stats_graphs.php:501
 msgid "S2S connections - by day"
 msgstr "Połączenia S2S - przez dzień"
 
-#: ../xmpp-stats_admin.php:275 ../xmpp-stats_graphs.php:642
+#: ../xmpp-stats_admin.php:287 ../xmpp-stats_graphs.php:642
 msgid "S2S connections - by week"
 msgstr "Połączenia S2S - przez tydzień"
 
-#: ../xmpp-stats_admin.php:276 ../xmpp-stats_graphs.php:783
+#: ../xmpp-stats_admin.php:288 ../xmpp-stats_graphs.php:783
 msgid "XMPP server uptime - by day"
 msgstr "Czas działania serwera XMPP - przez dzień"
 
-#: ../xmpp-stats_admin.php:277 ../xmpp-stats_graphs.php:854
+#: ../xmpp-stats_admin.php:289 ../xmpp-stats_graphs.php:854
 msgid "XMPP server uptime - by week"
 msgstr "Czas działania serwera XMPP - przez tydzień"
 
-#: ../xmpp-stats_admin.php:278 ../xmpp-stats_graphs.php:925
+#: ../xmpp-stats_admin.php:290 ../xmpp-stats_graphs.php:925
 msgid "System uptime - by day"
 msgstr "Czas działania systemu - przez dzień"
 
-#: ../xmpp-stats_admin.php:279 ../xmpp-stats_graphs.php:996
+#: ../xmpp-stats_admin.php:291 ../xmpp-stats_graphs.php:996
 msgid "System uptime - by week"
 msgstr "Czas działania systemu - przez tydzień"
 
-#: ../xmpp-stats_admin.php:290
+#: ../xmpp-stats_admin.php:302
 msgid "XMPP server statistics"
 msgstr "Statystyki serwera XMPP"
 
