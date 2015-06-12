@@ -119,13 +119,10 @@ function shortcode_xmpp_onlineusers_day_graph_jquery() {
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '1' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 			foreach($rows as $row) {
 				$timestamp = strtotime($row->timestamp);
-				if($row === reset($rows))
-					echo 'data: [ ['.$timestamp.'000, '.$row->value.'], ';
-				else if($row === end($rows))
-					echo '['.$timestamp.'000, '.$row->value.'] ]'."\n";
-				else
-					echo '['.$timestamp.'000, '.$row->value.'], ';
-			} ?>
+				settype($row->value, 'int');
+				$dataset[] = array($timestamp*1000, $row->value);
+			}
+			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
 		//Graph options
 		var options = {
@@ -219,13 +216,10 @@ function shortcode_xmpp_onlineusers_week_graph_jquery() {
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '1' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 			foreach($rows as $row) {
 				$timestamp = strtotime($row->timestamp);
-				if($row === reset($rows))
-					echo 'data: [ ['.$timestamp.'000, '.$row->value.'], ';
-				else if($row === end($rows))
-					echo '['.$timestamp.'000, '.$row->value.'] ]'."\n";
-				else
-					echo '['.$timestamp.'000, '.$row->value.'], ';
-			} ?>
+				settype($row->value, 'int');
+				$dataset[] = array($timestamp*1000, $row->value);
+			}
+			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
 		//Graph options
 		var options = {
@@ -319,13 +313,10 @@ function shortcode_xmpp_registeredusers_day_graph_jquery() {
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '2' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 			foreach($rows as $row) {
 				$timestamp = strtotime($row->timestamp);
-				if($row === reset($rows))
-					echo 'data: [ ['.$timestamp.'000, '.$row->value.'], ';
-				else if($row === end($rows))
-					echo '['.$timestamp.'000, '.$row->value.'] ]'."\n";
-				else
-					echo '['.$timestamp.'000, '.$row->value.'], ';
-			} ?>
+				settype($row->value, 'int');
+				$dataset[] = array($timestamp*1000, $row->value);
+			}
+			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
 		//Graph options
 		var options = {
@@ -419,13 +410,10 @@ function shortcode_xmpp_registeredusers_week_graph_jquery() {
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '2' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 			foreach($rows as $row) {
 				$timestamp = strtotime($row->timestamp);
-				if($row === reset($rows))
-					echo 'data: [ ['.$timestamp.'000, '.$row->value.'], ';
-				else if($row === end($rows))
-					echo '['.$timestamp.'000, '.$row->value.'] ]'."\n";
-				else
-					echo '['.$timestamp.'000, '.$row->value.'], ';
-			} ?>
+				settype($row->value, 'int');
+				$dataset[] = array($timestamp*1000, $row->value);
+			}
+			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
 		//Graph options
 		var options = {
@@ -521,13 +509,10 @@ function shortcode_xmpp_s2s_day_graph_jquery() {
 				$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '3' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 				foreach($rows as $row) {
 					$timestamp = strtotime($row->timestamp);
-					if($row === reset($rows))
-						echo 'data: [ ['.$timestamp.'000, '.$row->value.'], ';
-					else if($row === end($rows))
-						echo '['.$timestamp.'000, '.$row->value.'] ]'."\n";
-					else
-						echo '['.$timestamp.'000, '.$row->value.'], ';
-				} ?>
+					settype($row->value, 'int');
+					$dataset1[] = array($timestamp*1000, $row->value);
+				}
+				echo 'data: '.json_encode($dataset1)."\n"; ?>
 			},
 			'incoming': {
 				color: '<?php echo get_option('xmpp_stats_graph_line_color2', '#0066b3'); ?>',
@@ -537,13 +522,10 @@ function shortcode_xmpp_s2s_day_graph_jquery() {
 				$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '4' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 				foreach($rows as $row) {
 					$timestamp = strtotime($row->timestamp);
-					if($row === reset($rows))
-						echo 'data: [ ['.$timestamp.'000, '.$row->value.'], ';
-					else if($row === end($rows))
-						echo '['.$timestamp.'000, '.$row->value.'] ]'."\n";
-					else
-						echo '['.$timestamp.'000, '.$row->value.'], ';
-				} ?>
+					settype($row->value, 'int');
+					$dataset2[] = array($timestamp*1000, $row->value);
+				}
+				echo 'data: '.json_encode($dataset2)."\n"; ?>
 			}
 		};
 		//Graph options
@@ -662,13 +644,10 @@ function shortcode_xmpp_s2s_week_graph_jquery() {
 				$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '3' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 				foreach($rows as $row) {
 					$timestamp = strtotime($row->timestamp);
-					if($row === reset($rows))
-						echo 'data: [ ['.$timestamp.'000, '.$row->value.'], ';
-					else if($row === end($rows))
-						echo '['.$timestamp.'000, '.$row->value.'] ]'."\n";
-					else
-						echo '['.$timestamp.'000, '.$row->value.'], ';
-				} ?>
+					settype($row->value, 'int');
+					$dataset1[] = array($timestamp*1000, $row->value);
+				}
+				echo 'data: '.json_encode($dataset1)."\n"; ?>
 			},
 			'incoming': {
 				color: '#0066B3',
@@ -678,13 +657,10 @@ function shortcode_xmpp_s2s_week_graph_jquery() {
 				$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '4' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 				foreach($rows as $row) {
 					$timestamp = strtotime($row->timestamp);
-					if($row === reset($rows))
-						echo 'data: [ ['.$timestamp.'000, '.$row->value.'], ';
-					else if($row === end($rows))
-						echo '['.$timestamp.'000, '.$row->value.'] ]'."\n";
-					else
-						echo '['.$timestamp.'000, '.$row->value.'], ';
-				} ?>
+					settype($row->value, 'int');
+					$dataset2[] = array($timestamp*1000, $row->value);
+				}
+				echo 'data: '.json_encode($dataset2)."\n"; ?>
 			}
 		};
 		//Graph options
@@ -801,13 +777,9 @@ function shortcode_xmpp_uptime_day_graph_jquery() {
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '5' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 			foreach($rows as $row) {
 				$timestamp = strtotime($row->timestamp);
-				if($row === reset($rows))
-					echo 'data: [ ['.$timestamp.'000, '.($row->value/(60*60*24)).'], ';
-				else if($row === end($rows))
-					echo '['.$timestamp.'000, '.($row->value/(60*60*24)).'] ]'."\n";
-				else
-					echo '['.$timestamp.'000, '.($row->value/(60*60*24)).'], ';
-			} ?>
+				$dataset[] = array($timestamp*1000, ($row->value/(60*60*24)));
+			}
+			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
 		//Graph options
 		var options = {
@@ -872,13 +844,9 @@ function shortcode_xmpp_uptime_week_graph_jquery() {
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '5' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 			foreach($rows as $row) {
 				$timestamp = strtotime($row->timestamp);
-				if($row === reset($rows))
-					echo 'data: [ ['.$timestamp.'000, '.($row->value/(60*60*24)).'], ';
-				else if($row === end($rows))
-					echo '['.$timestamp.'000, '.($row->value/(60*60*24)).'] ]'."\n";
-				else
-					echo '['.$timestamp.'000, '.($row->value/(60*60*24)).'], ';
-			} ?>
+				$dataset[] = array($timestamp*1000, ($row->value/(60*60*24)));
+			}
+			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
 		//Graph options
 		var options = {
@@ -943,13 +911,9 @@ function shortcode_system_uptime_day_graph_jquery() {
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '6' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 			foreach($rows as $row) {
 				$timestamp = strtotime($row->timestamp);
-				if($row === reset($rows))
-					echo 'data: [ ['.$timestamp.'000, '.($row->value/(60*60*24)).'], ';
-				else if($row === end($rows))
-					echo '['.$timestamp.'000, '.($row->value/(60*60*24)).'] ]'."\n";
-				else
-					echo '['.$timestamp.'000, '.($row->value/(60*60*24)).'], ';
-			} ?>
+				$dataset[] = array($timestamp*1000, ($row->value/(60*60*24)));
+			}
+			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
 		//Graph options
 		var options = {
@@ -1014,13 +978,9 @@ function shortcode_system_uptime_week_graph_jquery() {
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '6' AND timestamp > '$oldest' ORDER BY timestamp ASC");
 			foreach($rows as $row) {
 				$timestamp = strtotime($row->timestamp);
-				if($row === reset($rows))
-					echo 'data: [ ['.$timestamp.'000, '.($row->value/(60*60*24)).'], ';
-				else if($row === end($rows))
-					echo '['.$timestamp.'000, '.($row->value/(60*60*24)).'] ]'."\n";
-				else
-					echo '['.$timestamp.'000, '.($row->value/(60*60*24)).'], ';
-			} ?>
+				$dataset[] = array($timestamp*1000, ($row->value/(60*60*24)));
+			}
+			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
 		//Graph options
 		var options = {
