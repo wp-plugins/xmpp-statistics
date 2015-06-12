@@ -32,13 +32,7 @@ function xmpp_stats_register_settings() {
 	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_line_color2');
 	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_grid_color');
 	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_width');
-	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_height');;
-	//Set default values
-	if(!get_option('xmpp_stats_graph_line_color')) update_option('xmpp_stats_graph_line_color', '#71c73e');
-	if(!get_option('xmpp_stats_graph_line_color2')) update_option('xmpp_stats_graph_line_color2', '#0066b3');
-	if(!get_option('xmpp_stats_graph_grid_color')) update_option('xmpp_stats_graph_grid_color', '#eeeeee');
-	if(!get_option('xmpp_stats_graph_width')) update_option('xmpp_stats_graph_width', 437);
-	if(!get_option('xmpp_stats_graph_height')) update_option('xmpp_stats_graph_height', 220);
+	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_height');
 	//Add row to plugin page
 	add_filter('plugin_row_meta', 'xmpp_stats_plugin_row_meta', 10, 2);
 }
@@ -170,11 +164,11 @@ function xmpp_stats_settings_meta_box() { ?>
 					<strong><?php _e('Basic options', 'xmpp_stats'); ?></strong>
 				</li>
 				<li>
-					<label for="xmpp_stats_rest_url"><?php _e('REST API url', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" style="max-width:100%;" name="xmpp_stats_rest_url" id="xmpp_stats_rest_url" value="<?php echo get_option('xmpp_stats_rest_url') ?>" /></label>
+					<label for="xmpp_stats_rest_url"><?php _e('REST API url', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" style="max-width:100%;" name="xmpp_stats_rest_url" id="xmpp_stats_rest_url" value="<?php echo get_option('xmpp_stats_rest_url'); ?>" /></label>
 					</br><small><?php _e('Enter URL defined in module mod_rest in ejabberd settings.', 'xmpp_stats'); ?></small>
 				</li>
 				<li>
-					<label for="xmpp_stats_uptime_url"><?php _e('URL to system uptime data', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" style="max-width:100%;" name="xmpp_stats_uptime_url" id="xmpp_stats_uptime_url" value="<?php echo get_option('xmpp_stats_uptime_url') ?>" /></label>
+					<label for="xmpp_stats_uptime_url"><?php _e('URL to system uptime data', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" style="max-width:100%;" name="xmpp_stats_uptime_url" id="xmpp_stats_uptime_url" value="<?php echo get_option('xmpp_stats_uptime_url'); ?>" /></label>
 					</br><small><?php _e('Enter URL defined in module mod_http_fileserver in ejabberd settings which returns system boot time in UNIX TimeStamp.', 'xmpp_stats'); ?></small>
 					</br><small><?php _e('Example to get system boot time', 'xmpp_stats'); ?>: <i>cat /proc/stat | grep btime | awk '{ print $2 }' > /tmp/ejabberd/uptime.html</i></small>
 				</li>
@@ -191,8 +185,8 @@ function xmpp_stats_settings_meta_box() { ?>
 					<label for="xmpp_stats_auth"><input type="checkbox" id="xmpp_stats_auth" name="xmpp_stats_auth" value="1" <?php echo checked(1, get_option('xmpp_stats_auth'), false ); ?> /><?php _e('Enable authorization', 'xmpp_stats'); ?></label>
 				</li>
 				<li>
-					<label for="xmpp_stats_login"><?php _e('Login', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" name="xmpp_stats_login" id="xmpp_stats_login" value="<?php echo get_option('xmpp_stats_login') ?>" /></label>
-					</br><label for="xmpp_stats_password"><?php _e('Password', 'xmpp_stats'); ?>:&nbsp;<input type="password" size="40" name="xmpp_stats_password" id="xmpp_stats_password" value="<?php echo get_option('xmpp_stats_password') ?>" /></label>
+					<label for="xmpp_stats_login"><?php _e('Login', 'xmpp_stats'); ?>:&nbsp;<input type="text" size="40" name="xmpp_stats_login" id="xmpp_stats_login" value="<?php echo get_option('xmpp_stats_login'); ?>" /></label>
+					</br><label for="xmpp_stats_password"><?php _e('Password', 'xmpp_stats'); ?>:&nbsp;<input type="password" size="40" name="xmpp_stats_password" id="xmpp_stats_password" value="<?php echo get_option('xmpp_stats_password'); ?>" /></label>
 				</li>
 				<li>
 					<label for="xmpp_stats_set_last"><input type="checkbox" id="xmpp_stats_set_last" name="xmpp_stats_set_last" value="1" <?php echo checked(1, get_option('xmpp_stats_set_last'), false ); ?> /><?php _e('Set last activity information', 'xmpp_stats'); ?></label>
@@ -203,27 +197,27 @@ function xmpp_stats_settings_meta_box() { ?>
 					<strong><?php _e('Graphs style', 'xmpp_stats'); ?></strong>
 				</li>
 				<li>
-					<label for="xmpp_stats_graph_width"><?php _e('Width', 'xmpp_stats'); ?>:&nbsp;<input type="number" size="4" name="xmpp_stats_graph_width" id="xmpp_stats_graph_width" value="<?php echo get_option('xmpp_stats_graph_width') ?>" />&nbsp;px</label>
+					<label for="xmpp_stats_graph_width"><?php _e('Width', 'xmpp_stats'); ?>:&nbsp;<input type="number" size="4" name="xmpp_stats_graph_width" id="xmpp_stats_graph_width" value="<?php echo get_option('xmpp_stats_graph_width', 437); ?>" />&nbsp;px</label>
 				</li>
 				<li>
-					<label for="xmpp_stats_graph_height"><?php _e('Height', 'xmpp_stats'); ?>:&nbsp;<input type="number" size="4" name="xmpp_stats_graph_height" id="xmpp_stats_graph_height" value="<?php echo get_option('xmpp_stats_graph_height') ?>" />&nbsp;px</label>
+					<label for="xmpp_stats_graph_height"><?php _e('Height', 'xmpp_stats'); ?>:&nbsp;<input type="number" size="4" name="xmpp_stats_graph_height" id="xmpp_stats_graph_height" value="<?php echo get_option('xmpp_stats_graph_height', 220); ?>" />&nbsp;px</label>
 				</li>
 				<li>
 					<label for="xmpp_stats_graph_line_color">
 						<div style="display:inline; vertical-align:50%;"><?php _e('Line color', 'xmpp_stats'); ?>:&nbsp</div>
-						<input type="text" name="xmpp_stats_graph_line_color" id="xmpp_stats_graph_line_color" value="<?php echo get_option('xmpp_stats_graph_line_color'); ?>" class="color-picker" data-default-color="#71c73e" />
+						<input type="text" name="xmpp_stats_graph_line_color" id="xmpp_stats_graph_line_color" value="<?php echo get_option('xmpp_stats_graph_line_color', '#71c73e'); ?>" class="color-picker" data-default-color="#71c73e" />
 					</label>
 				</li>
 				<li>
 					<label for="xmpp_stats_graph_line_color2">
 						<div style="display:inline; vertical-align:50%;"><?php _e('Line color', 'xmpp_stats'); ?> #2:&nbsp</div>
-						<input type="text" name="xmpp_stats_graph_line_color2" id="xmpp_stats_graph_line_color2" value="<?php echo get_option('xmpp_stats_graph_line_color2'); ?>" class="color-picker" data-default-color="#0066b3" />
+						<input type="text" name="xmpp_stats_graph_line_color2" id="xmpp_stats_graph_line_color2" value="<?php echo get_option('xmpp_stats_graph_line_color2', '#0066b3'); ?>" class="color-picker" data-default-color="#0066b3" />
 					</label>
 				</li>
 				<li>
 					<label for="xmpp_stats_graph_grid_color">
 						<div style="display:inline; vertical-align:50%;"><?php _e('Grid color', 'xmpp_stats'); ?>:&nbsp</div>
-						<input type="text" name="xmpp_stats_graph_grid_color" id="xmpp_stats_graph_grid_color" value="<?php echo get_option('xmpp_stats_graph_grid_color'); ?>" class="color-picker" data-default-color="#eeeeee" />
+						<input type="text" name="xmpp_stats_graph_grid_color" id="xmpp_stats_graph_grid_color" value="<?php echo get_option('xmpp_stats_graph_grid_color', '#eeeeee'); ?>" class="color-picker" data-default-color="#eeeeee" />
 					</label>
 				</li>
 			</ul>
@@ -301,7 +295,7 @@ function xmpp_stats_options() {
 	<div class="wrap">
 		<h2><?php _e('XMPP server statistics', 'xmpp_stats'); ?></h2>
 		<div id="poststuff">
-			<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
+			<div id="post-body" class="metabox-holder columns-2">
 				<div id="postbox-container-2" class="postbox-container">
 					<?php do_meta_boxes($xmpp_stats_options_page_hook, 'normal', null); ?>
 				</div>

@@ -21,7 +21,7 @@
 //Enqueue graphs style
 function xmpp_stats_enqueue_graphs_scripts() {
 	global $post;
-	
+
 	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_onlineusers_day_graph')) {
 		wp_enqueue_style('flot', plugin_dir_url(__FILE__).'css/flot.css', filemtime(plugin_dir_path(__FILE__).'css/flot.css'), 'all');
 		wp_enqueue_script('flot', plugin_dir_url(__FILE__).'js/jquery.flot.min.js', array('jquery'), '0.8.3', true);
@@ -97,8 +97,8 @@ add_action('wp_enqueue_scripts', 'xmpp_stats_enqueue_graphs_scripts');
 
 //Show online users day graph
 function shortcode_xmpp_onlineusers_day_graph() {
-	//Return loading information	
-	return '<div class="graph-container"><h3>'.__('Logged in users - by day', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
+	//Return loading information
+	return '<div class="graph-container"><h3>'.__('Logged in users - by day', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width', 437).'px; height:'.get_option('xmpp_stats_graph_height', 220).'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height', 220).'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_onlineusers_day_graph_jquery() {
@@ -106,7 +106,7 @@ function shortcode_xmpp_onlineusers_day_graph_jquery() {
 	jQuery(document).ready(function($) {
 		//Graph data
 		var data = [{
-			color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
+			color: '<?php echo get_option('xmpp_stats_graph_line_color', '#71c73e'); ?>',
 			label: '<?php _e('Logged in users', 'xmpp_stats'); ?>',
 			<?php //Datebase data
 			global $wpdb;
@@ -148,7 +148,7 @@ function shortcode_xmpp_onlineusers_day_graph_jquery() {
 			grid: {
 				clickable: true,
 				hoverable: true,
-				color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_grid_color', '#eeeeee'); ?>',
 				borderWidth: 1
 			},
 			legend: {
@@ -197,8 +197,8 @@ add_action('wp_ajax_xmpp_onlineusers_day_graph', 'shortcode_xmpp_onlineusers_day
 
 //Show online users week graph
 function shortcode_xmpp_onlineusers_week_graph() {
-	//Return loading information	
-	return '<div class="graph-container"><h3>'.__('Logged in users - by week', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
+	//Return loading information
+	return '<div class="graph-container"><h3>'.__('Logged in users - by week', 'xmpp_stats').'</h3><div id="xmpp_onlineusers_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width', 437).'px; height:'.get_option('xmpp_stats_graph_height', 220).'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height', 220).'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_onlineusers_week_graph_jquery() {
@@ -206,7 +206,7 @@ function shortcode_xmpp_onlineusers_week_graph_jquery() {
 	jQuery(document).ready(function($) {
 		//Graph data
 		var data = [{
-			color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
+			color: '<?php echo get_option('xmpp_stats_graph_line_color', '#71c73e'); ?>',
 			label: '<?php _e('Logged in users', 'xmpp_stats'); ?>',
 			<?php //Datebase data
 			global $wpdb;
@@ -248,7 +248,7 @@ function shortcode_xmpp_onlineusers_week_graph_jquery() {
 			grid: {
 				clickable: true,
 				hoverable: true,
-				color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_grid_color', '#eeeeee'); ?>',
 				borderWidth: 1
 			},
 			legend: {
@@ -298,7 +298,7 @@ add_action('wp_ajax_xmpp_onlineusers_week_graph', 'shortcode_xmpp_onlineusers_we
 //Show registered users day graph
 function shortcode_xmpp_registeredusers_day_graph() {
 	//Return loading information
-	return '<div class="graph-container"><h3>'.__('Registered users - by day', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
+	return '<div class="graph-container"><h3>'.__('Registered users - by day', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width', 437).'px; height:'.get_option('xmpp_stats_graph_height', 220).'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height', 220).'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_registeredusers_day_graph_jquery() {
@@ -306,7 +306,7 @@ function shortcode_xmpp_registeredusers_day_graph_jquery() {
 	jQuery(document).ready(function($) {
 		//Graph data
 		var data = [{
-			color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
+			color: '<?php echo get_option('xmpp_stats_graph_line_color', '#71c73e'); ?>',
 			label: '<?php _e('Registered users', 'xmpp_stats'); ?>',
 			<?php //Datebase data
 			global $wpdb;
@@ -348,7 +348,7 @@ function shortcode_xmpp_registeredusers_day_graph_jquery() {
 			grid: {
 				clickable: true,
 				hoverable: true,
-				color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_grid_color', '#eeeeee'); ?>',
 				borderWidth: 1
 			},
 			legend: {
@@ -398,7 +398,7 @@ add_action('wp_ajax_xmpp_registeredusers_day_graph', 'shortcode_xmpp_registeredu
 //Show registered users week graph
 function shortcode_xmpp_registeredusers_week_graph() {
 	//Return loading information
-	return '<div class="graph-container"><h3>'.__('Registered users - by week', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
+	return '<div class="graph-container"><h3>'.__('Registered users - by week', 'xmpp_stats').'</h3><div id="xmpp_registeredusers_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width', 437).'px; height:'.get_option('xmpp_stats_graph_height', 220).'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height', 220).'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_registeredusers_week_graph_jquery() {
@@ -406,7 +406,7 @@ function shortcode_xmpp_registeredusers_week_graph_jquery() {
 	jQuery(document).ready(function($) {
 		//Graph data
 		var data = [{
-			color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
+			color: '<?php echo get_option('xmpp_stats_graph_line_color', '#71c73e'); ?>',
 			label: '<?php _e('Registered users', 'xmpp_stats'); ?>',
 			<?php //Datebase data
 			global $wpdb;
@@ -448,7 +448,7 @@ function shortcode_xmpp_registeredusers_week_graph_jquery() {
 			grid: {
 				clickable: true,
 				hoverable: true,
-				color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_grid_color', '#eeeeee'); ?>',
 				borderWidth: 1
 			},
 			legend: {
@@ -498,7 +498,7 @@ add_action('wp_ajax_xmpp_registeredusers_week_graph', 'shortcode_xmpp_registered
 //Show S2S connections day graph
 function shortcode_xmpp_s2s_day_graph() {
 	//Return loading information
-	return '<div class="graph-container"><h3>'.__('S2S connections - by day', 'xmpp_stats').'</h3><div id="xmpp_s2s_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div><div id="xmpp_s2s_day_graph_choices" class="graph-choices"></div></div>';
+	return '<div class="graph-container"><h3>'.__('S2S connections - by day', 'xmpp_stats').'</h3><div id="xmpp_s2s_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width', 437).'px; height:'.get_option('xmpp_stats_graph_height', 220).'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height', 220).'px;"></i></div><div id="xmpp_s2s_day_graph_choices" class="graph-choices"></div></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_s2s_day_graph_jquery() {
@@ -507,7 +507,7 @@ function shortcode_xmpp_s2s_day_graph_jquery() {
 		//Graph data
 		var datasets = {
 			'outgoing': {
-				color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_line_color', '#71c73e'); ?>',
 				label: '<?php _e('Outgoing connections', 'xmpp_stats'); ?>',
 				caption: '<?php _e('outgoing connections', 'xmpp_stats'); ?>',
 				<?php //Datebase data
@@ -530,7 +530,7 @@ function shortcode_xmpp_s2s_day_graph_jquery() {
 				} ?>
 			},
 			'incoming': {
-				color: '<?php echo get_option('xmpp_stats_graph_line_color2'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_line_color2', '#0066b3'); ?>',
 				label: '<?php _e('Incoming connections', 'xmpp_stats'); ?>',
 				caption: '<?php _e('incoming connections', 'xmpp_stats'); ?>',
 				<?php //Get data from the last 24 hours
@@ -567,7 +567,7 @@ function shortcode_xmpp_s2s_day_graph_jquery() {
 			grid: {
 				clickable: true,
 				hoverable: true,
-				color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_grid_color', '#eeeeee'); ?>',
 				borderWidth: 1
 			},
 			legend: {
@@ -639,7 +639,7 @@ add_action('wp_ajax_xmpp_s2s_day_graph', 'shortcode_xmpp_s2s_day_graph_jquery');
 //Show S2S connections week graph
 function shortcode_xmpp_s2s_week_graph() {
 	//Return loading information
-	return '<div class="graph-container"><h3>'.__('S2S connections - by week', 'xmpp_stats').'</h3><div id="xmpp_s2s_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div><div id="xmpp_s2s_week_graph_choices" class="graph-choices"></div></div>';
+	return '<div class="graph-container"><h3>'.__('S2S connections - by week', 'xmpp_stats').'</h3><div id="xmpp_s2s_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width', 437).'px; height:'.get_option('xmpp_stats_graph_height', 220).'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height', 220).'px;"></i></div><div id="xmpp_s2s_week_graph_choices" class="graph-choices"></div></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_s2s_week_graph_jquery() {
@@ -648,7 +648,7 @@ function shortcode_xmpp_s2s_week_graph_jquery() {
 		//Graph data
 		var datasets = {
 			'outgoing': {
-				color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_line_color', '#71c73e'); ?>',
 				label: '<?php _e('Outgoing connections', 'xmpp_stats'); ?>',
 				caption: '<?php _e('outgoing connections', 'xmpp_stats'); ?>',
 				<?php //Datebase data
@@ -708,7 +708,7 @@ function shortcode_xmpp_s2s_week_graph_jquery() {
 			grid: {
 				clickable: true,
 				hoverable: true,
-				color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_grid_color', '#eeeeee'); ?>',
 				borderWidth: 1
 			},
 			legend: {
@@ -780,7 +780,7 @@ add_action('wp_ajax_xmpp_s2s_week_graph', 'shortcode_xmpp_s2s_week_graph_jquery'
 //Show XMPP server uptime day graph
 function shortcode_xmpp_uptime_day_graph() {
 	//Return loading information
-	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by day', 'xmpp_stats').'</h3><div id="xmpp_uptime_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
+	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by day', 'xmpp_stats').'</h3><div id="xmpp_uptime_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width', 437).'px; height:'.get_option('xmpp_stats_graph_height', 220).'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height', 220).'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_uptime_day_graph_jquery() {
@@ -788,7 +788,7 @@ function shortcode_xmpp_uptime_day_graph_jquery() {
 	jQuery(document).ready(function($) {
 		//Graph data
 		var data = [{
-			color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
+			color: '<?php echo get_option('xmpp_stats_graph_line_color', '#71c73e'); ?>',
 			label: '<?php _e('Uptime', 'xmpp_stats'); ?>',
 			<?php //Datebase data
 			global $wpdb;
@@ -829,7 +829,7 @@ function shortcode_xmpp_uptime_day_graph_jquery() {
 				shadowSize: 0
 			},
 			grid: {
-				color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_grid_color', '#eeeeee'); ?>',
 				borderWidth: 1
 			},
 			legend: {
@@ -851,7 +851,7 @@ add_action('wp_ajax_xmpp_uptime_day_graph', 'shortcode_xmpp_uptime_day_graph_jqu
 //Show XMPP server uptime week graph
 function shortcode_xmpp_uptime_week_graph() {
 	//Return loading information
-	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by week', 'xmpp_stats').'</h3><div id="xmpp_uptime_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
+	return '<div class="graph-container"><h3>'.__('XMPP server uptime - by week', 'xmpp_stats').'</h3><div id="xmpp_uptime_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width', 437).'px; height:'.get_option('xmpp_stats_graph_height', 220).'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height', 220).'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_xmpp_uptime_week_graph_jquery() {
@@ -859,7 +859,7 @@ function shortcode_xmpp_uptime_week_graph_jquery() {
 	jQuery(document).ready(function($) {
 		//Graph data
 		var data = [{
-			color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
+			color: '<?php echo get_option('xmpp_stats_graph_line_color', '#71c73e'); ?>',
 			label: '<?php _e('Uptime', 'xmpp_stats'); ?>',
 			<?php //Datebase data
 			global $wpdb;
@@ -900,7 +900,7 @@ function shortcode_xmpp_uptime_week_graph_jquery() {
 				shadowSize: 0
 			},
 			grid: {
-				color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_grid_color', '#eeeeee'); ?>',
 				borderWidth: 1
 			},
 			legend: {
@@ -922,7 +922,7 @@ add_action('wp_ajax_xmpp_uptime_week_graph', 'shortcode_xmpp_uptime_week_graph_j
 //Show system uptime day graph
 function shortcode_system_uptime_day_graph() {
 	//Return loading information
-	return '<div class="graph-container"><h3>'.__('System uptime - by day', 'xmpp_stats').'</h3><div id="system_uptime_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
+	return '<div class="graph-container"><h3>'.__('System uptime - by day', 'xmpp_stats').'</h3><div id="system_uptime_day_graph" style="max-width:'.get_option('xmpp_stats_graph_width', 437).'px; height:'.get_option('xmpp_stats_graph_height', 220).'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height', 220).'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_system_uptime_day_graph_jquery() {
@@ -930,7 +930,7 @@ function shortcode_system_uptime_day_graph_jquery() {
 	jQuery(document).ready(function($) {
 		//Graph data
 		var data = [{
-			color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
+			color: '<?php echo get_option('xmpp_stats_graph_line_color', '#71c73e'); ?>',
 			label: '<?php _e('Uptime', 'xmpp_stats'); ?>',
 			<?php //Datebase data
 			global $wpdb;
@@ -971,7 +971,7 @@ function shortcode_system_uptime_day_graph_jquery() {
 				shadowSize: 0
 			},
 			grid: {
-				color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_grid_color', '#eeeeee'); ?>',
 				borderWidth: 1
 			},
 			legend: {
@@ -993,7 +993,7 @@ add_action('wp_ajax_system_uptime_day_graph', 'shortcode_system_uptime_day_graph
 //Show system uptime week graph
 function shortcode_system_uptime_week_graph() {
 	//Return loading information
-	return '<div class="graph-container"><h3>'.__('System uptime - by week', 'xmpp_stats').'</h3><div id="system_uptime_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width').'px; height:'.get_option('xmpp_stats_graph_height').'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height').'px;"></i></div></div>';
+	return '<div class="graph-container"><h3>'.__('System uptime - by week', 'xmpp_stats').'</h3><div id="system_uptime_week_graph" style="max-width:'.get_option('xmpp_stats_graph_width', 437).'px; height:'.get_option('xmpp_stats_graph_height', 220).'px;" class="graph-placeholder"><i title="'.__('Loading...', 'xmpp_stats').'" class="fa fa-spinner fa-pulse" style="line-height:'.get_option('xmpp_stats_graph_height', 220).'px;"></i></div></div>';
 }
 //Enqueue jQuery script via ajax
 function shortcode_system_uptime_week_graph_jquery() {
@@ -1001,7 +1001,7 @@ function shortcode_system_uptime_week_graph_jquery() {
 	jQuery(document).ready(function($) {
 		//Graph data
 		var data = [{
-			color: '<?php echo get_option('xmpp_stats_graph_line_color'); ?>',
+			color: '<?php echo get_option('xmpp_stats_graph_line_color', '#71c73e'); ?>',
 			label: '<?php _e('Uptime', 'xmpp_stats'); ?>',
 			<?php //Datebase data
 			global $wpdb;
@@ -1042,7 +1042,7 @@ function shortcode_system_uptime_week_graph_jquery() {
 				shadowSize: 0
 			},
 			grid: {
-				color: '<?php echo get_option('xmpp_stats_graph_grid_color'); ?>',
+				color: '<?php echo get_option('xmpp_stats_graph_grid_color', '#eeeeee'); ?>',
 				borderWidth: 1
 			},
 			legend: {
