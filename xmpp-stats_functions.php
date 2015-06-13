@@ -19,7 +19,7 @@
 */
 
 //Get XMPP data by REST
-function xmpp_stats_get_xmpp_data($data) {
+function xmpp_stats_post_xmpp_data($data) {
 	//Authorization
 	$auth = get_option('xmpp_stats_auth');
 	if($auth) {
@@ -40,7 +40,7 @@ function xmpp_stats_get_xmpp_data($data) {
 	$response = wp_remote_post($rest_url, $args);
 	$http_code = wp_remote_retrieve_response_code($response);
 	//Verify response
-	if($http_code=="200") {
+	if($http_code == '200') {
 		//Set last activity information
 		if(($auth)&&(get_option('xmpp_stats_set_last'))) {
 			//Get current time in UTC
@@ -59,7 +59,7 @@ function xmpp_stats_get_xmpp_data($data) {
 		return wp_remote_retrieve_body($response);
 	}
 	//No data
-	return '-';
+	return null;
 }
 
 //Get system data by HTTP
@@ -74,22 +74,23 @@ function xmpp_stats_get_system_data() {
 	$response = wp_remote_get(get_option('xmpp_stats_uptime_url'), $args);
 	$http_code = wp_remote_retrieve_response_code($response);
 	//Verify response
-	if($http_code=="200") {
+	if($http_code == '200') {
 		return wp_remote_retrieve_body($response);
 	}
-	return '-';
+	//No data
+	return null;
 }
 
 //Change seconds to friendly view
 function xmpp_stats_seconds_to_datestamp($seconds)
 {
-	if($seconds==0) return '0s';
+	if($seconds == 0) return '0s';
     $can_print = false;
     $divs = array(86400, 3600, 60, 1);
     for($div=0; $div<4; $div++) {
         $res = (int)($seconds/$divs[$div]);
         $rem = $seconds % $divs[$div];
-        if($res!=0) $can_print = true;
+        if($res != 0) $can_print = true;
         if($can_print) $return .= sprintf('%d%s ', $res, substr('dhms', $div, 1));
         $seconds = $rem;
     }

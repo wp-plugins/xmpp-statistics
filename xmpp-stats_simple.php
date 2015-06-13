@@ -80,7 +80,9 @@ function shortcode_xmpp_onlineusers($attr) {
 }
 //Enqueue ajax function
 function shortcode_xmpp_onlineusers_ajax() {
-	echo xmpp_stats_get_xmpp_data('stats onlineusers');
+	$data = xmpp_stats_post_xmpp_data('stats onlineusers');
+	if(is_null($data)) echo '-';
+	echo $data;
 	exit;
 }
 add_action('wp_ajax_nopriv_get_xmpp_onlineusers', 'shortcode_xmpp_onlineusers_ajax');
@@ -93,7 +95,9 @@ function shortcode_xmpp_registeredusers($attr) {
 }
 //Enqueue ajax function
 function shortcode_xmpp_registeredusers_ajax() {
-	echo xmpp_stats_get_xmpp_data('stats registeredusers');
+	$data = xmpp_stats_post_xmpp_data('stats registeredusers');
+	if(is_null($data)) $data = '-';
+	echo $data;
 	exit;
 }
 add_action('wp_ajax_nopriv_get_xmpp_registeredusers', 'shortcode_xmpp_registeredusers_ajax');
@@ -106,7 +110,9 @@ function shortcode_xmpp_s2s_out($attr) {
 }
 //Enqueue ajax function
 function shortcode_xmpp_s2s_out_ajax() {
-	echo xmpp_stats_get_xmpp_data('getstatsdx s2sconnections');
+	$data = xmpp_stats_post_xmpp_data('getstatsdx s2sconnections');
+	if(is_null($data)) echo '-';
+	echo $data;
 	exit;
 }
 add_action('wp_ajax_nopriv_get_xmpp_s2s_out', 'shortcode_xmpp_s2s_out_ajax');
@@ -119,7 +125,9 @@ function shortcode_xmpp_s2s_in($attr) {
 }
 //Enqueue ajax function
 function shortcode_xmpp_s2s_in_ajax() {
-	echo xmpp_stats_get_xmpp_data('getstatsdx s2sservers');
+	$data = xmpp_stats_post_xmpp_data('getstatsdx s2sservers');
+	if(is_null($data)) echo '-';
+	echo $data;
 	exit;
 }
 add_action('wp_ajax_nopriv_get_xmpp_s2s_in', 'shortcode_xmpp_s2s_in_ajax');
@@ -132,11 +140,11 @@ function shortcode_xmpp_uptime($attr) {
 }
 //Enqueue ajax function
 function shortcode_xmpp_uptime_ajax() {
-	$seconds = xmpp_stats_get_xmpp_data('stats uptimeseconds');
-	if($seconds=='-') echo '-';
+	$data = xmpp_stats_post_xmpp_data('stats uptimeseconds');
+	if(is_null($data)) echo '-';
 	else {
-		$last_restart = __('Last restart', 'xmpp_stats').' '.xmpp_stats_timestamp_to_date(current_time('timestamp')-$seconds);
-		echo '<span class="href hint--left hint--success" data-hint="'.$last_restart.'">'.xmpp_stats_seconds_to_datestamp($seconds).'</span>';
+		$last_restart = __('Last restart', 'xmpp_stats').' '.xmpp_stats_timestamp_to_date(current_time('timestamp')-$data);
+		echo '<span class="href hint--left hint--success" data-hint="'.$last_restart.'">'.xmpp_stats_seconds_to_datestamp($data).'</span>';
 	}
 	exit;
 }
@@ -150,11 +158,11 @@ function shortcode_system_uptime($attr) {
 }
 //Enqueue ajax function
 function shortcode_system_uptime_ajax() {
-	$timestamp = xmpp_stats_get_system_data();
-	if($timestamp=='-') echo '-';
+	$data = xmpp_stats_get_system_data();
+	if(is_null($data)) echo '-';
 	else {
-		$last_restart = __('Last restart', 'xmpp_stats').' '.xmpp_stats_timestamp_to_date($timestamp+(wp_timezone_override_offset()*3600));
-		echo '<span class="href hint--left hint--success" data-hint="'.$last_restart.'">'.xmpp_stats_seconds_to_datestamp(current_time('timestamp')-$timestamp-(wp_timezone_override_offset()*3600)).'</span>';
+		$last_restart = __('Last restart', 'xmpp_stats').' '.xmpp_stats_timestamp_to_date($data+(wp_timezone_override_offset()*3600));
+		echo '<span class="href hint--left hint--success" data-hint="'.$last_restart.'">'.xmpp_stats_seconds_to_datestamp(current_time('timestamp')-$data-(wp_timezone_override_offset()*3600)).'</span>';
 	}
 	exit;
 }

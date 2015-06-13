@@ -60,14 +60,13 @@ function xmpp_stats_cron_job() {
 	//Get current time in UTC
 	$now = current_time('mysql', 1);
 	//Get statistics
-	$online = xmpp_stats_get_xmpp_data('stats onlineusers');
-	$registered = xmpp_stats_get_xmpp_data('stats registeredusers');
-	$s2s_out = xmpp_stats_get_xmpp_data('getstatsdx s2sconnections');
-	$s2s_in = xmpp_stats_get_xmpp_data('getstatsdx s2sservers');
-	$xmpp_uptime = xmpp_stats_get_xmpp_data('stats uptimeseconds');
+	$online = xmpp_stats_post_xmpp_data('stats onlineusers');
+	$registered = xmpp_stats_post_xmpp_data('stats registeredusers');
+	$s2s_out = xmpp_stats_post_xmpp_data('getstatsdx s2sconnections');
+	$s2s_in = xmpp_stats_post_xmpp_data('getstatsdx s2sservers');
+	$xmpp_uptime = xmpp_stats_post_xmpp_data('stats uptimeseconds');
 	$system_uptime = xmpp_stats_get_system_data();
-	if($system_uptime=='-') $system_uptime = 0;
-	if($system_uptime!=0) $system_uptime = strtotime($now)-$system_uptime;
+	if($system_uptime != 0) $system_uptime = strtotime($now)-$system_uptime;
 	//Save statistics to database
 	global $wpdb;
 	$table_name = $wpdb->prefix . 'xmpp_stats';
