@@ -117,10 +117,20 @@ function shortcode_xmpp_onlineusers_day_graph_jquery() {
 			$oldest = date_i18n('Y-m-d H:i:s', strtotime($row->timestamp)-(24*60*60));
 			//Get data from the last 24 hours
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '1' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+			$count = 0;
 			foreach($rows as $row) {
-				$timestamp = strtotime($row->timestamp);
-				settype($row->value, 'int');
-				$dataset[] = array($timestamp*1000, $row->value);
+				$value = $row->value;
+				$prev_value = $rows[$count-1]->value;
+				$next_value = $rows[$count+1]->value;
+				if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+					/* probably connection error */
+				}
+				else {
+					$timestamp = strtotime($row->timestamp);
+					settype($value, 'int');
+					$dataset[] = array($timestamp*1000, $value);
+				}
+				$count++;
 			}
 			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
@@ -214,10 +224,20 @@ function shortcode_xmpp_onlineusers_week_graph_jquery() {
 			$oldest = date_i18n('Y-m-d H:i:s', strtotime($row->timestamp)-(7*24*60*60));
 			//Get data from the last 24 hours
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '1' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+			$count = 0;
 			foreach($rows as $row) {
-				$timestamp = strtotime($row->timestamp);
-				settype($row->value, 'int');
-				$dataset[] = array($timestamp*1000, $row->value);
+				$value = $row->value;
+				$prev_value = $rows[$count-1]->value;
+				$next_value = $rows[$count+1]->value;
+				if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+					/* probably connection error */
+				}
+				else {
+					$timestamp = strtotime($row->timestamp);
+					settype($value, 'int');
+					$dataset[] = array($timestamp*1000, $value);
+				}
+				$count++;
 			}
 			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
@@ -311,10 +331,20 @@ function shortcode_xmpp_registeredusers_day_graph_jquery() {
 			$oldest = date_i18n('Y-m-d H:i:s', strtotime($row->timestamp)-(24*60*60));
 			//Get data from the last 24 hours
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '2' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+			$count = 0;
 			foreach($rows as $row) {
-				$timestamp = strtotime($row->timestamp);
-				settype($row->value, 'int');
-				$dataset[] = array($timestamp*1000, $row->value);
+				$value = $row->value;
+				$prev_value = $rows[$count-1]->value;
+				$next_value = $rows[$count+1]->value;
+				if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+					/* probably connection error */
+				}
+				else {
+					$timestamp = strtotime($row->timestamp);
+					settype($value, 'int');
+					$dataset[] = array($timestamp*1000, $value);
+				}
+				$count++;
 			}
 			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
@@ -408,10 +438,20 @@ function shortcode_xmpp_registeredusers_week_graph_jquery() {
 			$oldest = date_i18n('Y-m-d H:i:s', strtotime($row->timestamp)-(7*24*60*60));
 			//Get data from the last 24 hours
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '2' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+			$count = 0;
 			foreach($rows as $row) {
-				$timestamp = strtotime($row->timestamp);
-				settype($row->value, 'int');
-				$dataset[] = array($timestamp*1000, $row->value);
+				$value = $row->value;
+				$prev_value = $rows[$count-1]->value;
+				$next_value = $rows[$count+1]->value;
+				if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+					/* probably connection error */
+				}
+				else {
+					$timestamp = strtotime($row->timestamp);
+					settype($value, 'int');
+					$dataset[] = array($timestamp*1000, $value);
+				}
+				$count++;
 			}
 			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
@@ -507,10 +547,20 @@ function shortcode_xmpp_s2s_day_graph_jquery() {
 				$oldest = date_i18n('Y-m-d H:i:s', strtotime($row->timestamp)-(24*60*60));
 				//Get data from the last 24 hours
 				$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '3' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+				$count = 0;
 				foreach($rows as $row) {
-					$timestamp = strtotime($row->timestamp);
-					settype($row->value, 'int');
-					$dataset1[] = array($timestamp*1000, $row->value);
+					$value = $row->value;
+					$prev_value = $rows[$count-1]->value;
+					$next_value = $rows[$count+1]->value;
+					if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+						/* probably connection error */
+					}
+					else {
+						$timestamp = strtotime($row->timestamp);
+						settype($value, 'int');
+						$dataset1[] = array($timestamp*1000, $value);
+					}
+					$count++;
 				}
 				echo 'data: '.json_encode($dataset1)."\n"; ?>
 			},
@@ -520,10 +570,20 @@ function shortcode_xmpp_s2s_day_graph_jquery() {
 				caption: '<?php _e('incoming connections', 'xmpp_stats'); ?>',
 				<?php //Get data from the last 24 hours
 				$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '4' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+				$count = 0;
 				foreach($rows as $row) {
-					$timestamp = strtotime($row->timestamp);
-					settype($row->value, 'int');
-					$dataset2[] = array($timestamp*1000, $row->value);
+					$value = $row->value;
+					$prev_value = $rows[$count-1]->value;
+					$next_value = $rows[$count+1]->value;
+					if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+						/* probably connection error */
+					}
+					else {
+						$timestamp = strtotime($row->timestamp);
+						settype($value, 'int');
+						$dataset2[] = array($timestamp*1000, $value);
+					}
+					$count++;
 				}
 				echo 'data: '.json_encode($dataset2)."\n"; ?>
 			}
@@ -642,10 +702,20 @@ function shortcode_xmpp_s2s_week_graph_jquery() {
 				$oldest = date_i18n('Y-m-d H:i:s', strtotime($row->timestamp)-(7*24*60*60));
 				//Get data from the last week
 				$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '3' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+				$count = 0;
 				foreach($rows as $row) {
-					$timestamp = strtotime($row->timestamp);
-					settype($row->value, 'int');
-					$dataset1[] = array($timestamp*1000, $row->value);
+					$value = $row->value;
+					$prev_value = $rows[$count-1]->value;
+					$next_value = $rows[$count+1]->value;
+					if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+						/* probably connection error */
+					}
+					else {
+						$timestamp = strtotime($row->timestamp);
+						settype($value, 'int');
+						$dataset1[] = array($timestamp*1000, $value);
+					}
+					$count++;
 				}
 				echo 'data: '.json_encode($dataset1)."\n"; ?>
 			},
@@ -655,10 +725,20 @@ function shortcode_xmpp_s2s_week_graph_jquery() {
 				caption: '<?php _e('incoming connections', 'xmpp_stats'); ?>',
 				<?php //Get data from the last week
 				$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '4' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+				$count = 0;
 				foreach($rows as $row) {
-					$timestamp = strtotime($row->timestamp);
-					settype($row->value, 'int');
-					$dataset2[] = array($timestamp*1000, $row->value);
+					$value = $row->value;
+					$prev_value = $rows[$count-1]->value;
+					$next_value = $rows[$count+1]->value;
+					if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+						/* probably connection error */
+					}
+					else {
+						$timestamp = strtotime($row->timestamp);
+						settype($value, 'int');
+						$dataset2[] = array($timestamp*1000, $value);
+					}
+					$count++;
 				}
 				echo 'data: '.json_encode($dataset2)."\n"; ?>
 			}
@@ -775,9 +855,19 @@ function shortcode_xmpp_uptime_day_graph_jquery() {
 			$oldest = date_i18n('Y-m-d H:i:s', strtotime($row->timestamp)-(24*60*60));
 			//Get data from the last 24 hours
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '5' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+			$count = 0;
 			foreach($rows as $row) {
-				$timestamp = strtotime($row->timestamp);
-				$dataset[] = array($timestamp*1000, ($row->value/(60*60*24)));
+				$value = $row->value;
+				$prev_value = $rows[$count-1]->value;
+				$next_value = $rows[$count+1]->value;
+				if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+					/* probably connection error */
+				}
+				else {
+					$timestamp = strtotime($row->timestamp);
+					$dataset[] = array($timestamp*1000, ($value/(60*60*24)));
+				}
+				$count++;
 			}
 			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
@@ -842,9 +932,19 @@ function shortcode_xmpp_uptime_week_graph_jquery() {
 			$oldest = date_i18n('Y-m-d H:i:s', strtotime($row->timestamp)-(7*24*60*60));
 			//Get data from the last 24 hours
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '5' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+			$count = 0;
 			foreach($rows as $row) {
-				$timestamp = strtotime($row->timestamp);
-				$dataset[] = array($timestamp*1000, ($row->value/(60*60*24)));
+				$value = $row->value;
+				$prev_value = $rows[$count-1]->value;
+				$next_value = $rows[$count+1]->value;
+				if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+					/* probably connection error */
+				}
+				else {
+					$timestamp = strtotime($row->timestamp);
+					$dataset[] = array($timestamp*1000, ($value/(60*60*24)));
+				}
+				$count++;
 			}
 			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
@@ -909,9 +1009,19 @@ function shortcode_system_uptime_day_graph_jquery() {
 			$oldest = date_i18n('Y-m-d H:i:s', strtotime($row->timestamp)-(24*60*60));
 			//Get data from the last 24 hours
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '6' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+			$count = 0;
 			foreach($rows as $row) {
-				$timestamp = strtotime($row->timestamp);
-				$dataset[] = array($timestamp*1000, ($row->value/(60*60*24)));
+				$value = $row->value;
+				$prev_value = $rows[$count-1]->value;
+				$next_value = $rows[$count+1]->value;
+				if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+					/* probably connection error */
+				}
+				else {
+					$timestamp = strtotime($row->timestamp);
+					$dataset[] = array($timestamp*1000, ($value/(60*60*24)));
+				}
+				$count++;
 			}
 			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
@@ -976,9 +1086,19 @@ function shortcode_system_uptime_week_graph_jquery() {
 			$oldest = date_i18n('Y-m-d H:i:s', strtotime($row->timestamp)-(7*24*60*60));
 			//Get data from the last 24 hours
 			$rows = $wpdb->get_results("SELECT * FROM $table_name WHERE type = '6' AND timestamp > '$oldest' ORDER BY timestamp ASC");
+			$count = 0;
 			foreach($rows as $row) {
-				$timestamp = strtotime($row->timestamp);
-				$dataset[] = array($timestamp*1000, ($row->value/(60*60*24)));
+				$value = $row->value;
+				$prev_value = $rows[$count-1]->value;
+				$next_value = $rows[$count+1]->value;
+				if(($value == 0) && ($prev_value != 0) && ($next_value != 0)) {
+					/* probably connection error */
+				}
+				else {
+					$timestamp = strtotime($row->timestamp);
+					$dataset[] = array($timestamp*1000, ($value/(60*60*24)));
+				}
+				$count++;
 			}
 			echo 'data: '.json_encode($dataset)."\n"; ?>
 		}];
