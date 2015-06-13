@@ -2,8 +2,8 @@
 /*
 Plugin Name: XMPP Statistics
 Plugin URI: http://beherit.pl/en/wordpress/plugins/xmpp-statistics
-Description: Display the statistics from ejabberd XMPP server.
-Version: 1.2
+Description: Displays the statistics from ejabberd XMPP server through REST API.
+Version: 1.3
 Author: Krzysztof Grochocki
 Author URI: http://beherit.pl/
 License: GPLv3
@@ -11,25 +11,25 @@ License: GPLv3
 
 /*
 	Copyright (C) 2015 Krzysztof Grochocki
-	
+
 	This file is part of XMPP Statistics.
-	
+
 	XMPP Statistics is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation; either version 3, or
 	(at your option) any later version.
-	
+
 	XMPP Statistics is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with GNU Radio. If not, see <http://www.gnu.org/licenses/>.
 */
 
 //Define plugin version variable
-define('XMPP_STATS_VERSION', '1.2');
+define('XMPP_STATS_VERSION', '1.3');
 
 //Define translations
 function xmpp_stats_textdomain() {
