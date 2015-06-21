@@ -33,16 +33,17 @@ function xmpp_stats_register_settings() {
 	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_grid_color');
 	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_width');
 	register_setting('xmpp_stats_settings', 'xmpp_stats_graph_height');
-	//Add row to plugin page
-	add_filter('plugin_row_meta', 'xmpp_stats_plugin_row_meta', 10, 2);
+	//Add link to the settings on plugins page
+	add_filter('plugin_action_links', 'xmpp_stats_plugin_action_links', 10, 2);
 }
 add_action('admin_init', 'xmpp_stats_register_settings');
 
-//Settings row on plugin page
-function xmpp_stats_plugin_row_meta($plugin_meta, $plugin_file) {
-	if(dirname(plugin_basename(__FILE__)).'/xmpp-stats.php'==$plugin_file)
-		$plugin_meta[] = '<a href="options-general.php?page=xmpp-stats-options">'.__('Settings', 'xmpp_stats').'</a>';
-    return $plugin_meta;
+//Link to the settings on plugins page
+function xmpp_stats_plugin_action_links($action_links, $plugin_file) {
+	if(dirname(plugin_basename(__FILE__)).'/xmpp-stats.php' == $plugin_file) {
+		$action_links[] = '<a href="options-general.php?page=xmpp-stats-options">'.__('Settings', 'xmpp_stats').'</a>';
+	}
+    return $action_links;
 }
 
 //Create options menu
