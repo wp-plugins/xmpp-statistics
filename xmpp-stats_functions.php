@@ -23,9 +23,9 @@ function xmpp_stats_post_xmpp_data($data) {
 	//Authorization
 	$auth = get_option('xmpp_stats_auth');
 	if($auth) {
-		$login = str_replace('@', ' ', get_option('xmpp_stats_login'));
+		$login = str_replace('@', '" "', get_option('xmpp_stats_login'));
 		$password = get_option('xmpp_stats_password');
-		$auth_data = '--auth '.$login.' '.$password.' ';
+		$auth_data = '--auth "'.$login.'" "'.$password.'" ';
 		$data = $auth_data.$data;
 	}
 	//POST data
@@ -40,14 +40,14 @@ function xmpp_stats_post_xmpp_data($data) {
 	$response = wp_remote_post($rest_url, $args);
 	$http_code = wp_remote_retrieve_response_code($response);
 	//Verify response
-	if($http_code == '200') {
+	if($http_code == 200) {
 		//Set last activity information
 		if(($auth)&&(get_option('xmpp_stats_set_last'))) {
 			//Get current time in UTC
 			$now = current_time('timestamp', 1);
 			//POST data
 			$args = array(
-				'body' => $auth_data.'set_last '.$login.' '.$now.' "Set by XMPP Statistics"',
+				'body' => $auth_data.'set_last "'.$login.'" "'.$now.'" "Set by XMPP Statistics"',
 				'timeout' => 5,
 				'redirection' => 0,
 				'sslverify' => false
@@ -74,7 +74,7 @@ function xmpp_stats_get_system_data() {
 	$response = wp_remote_get(get_option('xmpp_stats_uptime_url'), $args);
 	$http_code = wp_remote_retrieve_response_code($response);
 	//Verify response
-	if($http_code == '200') {
+	if($http_code == 200) {
 		return wp_remote_retrieve_body($response);
 	}
 	//No data
