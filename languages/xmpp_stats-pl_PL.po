@@ -1,64 +1,76 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: XMPP Statistics\n"
-"POT-Creation-Date: 2015-06-11 08:19+0100\n"
-"PO-Revision-Date: 2015-06-11 08:29+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-07-03 18:03+0200\n"
+"PO-Revision-Date: 2015-07-03 18:03+0200\n"
 "Last-Translator: Krzysztof Grochocki <kontakt@beherit.pl>\n"
-"Language-Team: Krzysztof Grochocki <kontakt@beherit.pl>\n"
+"Language-Team: \n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.1\n"
-"X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.8.2\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: ../xmpp-stats_admin.php:50 ../xmpp-stats_admin.php:116
+# URI of the plugin
+#: xmpp-stats.php:34
+msgid "http://beherit.pl/en/wordpress/plugins/xmpp-statistics"
+msgstr "http://beherit.pl/pl/wordpress/wtyczki/xmpp-statistics"
+
+# Description of the plugin
+#: xmpp-stats.php:35
+msgid "Displays the statistics from ejabberd XMPP server through REST API."
+msgstr "Wyświetla statystyki z serwera ejabberd XMPP za pomocą REST API."
+
+#: xmpp-stats_admin.php:44 xmpp-stats_admin.php:111
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: ../xmpp-stats_admin.php:59
+#: xmpp-stats_admin.php:54
 msgid "XMPP Statistics"
 msgstr "Statystyki XMPP"
 
-#: ../xmpp-stats_admin.php:125
+#: xmpp-stats_admin.php:120
 msgid "Donations"
 msgstr "Wsparcie"
 
-#: ../xmpp-stats_admin.php:134
+#: xmpp-stats_admin.php:129
 msgid "Usage information"
 msgstr "Informacje o użytkowaniu"
 
-#: ../xmpp-stats_admin.php:143
+#: xmpp-stats_admin.php:138
 msgid "Simple shortcodes"
 msgstr "Proste skróty"
 
-#: ../xmpp-stats_admin.php:152
+#: xmpp-stats_admin.php:147
 msgid "Shortcodes for graphs"
 msgstr "Skróty dla wykresów"
 
-#: ../xmpp-stats_admin.php:170
+#: xmpp-stats_admin.php:165
 msgid "Basic options"
 msgstr "Podstawowe opcje"
 
-#: ../xmpp-stats_admin.php:173
+#: xmpp-stats_admin.php:168
 msgid "REST API url"
 msgstr "Adres REST API"
 
-#: ../xmpp-stats_admin.php:174
+#: xmpp-stats_admin.php:169
 msgid "Enter URL defined in module mod_rest in ejabberd settings."
 msgstr ""
 "Wpisz adres URL zdefiniowany w module mod_rest w ustawieniach ejabberd."
 
-#: ../xmpp-stats_admin.php:177
+#: xmpp-stats_admin.php:172
 msgid "URL to system uptime data"
 msgstr "Adres URL do danych czasu działania systemu"
 
-#: ../xmpp-stats_admin.php:178
+#: xmpp-stats_admin.php:173
 msgid ""
 "Enter URL defined in module mod_http_fileserver in ejabberd settings which "
 "returns system boot time in UNIX TimeStamp."
@@ -66,15 +78,15 @@ msgstr ""
 "Wpisz adres URL zdefiniowany w module mod_http_fileserver w ustawieniach "
 "ejabberd, który zwraca czas uruchomienia systemu w UNIX TimeStamp."
 
-#: ../xmpp-stats_admin.php:179
+#: xmpp-stats_admin.php:174
 msgid "Example to get system boot time"
 msgstr "Przykład, jak uzyskać czas uruchomienia systemu"
 
-#: ../xmpp-stats_admin.php:182
+#: xmpp-stats_admin.php:177
 msgid "Save statistics"
 msgstr "Zapisuj statystyki"
 
-#: ../xmpp-stats_admin.php:183
+#: xmpp-stats_admin.php:178
 msgid ""
 "Automatically retrieves server statistics every 5 minutes and stores them in "
 "a database."
@@ -82,51 +94,51 @@ msgstr ""
 "Automatycznie pobiera statystyki serwera co 5 minut i zapisuje je w bazie "
 "danych."
 
-#: ../xmpp-stats_admin.php:188
+#: xmpp-stats_admin.php:183
 msgid "Authorization"
 msgstr "Autoryzacja"
 
-#: ../xmpp-stats_admin.php:191
+#: xmpp-stats_admin.php:186
 msgid "Enable authorization"
 msgstr "Włącz autoryzację"
 
-#: ../xmpp-stats_admin.php:194
+#: xmpp-stats_admin.php:189
 msgid "Login"
 msgstr "Login"
 
-#: ../xmpp-stats_admin.php:195
+#: xmpp-stats_admin.php:190
 msgid "Password"
 msgstr "Hasło"
 
-#: ../xmpp-stats_admin.php:198
+#: xmpp-stats_admin.php:193
 msgid "Set last activity information"
 msgstr "Ustaw informację o ostatniej aktywności"
 
-#: ../xmpp-stats_admin.php:203
+#: xmpp-stats_admin.php:198
 msgid "Graphs style"
 msgstr "Styl wykresów"
 
-#: ../xmpp-stats_admin.php:206
+#: xmpp-stats_admin.php:201
 msgid "Width"
 msgstr "Szerokość"
 
-#: ../xmpp-stats_admin.php:209
+#: xmpp-stats_admin.php:204
 msgid "Height"
 msgstr "Wysokość"
 
-#: ../xmpp-stats_admin.php:213 ../xmpp-stats_admin.php:219
+#: xmpp-stats_admin.php:208 xmpp-stats_admin.php:214
 msgid "Line color"
 msgstr "Kolor linii"
 
-#: ../xmpp-stats_admin.php:225
+#: xmpp-stats_admin.php:220
 msgid "Grid color"
 msgstr "Kolor siatki"
 
-#: ../xmpp-stats_admin.php:233
+#: xmpp-stats_admin.php:228
 msgid "Save settings"
 msgstr "Zapisz zmiany"
 
-#: ../xmpp-stats_admin.php:243
+#: xmpp-stats_admin.php:238
 msgid ""
 "If you like this plugin, please send a donation to support its development "
 "and maintenance"
@@ -134,7 +146,7 @@ msgstr ""
 "Jeśli podoba Ci się ta wtyczka, proszę prześlij darowiznę na wsparcie jej "
 "rozwoju i utrzymanie"
 
-#: ../xmpp-stats_admin.php:253
+#: xmpp-stats_admin.php:248
 msgid ""
 "First, make sure that module mod_rest in ejabberd is properly configured. "
 "Example configuration:"
@@ -142,7 +154,7 @@ msgstr ""
 "Po pierwsze, upewnij się, że moduł mod_rest w ejabberd jest poprawnie "
 "skonfigurowany. Przykładowa konfiguracja:"
 
-#: ../xmpp-stats_admin.php:264
+#: xmpp-stats_admin.php:259
 msgid ""
 "Second, configure REST API url and optional authorization data. At last, "
 "place shortcodes on page."
@@ -150,197 +162,196 @@ msgstr ""
 "Po drugie, skonfiguruj adres REST API i opcjonalne dane autoryzacji. W "
 "końcu, umieść skróty na stronie."
 
-#: ../xmpp-stats_admin.php:270
+#: xmpp-stats_admin.php:265
 msgid "Online users count"
 msgstr "Liczba zalogowanych użytkowników"
 
-#: ../xmpp-stats_admin.php:270 ../xmpp-stats_admin.php:271
-#: ../xmpp-stats_admin.php:272 ../xmpp-stats_admin.php:273
-#: ../xmpp-stats_admin.php:274
+#: xmpp-stats_admin.php:265 xmpp-stats_admin.php:266 xmpp-stats_admin.php:267
+#: xmpp-stats_admin.php:268 xmpp-stats_admin.php:269
 msgid "Command"
 msgstr "Komenda"
 
-#: ../xmpp-stats_admin.php:271
+#: xmpp-stats_admin.php:266
 msgid "Registered users count"
 msgstr "Liczba zarejestrowanych użytkowników"
 
-#: ../xmpp-stats_admin.php:272
+#: xmpp-stats_admin.php:267
 msgid "Outgoing s2s connections count"
 msgstr "Liczba wychodzących połączeń s2s"
 
-#: ../xmpp-stats_admin.php:273
+#: xmpp-stats_admin.php:268
 msgid "Incomming s2s connections count"
 msgstr "Liczba przychodzących połączeń s2s"
 
-#: ../xmpp-stats_admin.php:274
+#: xmpp-stats_admin.php:269
 msgid "XMPP server uptime"
 msgstr "Czas działania serwera XMPP"
 
-#: ../xmpp-stats_admin.php:275
+#: xmpp-stats_admin.php:270
 msgid "System uptime"
 msgstr "Czas działania systemu"
 
-#: ../xmpp-stats_admin.php:282 ../xmpp-stats_graphs.php:101
+#: xmpp-stats_admin.php:277 xmpp-stats_graphs.php:101
 msgid "Logged in users - by day"
 msgstr "Zalogowani użytkownicy - przez dzień"
 
-#: ../xmpp-stats_admin.php:283 ../xmpp-stats_graphs.php:201
+#: xmpp-stats_admin.php:278 xmpp-stats_graphs.php:208
 msgid "Logged in users - by week"
 msgstr "Zalogowani użytkownicy - przez tydzień"
 
-#: ../xmpp-stats_admin.php:284 ../xmpp-stats_graphs.php:301
+#: xmpp-stats_admin.php:279 xmpp-stats_graphs.php:315
 msgid "Registered users - by day"
 msgstr "Zarejestrowani użytkownicy - przez dzień"
 
-#: ../xmpp-stats_admin.php:285 ../xmpp-stats_graphs.php:401
+#: xmpp-stats_admin.php:280 xmpp-stats_graphs.php:422
 msgid "Registered users - by week"
 msgstr "Zarejestrowani użytkownicy - przez tydzień"
 
-#: ../xmpp-stats_admin.php:286 ../xmpp-stats_graphs.php:501
+#: xmpp-stats_admin.php:281 xmpp-stats_graphs.php:529
 msgid "S2S connections - by day"
 msgstr "Połączenia S2S - przez dzień"
 
-#: ../xmpp-stats_admin.php:287 ../xmpp-stats_graphs.php:642
+#: xmpp-stats_admin.php:282 xmpp-stats_graphs.php:684
 msgid "S2S connections - by week"
 msgstr "Połączenia S2S - przez tydzień"
 
-#: ../xmpp-stats_admin.php:288 ../xmpp-stats_graphs.php:783
+#: xmpp-stats_admin.php:283 xmpp-stats_graphs.php:839
 msgid "XMPP server uptime - by day"
 msgstr "Czas działania serwera XMPP - przez dzień"
 
-#: ../xmpp-stats_admin.php:289 ../xmpp-stats_graphs.php:854
+#: xmpp-stats_admin.php:284 xmpp-stats_graphs.php:916
 msgid "XMPP server uptime - by week"
 msgstr "Czas działania serwera XMPP - przez tydzień"
 
-#: ../xmpp-stats_admin.php:290 ../xmpp-stats_graphs.php:925
+#: xmpp-stats_admin.php:285 xmpp-stats_graphs.php:993
 msgid "System uptime - by day"
 msgstr "Czas działania systemu - przez dzień"
 
-#: ../xmpp-stats_admin.php:291 ../xmpp-stats_graphs.php:996
+#: xmpp-stats_admin.php:286 xmpp-stats_graphs.php:1070
 msgid "System uptime - by week"
 msgstr "Czas działania systemu - przez tydzień"
 
-#: ../xmpp-stats_admin.php:302
+#: xmpp-stats_admin.php:297
 msgid "XMPP server statistics"
 msgstr "Statystyki serwera XMPP"
 
-#: ../xmpp-stats_cron.php:52
+#: xmpp-stats_cron.php:52
 msgid "Every 5 minutes"
 msgstr "Co 5 minut"
 
-#: ../xmpp-stats_functions.php:105
+#: xmpp-stats_functions.php:105
 msgid "today"
 msgstr "dzisiaj"
 
-#: ../xmpp-stats_functions.php:107
+#: xmpp-stats_functions.php:107
 msgid "yesterday"
 msgstr "wczoraj"
 
-#: ../xmpp-stats_graphs.php:101 ../xmpp-stats_graphs.php:201
-#: ../xmpp-stats_graphs.php:301 ../xmpp-stats_graphs.php:401
-#: ../xmpp-stats_graphs.php:501 ../xmpp-stats_graphs.php:642
-#: ../xmpp-stats_graphs.php:783 ../xmpp-stats_graphs.php:854
-#: ../xmpp-stats_graphs.php:925 ../xmpp-stats_graphs.php:996
-#: ../xmpp-stats_simple.php:79 ../xmpp-stats_simple.php:92
-#: ../xmpp-stats_simple.php:105 ../xmpp-stats_simple.php:118
-#: ../xmpp-stats_simple.php:131 ../xmpp-stats_simple.php:149
+#: xmpp-stats_graphs.php:101 xmpp-stats_graphs.php:208
+#: xmpp-stats_graphs.php:315 xmpp-stats_graphs.php:422
+#: xmpp-stats_graphs.php:529 xmpp-stats_graphs.php:684
+#: xmpp-stats_graphs.php:839 xmpp-stats_graphs.php:916
+#: xmpp-stats_graphs.php:993 xmpp-stats_graphs.php:1070
+#: xmpp-stats_simple.php:79 xmpp-stats_simple.php:94 xmpp-stats_simple.php:109
+#: xmpp-stats_simple.php:124 xmpp-stats_simple.php:139
+#: xmpp-stats_simple.php:157
 msgid "Loading..."
 msgstr "Ładowanie..."
 
-#: ../xmpp-stats_graphs.php:110 ../xmpp-stats_graphs.php:210
+#: xmpp-stats_graphs.php:110 xmpp-stats_graphs.php:217
 msgid "Logged in users"
 msgstr "Zalogowani użytkownicy"
 
-#: ../xmpp-stats_graphs.php:137 ../xmpp-stats_graphs.php:237
-#: ../xmpp-stats_graphs.php:337 ../xmpp-stats_graphs.php:437
-#: ../xmpp-stats_graphs.php:556 ../xmpp-stats_graphs.php:697
-#: ../xmpp-stats_graphs.php:819 ../xmpp-stats_graphs.php:890
-#: ../xmpp-stats_graphs.php:961 ../xmpp-stats_graphs.php:1032
+#: xmpp-stats_graphs.php:144 xmpp-stats_graphs.php:251
+#: xmpp-stats_graphs.php:358 xmpp-stats_graphs.php:465
+#: xmpp-stats_graphs.php:598 xmpp-stats_graphs.php:753
+#: xmpp-stats_graphs.php:881 xmpp-stats_graphs.php:958
+#: xmpp-stats_graphs.php:1035 xmpp-stats_graphs.php:1112
 msgid "sun"
 msgstr "ndz"
 
-#: ../xmpp-stats_graphs.php:137 ../xmpp-stats_graphs.php:237
-#: ../xmpp-stats_graphs.php:337 ../xmpp-stats_graphs.php:437
-#: ../xmpp-stats_graphs.php:556 ../xmpp-stats_graphs.php:697
-#: ../xmpp-stats_graphs.php:819 ../xmpp-stats_graphs.php:890
-#: ../xmpp-stats_graphs.php:961 ../xmpp-stats_graphs.php:1032
+#: xmpp-stats_graphs.php:144 xmpp-stats_graphs.php:251
+#: xmpp-stats_graphs.php:358 xmpp-stats_graphs.php:465
+#: xmpp-stats_graphs.php:598 xmpp-stats_graphs.php:753
+#: xmpp-stats_graphs.php:881 xmpp-stats_graphs.php:958
+#: xmpp-stats_graphs.php:1035 xmpp-stats_graphs.php:1112
 msgid "mon"
 msgstr "pon"
 
-#: ../xmpp-stats_graphs.php:137 ../xmpp-stats_graphs.php:237
-#: ../xmpp-stats_graphs.php:337 ../xmpp-stats_graphs.php:437
-#: ../xmpp-stats_graphs.php:556 ../xmpp-stats_graphs.php:697
-#: ../xmpp-stats_graphs.php:819 ../xmpp-stats_graphs.php:890
-#: ../xmpp-stats_graphs.php:961 ../xmpp-stats_graphs.php:1032
+#: xmpp-stats_graphs.php:144 xmpp-stats_graphs.php:251
+#: xmpp-stats_graphs.php:358 xmpp-stats_graphs.php:465
+#: xmpp-stats_graphs.php:598 xmpp-stats_graphs.php:753
+#: xmpp-stats_graphs.php:881 xmpp-stats_graphs.php:958
+#: xmpp-stats_graphs.php:1035 xmpp-stats_graphs.php:1112
 msgid "tue"
 msgstr "wto"
 
-#: ../xmpp-stats_graphs.php:137 ../xmpp-stats_graphs.php:237
-#: ../xmpp-stats_graphs.php:337 ../xmpp-stats_graphs.php:437
-#: ../xmpp-stats_graphs.php:556 ../xmpp-stats_graphs.php:697
-#: ../xmpp-stats_graphs.php:819 ../xmpp-stats_graphs.php:890
-#: ../xmpp-stats_graphs.php:961 ../xmpp-stats_graphs.php:1032
+#: xmpp-stats_graphs.php:144 xmpp-stats_graphs.php:251
+#: xmpp-stats_graphs.php:358 xmpp-stats_graphs.php:465
+#: xmpp-stats_graphs.php:598 xmpp-stats_graphs.php:753
+#: xmpp-stats_graphs.php:881 xmpp-stats_graphs.php:958
+#: xmpp-stats_graphs.php:1035 xmpp-stats_graphs.php:1112
 msgid "wed"
 msgstr "śro"
 
-#: ../xmpp-stats_graphs.php:137 ../xmpp-stats_graphs.php:237
-#: ../xmpp-stats_graphs.php:337 ../xmpp-stats_graphs.php:437
-#: ../xmpp-stats_graphs.php:556 ../xmpp-stats_graphs.php:697
-#: ../xmpp-stats_graphs.php:819 ../xmpp-stats_graphs.php:890
-#: ../xmpp-stats_graphs.php:961 ../xmpp-stats_graphs.php:1032
+#: xmpp-stats_graphs.php:144 xmpp-stats_graphs.php:251
+#: xmpp-stats_graphs.php:358 xmpp-stats_graphs.php:465
+#: xmpp-stats_graphs.php:598 xmpp-stats_graphs.php:753
+#: xmpp-stats_graphs.php:881 xmpp-stats_graphs.php:958
+#: xmpp-stats_graphs.php:1035 xmpp-stats_graphs.php:1112
 msgid "thu"
 msgstr "czw"
 
-#: ../xmpp-stats_graphs.php:137 ../xmpp-stats_graphs.php:237
-#: ../xmpp-stats_graphs.php:337 ../xmpp-stats_graphs.php:437
-#: ../xmpp-stats_graphs.php:556 ../xmpp-stats_graphs.php:697
-#: ../xmpp-stats_graphs.php:819 ../xmpp-stats_graphs.php:890
-#: ../xmpp-stats_graphs.php:961 ../xmpp-stats_graphs.php:1032
+#: xmpp-stats_graphs.php:144 xmpp-stats_graphs.php:251
+#: xmpp-stats_graphs.php:358 xmpp-stats_graphs.php:465
+#: xmpp-stats_graphs.php:598 xmpp-stats_graphs.php:753
+#: xmpp-stats_graphs.php:881 xmpp-stats_graphs.php:958
+#: xmpp-stats_graphs.php:1035 xmpp-stats_graphs.php:1112
 msgid "fri"
 msgstr "pią"
 
-#: ../xmpp-stats_graphs.php:137 ../xmpp-stats_graphs.php:237
-#: ../xmpp-stats_graphs.php:337 ../xmpp-stats_graphs.php:437
-#: ../xmpp-stats_graphs.php:556 ../xmpp-stats_graphs.php:697
-#: ../xmpp-stats_graphs.php:819 ../xmpp-stats_graphs.php:890
-#: ../xmpp-stats_graphs.php:961 ../xmpp-stats_graphs.php:1032
+#: xmpp-stats_graphs.php:144 xmpp-stats_graphs.php:251
+#: xmpp-stats_graphs.php:358 xmpp-stats_graphs.php:465
+#: xmpp-stats_graphs.php:598 xmpp-stats_graphs.php:753
+#: xmpp-stats_graphs.php:881 xmpp-stats_graphs.php:958
+#: xmpp-stats_graphs.php:1035 xmpp-stats_graphs.php:1112
 msgid "sat"
 msgstr "sob"
 
-#: ../xmpp-stats_graphs.php:181 ../xmpp-stats_graphs.php:281
-#: ../xmpp-stats_graphs.php:381 ../xmpp-stats_graphs.php:481
+#: xmpp-stats_graphs.php:188 xmpp-stats_graphs.php:295
+#: xmpp-stats_graphs.php:402 xmpp-stats_graphs.php:509
 msgid "users at"
 msgstr "użytkowników o"
 
-#: ../xmpp-stats_graphs.php:310 ../xmpp-stats_graphs.php:410
+#: xmpp-stats_graphs.php:324 xmpp-stats_graphs.php:431
 msgid "Registered users"
 msgstr "Zarejestrowani użytkownicy"
 
-#: ../xmpp-stats_graphs.php:511 ../xmpp-stats_graphs.php:652
+#: xmpp-stats_graphs.php:539 xmpp-stats_graphs.php:694
 msgid "Outgoing connections"
 msgstr "Wychodzące połączenia"
 
-#: ../xmpp-stats_graphs.php:512 ../xmpp-stats_graphs.php:653
+#: xmpp-stats_graphs.php:540 xmpp-stats_graphs.php:695
 msgid "outgoing connections"
 msgstr "wychodzących połączeń"
 
-#: ../xmpp-stats_graphs.php:534 ../xmpp-stats_graphs.php:675
+#: xmpp-stats_graphs.php:569 xmpp-stats_graphs.php:724
 msgid "Incoming connections"
 msgstr "Przychodzące połączenia"
 
-#: ../xmpp-stats_graphs.php:535 ../xmpp-stats_graphs.php:676
+#: xmpp-stats_graphs.php:570 xmpp-stats_graphs.php:725
 msgid "incoming connections"
 msgstr "przychodzących połączeń"
 
-#: ../xmpp-stats_graphs.php:622 ../xmpp-stats_graphs.php:763
+#: xmpp-stats_graphs.php:664 xmpp-stats_graphs.php:819
 msgid "at"
 msgstr "o"
 
-#: ../xmpp-stats_graphs.php:792 ../xmpp-stats_graphs.php:863
-#: ../xmpp-stats_graphs.php:934 ../xmpp-stats_graphs.php:1005
+#: xmpp-stats_graphs.php:848 xmpp-stats_graphs.php:925
+#: xmpp-stats_graphs.php:1002 xmpp-stats_graphs.php:1079
 msgid "Uptime"
 msgstr "Czas działania"
 
-#: ../xmpp-stats_simple.php:138 ../xmpp-stats_simple.php:156
+#: xmpp-stats_simple.php:146 xmpp-stats_simple.php:164
 msgid "Last restart"
 msgstr "Ostatni restart"

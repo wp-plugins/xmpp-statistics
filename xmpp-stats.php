@@ -6,6 +6,8 @@ Description: Displays the statistics from ejabberd XMPP server through REST API.
 Version: 1.3
 Author: Krzysztof Grochocki
 Author URI: http://beherit.pl/
+Text Domain: xmpp_stats
+Domain Path: /languages
 License: GPLv3
 */
 
@@ -27,6 +29,10 @@ License: GPLv3
 	You should have received a copy of the GNU General Public License
 	along with GNU Radio. If not, see <http://www.gnu.org/licenses/>.
 */
+
+//Translate plugin meta-data
+__('http://beherit.pl/en/wordpress/plugins/xmpp-statistics', 'xmpp_stats');
+__('Displays the statistics from ejabberd XMPP server through REST API.', 'xmpp_stats');
 
 //Define plugin version variable
 define('XMPP_STATS_VERSION', '1.3');
