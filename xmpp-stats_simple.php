@@ -24,7 +24,7 @@ function xmpp_stats_enqueue_shortcodes_scripts() {
 
 	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_onlineusers')) {
 		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.5', 'all');
-		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.4.0', 'all');
 		wp_enqueue_script('xmpp-onlineusers', plugin_dir_url(__FILE__).'js/jquery.xmpp-onlineusers.js', array('jquery'), XMPP_STATS_VERSION, true);
 		wp_localize_script('xmpp-onlineusers', 'xmpp_onlineusers', array(
 			'url' => admin_url('admin-ajax.php?action=get_xmpp_onlineusers&lang='.get_locale())
@@ -32,7 +32,7 @@ function xmpp_stats_enqueue_shortcodes_scripts() {
 	}
 	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_registeredusers')) {
 		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.5', 'all');
-		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.4.0', 'all');
 		wp_enqueue_script('xmpp-registeredusers', plugin_dir_url(__FILE__).'js/jquery.xmpp-registeredusers.js', array('jquery'), XMPP_STATS_VERSION, true);
 		wp_localize_script('xmpp-registeredusers', 'xmpp_registeredusers', array(
 			'url' => admin_url('admin-ajax.php?action=get_xmpp_registeredusers&lang='.get_locale())
@@ -40,7 +40,7 @@ function xmpp_stats_enqueue_shortcodes_scripts() {
 	}
 	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_s2s_out')) {
 		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.5', 'all');
-		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.4.0', 'all');
 		wp_enqueue_script('xmpp-s2s-out', plugin_dir_url(__FILE__).'js/jquery.xmpp-s2s-out.js', array('jquery'), XMPP_STATS_VERSION, true);
 		wp_localize_script('xmpp-s2s-out', 'xmpp_s2s_out', array(
 			'url' => admin_url('admin-ajax.php?action=get_xmpp_s2s_out&lang='.get_locale())
@@ -48,7 +48,7 @@ function xmpp_stats_enqueue_shortcodes_scripts() {
 	}
 	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_s2s_in')) {
 		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.5', 'all');
-		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.4.0', 'all');
 		wp_enqueue_script('xmpp-s2s-in', plugin_dir_url(__FILE__).'js/jquery.xmpp-s2s-in.js', array('jquery'), XMPP_STATS_VERSION, true);
 		wp_localize_script('xmpp-s2s-in', 'xmpp_s2s_in', array(
 			'url' => admin_url('admin-ajax.php?action=get_xmpp_s2s_in&lang='.get_locale())
@@ -56,7 +56,7 @@ function xmpp_stats_enqueue_shortcodes_scripts() {
 	}
 	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'xmpp_uptime')) {
 		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.5', 'all');
-		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.4.0', 'all');
 		wp_enqueue_script('xmpp-uptime', plugin_dir_url(__FILE__).'js/jquery.xmpp-uptime.js', array('jquery'), XMPP_STATS_VERSION, true);
 		wp_localize_script('xmpp-uptime', 'xmpp_uptime', array(
 			'url' => admin_url('admin-ajax.php?action=get_xmpp_uptime&lang='.get_locale())
@@ -64,7 +64,7 @@ function xmpp_stats_enqueue_shortcodes_scripts() {
 	}
 	if(is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'system_uptime')) {
 		wp_enqueue_style('hint', plugin_dir_url(__FILE__).'css/hint.min.css', array(), '1.3.5', 'all');
-		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.3.0', 'all');
+		wp_enqueue_style('fontawesome', plugin_dir_url(__FILE__).'css/font-awesome.min.css', array(), '4.4.0', 'all');
 		wp_enqueue_script('system-uptime', plugin_dir_url(__FILE__).'js/jquery.system-uptime.js', array('jquery'), XMPP_STATS_VERSION, true);
 		wp_localize_script('system-uptime', 'system_uptime', array(
 			'url' => admin_url('admin-ajax.php?action=get_system_uptime&lang='.get_locale())
